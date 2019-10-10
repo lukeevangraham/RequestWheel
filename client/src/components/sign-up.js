@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios"
 
 class Form extends Component {
   // Setting the component's initial state
@@ -30,6 +31,25 @@ class Form extends Component {
 
     console.log("sign-up-form, username: ");
     console.log(this.state.username);
+    //request to server here
+    axios.post('/', {
+      username: this.state.username,
+      password: this.state.password
+    })
+    .then(response => {
+      console.log(response)
+      if (response.data) {
+        console.log('successful signup')
+        this.setState({
+          redirectTo: '/login'
+        })
+      } else {
+        console.log('Sign-up error');
+      }
+    }).catch(error => {
+      console.log('Sign up server error: ')
+      console.log(error);
+    })
   };
 
   render() {
