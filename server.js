@@ -1,10 +1,12 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const session = require('express-session')
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
+// const user = require('./routes/user')
 
 // Define middleware here
 app.use(morgan('dev'));
@@ -16,6 +18,20 @@ app.use(
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// sessions
+app.use(
+  session({
+    secret: 'the-natural',
+    resave: false,
+    saveUninitialized: false
+  })
+)
+app.use( (req, res, next) => {
+  console.log('req.session', req.session);
+  return next();
+});
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -25,12 +41,7 @@ if (process.env.NODE_ENV === "production") {
 var db = require("./models");
 
 // Define API routes here
-// app.use(routes);
-
-app.post('/', (req, res, next) =>{
-  console.log('user/signup, req.body.username: ')
-  console.log(req.body.username)
-})
+app.use(routes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
