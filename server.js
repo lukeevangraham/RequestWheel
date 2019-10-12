@@ -2,11 +2,12 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const session = require('express-session')
+const passport = require('./passport')
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
-// const user = require('./routes/user')
+// const user = require('./routes/api/users')
 
 // Define middleware here
 app.use(morgan('dev'));
@@ -27,10 +28,14 @@ app.use(
     saveUninitialized: false
   })
 )
-app.use( (req, res, next) => {
-  console.log('req.session', req.session);
-  return next();
-});
+// app.use( (req, res, next) => {
+//   console.log('req.session', req.session);
+//   return next();
+// });
+
+// Passport
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -45,11 +50,11 @@ app.use(routes);
 
 // Send every other request to the React app
 // Define any API routes before this runs
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(PORT, () => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });

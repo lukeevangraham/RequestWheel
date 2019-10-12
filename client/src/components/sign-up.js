@@ -4,7 +4,7 @@ import axios from "axios"
 class Form extends Component {
   // Setting the component's initial state
   state = {
-    username: "",
+    email: "",
     password: ""
   };
 
@@ -25,15 +25,15 @@ class Form extends Component {
     // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
     // alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
     // this.setState({
-    //   username: "",
+    //   email: "",
     //   password: ""
     // });
 
-    console.log("sign-up-form, username: ");
-    console.log(this.state.username);
+    console.log("sign-up-form, email: ");
+    console.log(this.state.email);
     //request to server here
     axios.post('/user', {
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password
     })
     .then(response => {
@@ -59,15 +59,15 @@ class Form extends Component {
         <div className="row justify-content-center">
           <div className="col-5 mt-5">
             <form className="form">
-              <label className="mr-2" htmlFor="username">Username: </label>
+              <label className="mr-2 text-dark" htmlFor="email">Email: </label>
               <input
-                value={this.state.username}
-                name="username"
+                value={this.state.email}
+                name="email"
                 onChange={this.handleInputChange}
                 type="text"
               />
               <br/>
-              <label className="mr-2" htmlFor="password">Password: </label>
+              <label className="mr-2 text-dark" htmlFor="password">Password: </label>
               <input
                 value={this.state.password}
                 name="password"

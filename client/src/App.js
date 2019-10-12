@@ -1,21 +1,90 @@
 import React, { Component } from "react";
-
-import SignUp from "./components/sign-up"
-import logo from "./logo.svg";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+// import logo from "./logo.svg";
 import "./App.css";
+import axios from "axios";
+import Signup from "./components/sign-up"
+import LoginForm from './components/login-form'
+import Navbar from './components/navbar'
+import Home from './components/home'
 
 
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      loggedIn: false,
+      email: null
+    }
+
+    this.getUser = this.getUser.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.updateUser = this.updateUser.bind(this)
+  }
+
+componentDidMount() {
+  this.getUser()
+}
+
+updateUser (userObject) {
+  this.setState(userObject)
+}
+
+getUser() {
+  axios.get('/user/').then(response => {
+    console.log('Get user response: ')
+    console.log(response.data)
+    if (response.data.user) {
+      console.log('Get User: There is a user saved in the server session: ')
+
+      this.setState({
+        loggedIn: true,
+        email: response.data.user.email
+      })
+    } else {
+      console.log('Get user: no user');
+      this.setState({
+        loggedIn: false,
+        email: null
+      })
+    }
+  })
+}
+
+
+
   render() {
     return (
+      <BrowserRouter>
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <SignUp />
+
+      <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+       {/* greet user if logged in: */}
+          {this.state.loggedIn &&
+          <p className="mt-3">Join the party, {this.state.email}!</p>
+          }
+          {/* Routes to different components */}
+          <Route
+            exact path="/"
+            component={Home} />
+          <Route
+            path="/login"
+            render={() =>
+            <LoginForm
+            updateUser={this.updateUser}
+            />}
+          />
+          <Route
+            path="/signup"
+            render={() =>
+            <Signup />}
+          />
+
+
+        {/* <SignUp /> */}
       </div>
+      </BrowserRouter>
     );
   }
 }
