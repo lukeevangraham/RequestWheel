@@ -35,10 +35,12 @@ class Navbar extends Component {
         return (
             <div>
 
-                <header className="navbar App-header" id="nav-container">
+                <header className="navbar navbar-light" style={{backgroundColor: "#A5DBEC"}} id="nav-container">
                     <div className="col-4" >
                         {loggedIn ? (
                             <section className="navbar-section">
+                                <Link to="/" className="btn btn-link text-secondary">
+                                <span className="text-secondary">home</span></Link>
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                 <span className="text-secondary">logout</span></Link>
 

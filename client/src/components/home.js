@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   constructor() {
@@ -11,7 +12,7 @@ class Home extends Component {
     };
     return (
       <div className="container">
-        <div className="row">
+        <div className="row mt-3">
           <div className="col">
             <p>It's good to be home</p>
             <img
@@ -20,9 +21,9 @@ class Home extends Component {
             />
           </div>
         </div>
-        <div className="row">
+        <div className="row mt-3">
             <div className="col">
-          <button>Submit a request</button>
+          <Link role="button" className="btn btn-primary" to="/submit-request">Submit a request</Link>
             </div>
         </div>
       </div>

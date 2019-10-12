@@ -3,87 +3,72 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 // import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
-import Signup from "./components/sign-up"
-import LoginForm from './components/login-form'
-import Navbar from './components/navbar'
-import Home from './components/home'
-
-
+import Signup from "./components/sign-up";
+import LoginForm from "./components/login-form";
+import Navbar from "./components/navbar";
+import Home from "./components/home";
+import SubmitRequest from "./components/submit-request";
 
 class App extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       loggedIn: false,
       email: null
-    }
+    };
 
-    this.getUser = this.getUser.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
-    this.updateUser = this.updateUser.bind(this)
+    this.getUser = this.getUser.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.updateUser = this.updateUser.bind(this);
   }
 
-componentDidMount() {
-  this.getUser()
-}
+  componentDidMount() {
+    this.getUser();
+  }
 
-updateUser (userObject) {
-  this.setState(userObject)
-}
+  updateUser(userObject) {
+    this.setState(userObject);
+  }
 
-getUser() {
-  axios.get('/user/').then(response => {
-    console.log('Get user response: ')
-    console.log(response.data)
-    if (response.data.user) {
-      console.log('Get User: There is a user saved in the server session: ')
+  getUser() {
+    axios.get("/user/").then(response => {
+      console.log("Get user response: ");
+      console.log(response.data);
+      if (response.data.user) {
+        console.log("Get User: There is a user saved in the server session: ");
 
-      this.setState({
-        loggedIn: true,
-        email: response.data.user.email
-      })
-    } else {
-      console.log('Get user: no user');
-      this.setState({
-        loggedIn: false,
-        email: null
-      })
-    }
-  })
-}
-
-
+        this.setState({
+          loggedIn: true,
+          email: response.data.user.email
+        });
+      } else {
+        console.log("Get user: no user");
+        this.setState({
+          loggedIn: false,
+          email: null
+        });
+      }
+    });
+  }
 
   render() {
     return (
       <BrowserRouter>
-      <div className="App">
-
-      <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-       {/* greet user if logged in: */}
-          {this.state.loggedIn &&
-          <p className="mt-3">Join the party, {this.state.email}!</p>
-          }
+        <div className="App">
+          <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          {/* greet user if logged in: */}
+          {this.state.loggedIn && (
+            <p className="mt-3">Join the party, {this.state.email}!</p>
+          )}
           {/* Routes to different components */}
-          <Route
-            exact path="/"
-            component={Home} />
+          <Route exact path="/" component={Home} />
           <Route
             path="/login"
-            render={() =>
-            <LoginForm
-            updateUser={this.updateUser}
-            />}
+            render={() => <LoginForm updateUser={this.updateUser} />}
           />
-          <Route
-            path="/signup"
-            render={() =>
-            <Signup />}
-          />
-
-
-        {/* <SignUp /> */}
-      </div>
+          <Route path="/signup" render={() => <Signup />} />
+          <Route path="/submit-request" render={() => <SubmitRequest />} />
+        </div>
       </BrowserRouter>
     );
   }
