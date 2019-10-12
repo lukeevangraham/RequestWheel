@@ -35,7 +35,7 @@ class Navbar extends Component {
         return (
             <div>
 
-                <header className="navbar navbar-light" style={{backgroundColor: "#A5DBEC"}} id="nav-container">
+                <header className="navbar navbar-light mb-4" style={{backgroundColor: "#A5DBEC"}} id="nav-container">
                     <div className="col-4" >
                         {loggedIn ? (
                             <section className="navbar-section">

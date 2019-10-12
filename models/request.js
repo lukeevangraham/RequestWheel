@@ -60,11 +60,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
-    halfSheetflyer: {
+    halfSheetFlyer: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
-    quarterSheetflyer: {
+    quarterSheetFlyer: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
@@ -99,7 +99,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
-    ColoredCopyPaper: {
+    coloredCopyPaper: {
       type: DataTypes.BOOLEAN,
       allowNull: true,
     },
