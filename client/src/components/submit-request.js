@@ -25,6 +25,16 @@ class SubmitRequest extends Component {
     color: "",
     hammermillPaper: "",
     cardstock: "",
+    collate: "",
+    stack: "",
+    holePunch: "",
+    staple: "",
+    forNewsletter: "",
+    forAnnVideo: "",
+    forTVScreens: "",
+    forConnectionCard: "",
+    body: "",
+    quantity: ""
   };
 
   handleInputChange = event => {
@@ -41,7 +51,7 @@ class SubmitRequest extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
+        <div className="row mb-5">
           <div className="col">
             <h2>Submit a Communications Request</h2>
             <form className="form text-left">
@@ -61,6 +71,7 @@ class SubmitRequest extends Component {
                   />
                 </div>
               </div>
+
               <div className="form-group row">
                 <label for="phone" className="col-sm-2 col-form-label">
                   Phone
@@ -95,7 +106,7 @@ class SubmitRequest extends Component {
               </div>
               <div className="form-group row">
                 <label for="eventName" className="col-sm-2 col-form-label">
-                  What is this for?
+                  Event Name
                 </label>
                 <div className="col-sm-10">
                   <input
@@ -106,7 +117,9 @@ class SubmitRequest extends Component {
                     onChange={this.handleInputChange}
                     type="text"
                     placeholder="Event name"
+                    aria-describedby="eventHelp"
                   />
+                  <small id="eventHelp" className="form-text text-muted">What is this for?</small>
                 </div>
               </div>
               <div className="form-group row">
@@ -152,7 +165,7 @@ class SubmitRequest extends Component {
                     name="approverEmail"
                     id="approverEmail"
                     onChange={this.handleInputChange}
-                    type="text"
+                    type="email"
                     placeholder="Final proof email address"
                   />
                 </div>
@@ -359,6 +372,168 @@ class SubmitRequest extends Component {
                   </div>
                 </div>
               </div>
+
+              <div className="form-group row">
+                <div className="col-sm-2">Other</div>
+                <div className="col-sm-10">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      value={this.state.collate}
+                      name="collate"
+                      id="collate"
+                      onChange={this.handleInputChange}
+                      type="checkbox"
+                    />
+                    <label className="form-check-label" for="collate">
+                      Collate
+                    </label>
+                  </div>
+
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      value={this.state.stack}
+                      name="stack"
+                      id="stack"
+                      onChange={this.handleInputChange}
+                      type="checkbox"
+                    />
+                    <label className="form-check-label" for="stack">
+                      Stack
+                    </label>
+                  </div>
+
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      value={this.state.holePunch}
+                      name="holePunch"
+                      id="holePunch"
+                      onChange={this.handleInputChange}
+                      type="checkbox"
+                    />
+                    <label className="form-check-label" for="holePunch">
+                      Hole Punch
+                    </label>
+                  </div>
+
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      value={this.state.staple}
+                      name="staple"
+                      id="staple"
+                      onChange={this.handleInputChange}
+                      type="checkbox"
+                    />
+                    <label className="form-check-label" for="staple">
+                      Staple
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-group row">
+                <div className="col-sm-2">Advertise in</div>
+                <div className="col-sm-10">
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      value={this.state.forNewsletter}
+                      name="forNewsletter"
+                      id="forNewsletter"
+                      onChange={this.handleInputChange}
+                      type="checkbox"
+                    />
+                    <label className="form-check-label" for="forNewsletter">
+                      Newsletter
+                    </label>
+                  </div>
+
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      value={this.state.forAnnVideo}
+                      name="forAnnVideo"
+                      id="forAnnVideo"
+                      onChange={this.handleInputChange}
+                      type="checkbox"
+                    />
+                    <label className="form-check-label" for="forAnnVideo">
+                      Announcement Video
+                    </label>
+                  </div>
+
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      value={this.state.forTVScreens}
+                      name="forTVScreens"
+                      id="forTVScreens"
+                      onChange={this.handleInputChange}
+                      type="checkbox"
+                    />
+                    <label className="form-check-label" for="forTVScreens">
+                      TV Screens
+                    </label>
+                  </div>
+
+                  <div className="form-check">
+                    <input
+                      className="form-check-input"
+                      value={this.state.forConnectionCard}
+                      name="forConnectionCard"
+                      id="forConnectionCard"
+                      onChange={this.handleInputChange}
+                      type="checkbox"
+                    />
+                    <label className="form-check-label" for="forConnectionCard">
+                      Connection Card
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-group-row">
+                <label for="body" className="col-sm-2 col-form-label align-top">
+                  Body
+                </label>
+
+                <textarea
+                  className="col-sm-10 p-1 form-control"
+                  style={{ display: "inline" }}
+                  value={this.state.body}
+                  name="body"
+                  rows="12"
+                  onChange={this.handleInputChange}
+                  type="text"
+                  placeholder="Body"
+                  
+                />
+              </div>
+
+              <div className="form-group row">
+                <label for="quantity" className="col-sm-2 col-form-label">
+                  Quantity
+                </label>
+                <div className="col-sm-3 p-2">
+                  <input
+                    className="form-control"
+                    value={this.state.quantity}
+                    name="quantity"
+                    id="quantity"
+                    onChange={this.handleInputChange}
+                    type="number"
+                    min="1"
+                    placeholder="Quantity"
+                  />
+                </div>
+              </div>
+
+              <button type="submit" className="btn btn-primary">
+                Submit
+              </button>
             </form>
           </div>
         </div>

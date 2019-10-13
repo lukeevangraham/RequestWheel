@@ -35,26 +35,26 @@ class Navbar extends Component {
         return (
             <div>
 
-                <header className="navbar navbar-light mb-4" style={{backgroundColor: "#A5DBEC"}} id="nav-container">
+                <header className="navbar navbar-dark mb-4" style={{backgroundColor: "#1e2c69"}} id="nav-container">
                     <div className="col-4" >
                         {loggedIn ? (
                             <section className="navbar-section">
                                 <Link to="/" className="btn btn-link text-secondary">
-                                <span className="text-secondary">home</span></Link>
+                                <span className="text-light">home</span></Link>
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                                <span className="text-secondary">logout</span></Link>
+                                <span className="text-light">logout</span></Link>
 
                             </section>
                         ) : (
                                 <section className="navbar-section">
                                     <Link to="/" className="btn btn-link text-secondary">
-                                        <span className="text-secondary">home</span>
+                                        <span className="text-light">home</span>
                                         </Link>
                                     <Link to="/login" className="btn btn-link text-secondary">
-                                    <span className="text-secondary">login</span>
+                                    <span className="text-light">login</span>
 				</Link>
                                     <Link to="/signup" className="btn btn-link">
-                                    <span className="text-secondary">sign up</span>
+                                    <span className="text-light">sign up</span>
 				</Link>
                                 </section>
                             )}
@@ -62,7 +62,7 @@ class Navbar extends Component {
                     <div className="col-4 col-mr-auto">
                     <div id="top-filler"></div>
                         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                        <h1 className="App-title">Com Wheel</h1>
+                        <h1 className="navbar-brand">Com Wheel</h1>
                     </div>
                 </header>
             </div>
