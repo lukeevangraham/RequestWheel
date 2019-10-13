@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios"
 
 class SubmitRequest extends Component {
   // setting the component's initial state
@@ -46,6 +47,70 @@ class SubmitRequest extends Component {
     this.setState({
       [name]: value
     });
+  };
+
+  handleFormSubmit = event => {
+    // Preventing the default behavior of the form submit (which is to refresh the page)
+    event.preventDefault();
+
+    // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
+    // alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
+    // this.setState({
+    //   email: "",
+    //   password: ""
+    // });
+
+    console.log("request-submit-form, eventName: ");
+    console.log(this.state.eventName);
+    //request to server here
+    axios.post('/requests', {
+    name: this.state.name,
+    phone: this.state.phone,
+    email: this.state.email,
+    eventName: this.state.eventName,
+    submittedDate: this.state.submittedDate,
+    requestDueDate: this.state.requestDueDate,
+    approver: this.state.approver,
+    approverEmail: this.state.approverEmail,
+    letterFlyer: this.state.letterFlyer,
+    halfSheetflyer: this.state.halfSheetFlyer,
+    quarterSheetFlyer: this.state.quarterSheetFlyer,
+    tvGraphic: this.state.tvGraphic,
+    tabloidPoster: this.state.tabloidPoster,
+    mediumPoster: this.state.mediumPoster,
+    largePoster: this.state.largePoster,
+    fourByEightBanner: this.state.fourByEightBanner,
+    otherDesignFormat: this.state.otherDesignFormat,
+    plainCopyPaper: this.state.plainCopyPaper,
+    coloredCopyPaper: this.state.coloredCopyPaper,
+    color: this.state.color,
+    hammermillPaper: this.state.hammermillPaper,
+    cardstock: this.state.cardstock,
+    collate: this.state.collate,
+    stack: this.state.stack,
+    holePunch: this.state.holePunch,
+    staple: this.state.staple,
+    forNewsletter: this.state.forNewsletter,
+    forAnnVideo: this.state.forAnnVideo,
+    forTVScreens: this.state.forTVScreens,
+    forConnectionCard: this.state.forConnectionCard,
+    body: this.state.body,
+    quantity: this.state.quantity
+    })
+    .then(response => {
+      console.log(response)
+      if (response.data) {
+        console.log('successful post')
+        this.setState({
+          redirectTo: '/login'
+        })
+      } else {
+        console.log('Requst-submit error');
+      }
+    }).catch(error => {
+      console.log('Requst-submit server error: ')
+      console.log(error);
+    })
   };
 
   render() {
@@ -531,7 +596,7 @@ class SubmitRequest extends Component {
                 </div>
               </div>
 
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>
                 Submit
               </button>
             </form>

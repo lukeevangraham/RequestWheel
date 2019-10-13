@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom'
 import axios from "axios"
 
 class Form extends Component {
@@ -53,34 +54,52 @@ class Form extends Component {
   };
 
   render() {
+    if (this.state.redirectTo) {
+      return <Redirect to={{ pathname: this.state.redirectTo }} />
+  } else {
     // Notice how each input has a `value`, `name`, and `onChange` prop
     return (
       <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-5 mt-5">
+        <h4>Sign up</h4>
+        <div className="row justify-content-center mt-3">
+          <div className="col-sm-6">
             <form className="form">
-              <label className="mr-2 text-dark" htmlFor="email">Email: </label>
+
+              <div className="form-group row">
+              <label className="text-dark col-sm-3 col-form-label" htmlFor="email">Email: </label>
+              <div className="col-sm-9">
               <input
+              className="form-control"
                 value={this.state.email}
                 name="email"
                 onChange={this.handleInputChange}
                 type="text"
               />
-              <br/>
-              <label className="mr-2 text-dark" htmlFor="password">Password: </label>
+              </div>
+              </div>
+
+            <div className="form-group row">
+              <label className="text-dark col-sm-3 col-form-label" htmlFor="password">Password: </label>
+              <div className="col-sm-9">
               <input
+              className="form-control"
                 value={this.state.password}
                 name="password"
                 onChange={this.handleInputChange}
                 type="text"
               />
-              <br/>
-              <button onClick={this.handleFormSubmit}>Submit</button>
+              </div>
+              </div>
+
+<div className="form-group">
+              <button className="btn btn-primary col-mr-auto" onClick={this.handleFormSubmit}>Submit</button>
+              </div>
             </form>
           </div>
         </div>
       </div>
     );
+  }
   }
 }
 

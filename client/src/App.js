@@ -61,7 +61,7 @@ class App extends Component {
             <p className="mt-3">Join the party, {this.state.email}!</p>
           )}
           {/* Routes to different components */}
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={() => <Home email={this.state.username} loggedIn={this.state.loggedIn} />} />
           <Route
             path="/login"
             render={() => <LoginForm updateUser={this.updateUser} />}

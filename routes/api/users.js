@@ -40,6 +40,8 @@ router.post("/", (req, res) => {
       db.User.create({
         email: email,
         password: password
+      }).then(function() {
+        res.redirect(307, "/");
       }).catch(function(err) {
         console.log(err);
         res.json(err);
