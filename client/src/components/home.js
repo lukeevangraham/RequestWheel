@@ -10,6 +10,11 @@ class Home extends Component {
     const imageStyle = {
       width: 400
     };
+
+    const loggedIn = this.props.loggedIn;
+    console.log("home render, props: ");
+    console.log(this.props.loggedIn);
+
     return (
       <div className="container">
         <div className="row mt-3">
@@ -21,11 +26,18 @@ class Home extends Component {
             />
           </div>
         </div>
-        <div className="row mt-3">
+
+{loggedIn ? (
+  <div className="row mt-3">
             <div className="col">
           <Link role="button" className="btn btn-primary" to="/submit-request">Submit a request</Link>
             </div>
         </div>
+) : (
+<div></div>
+)}
+
+        
       </div>
     );
   }
