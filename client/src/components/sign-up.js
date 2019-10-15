@@ -1,12 +1,14 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom'
-import axios from "axios"
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 class Form extends Component {
   // Setting the component's initial state
   state = {
     email: "",
-    password: ""
+    password: "",
+    firstName: "",
+    lastName: ""
   };
 
   handleInputChange = event => {
@@ -31,77 +33,126 @@ class Form extends Component {
     // });
 
     console.log("sign-up-form, email: ");
-    console.log(this.state.email);
+    console.log(this.state);
     //request to server here
-    axios.post('/user/', {
-      email: this.state.email,
-      password: this.state.password
-    })
-    .then(response => {
-      console.log("response: ")
-      console.log(response)
-      // window.location.replace(response)
-      if (response.data) {
-        console.log('successful signup')
-        this.setState({
-          redirectTo: '/login'
-        })
-      } else {
-        console.log('Sign-up error');
-      }
-    }).catch(error => {
-      console.log('Sign up server error: ')
-      console.log(error);
-    })
+    axios
+      .post("/user/", {
+        email: this.state.email,
+        password: this.state.password,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName
+      })
+      .then(response => {
+        console.log("response: ");
+        console.log(response);
+        // window.location.replace(response)
+        if (response.data) {
+          console.log("successful signup");
+          this.setState({
+            redirectTo: "/login"
+          });
+        } else {
+          console.log("Sign-up error");
+        }
+      })
+      .catch(error => {
+        console.log("Sign up server error: ");
+        console.log(error);
+      });
   };
 
   render() {
     if (this.state.redirectTo) {
-      return <Redirect to={{ pathname: this.state.redirectTo }} />
-  } else {
-    // Notice how each input has a `value`, `name`, and `onChange` prop
-    return (
-      <div className="container">
-        <h4>Sign up</h4>
-        <div className="row justify-content-center mt-3">
-          <div className="col-sm-6">
-            <form className="form">
+      return <Redirect to={{ pathname: this.state.redirectTo }} />;
+    } else {
+      // Notice how each input has a `value`, `name`, and `onChange` prop
+      return (
+        <div className="container">
+          <div className="row justify-content-center">
+          <div className="col-sm-6 bg-white rounded pt-3">
+          <h4>Sign up</h4>
+          <div className="row justify-content-center mt-3">
 
-              <div className="form-group row">
-              <label className="text-dark col-sm-3 col-form-label" htmlFor="email">Email: </label>
-              <div className="col-sm-9">
-              <input
-              className="form-control"
-                value={this.state.email}
-                name="email"
-                onChange={this.handleInputChange}
-                type="text"
-              />
-              </div>
-              </div>
+              <form className="form">
+                <div className="form-row">
+                  <div className="form-group col-md-6">
+                    <label className="sr-only" htmlFor="firstName">
+                      First Name
+                    </label>
 
-            <div className="form-group row">
-              <label className="text-dark col-sm-3 col-form-label" htmlFor="password">Password: </label>
-              <div className="col-sm-9">
-              <input
-              className="form-control"
-                value={this.state.password}
-                name="password"
-                onChange={this.handleInputChange}
-                type="text"
-              />
-              </div>
-              </div>
+                    <input
+                      className="form-control"
+                      value={this.state.firstName}
+                      name="firstName"
+                      onChange={this.handleInputChange}
+                      type="text"
+                      placeholder="First Name"
+                    />
+                  </div>
 
-<div className="form-group">
-              <button className="btn btn-primary col-mr-auto" onClick={this.handleFormSubmit}>Submit</button>
-              </div>
-            </form>
+                  <div className="form-group col-md-6">
+                    <label className="sr-only" htmlFor="lastName">
+                      Last Name
+                    </label>
+
+                    <input
+                      className="form-control"
+                      value={this.state.lastName}
+                      name="lastName"
+                      onChange={this.handleInputChange}
+                      type="text"
+                      placeholder="Last Name"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="sr-only" htmlFor="email">
+                    Email
+                  </label>
+
+                    <input
+                      className="form-control"
+                      value={this.state.email}
+                      name="email"
+                      onChange={this.handleInputChange}
+                      type="text"
+                      placeholder="Email Address"
+                    />
+
+                </div>
+
+                <div className="form-group">
+                  <label className="sr-only" htmlFor="password">
+                    Password
+                  </label>
+                    <input
+                      className="form-control"
+                      value={this.state.password}
+                      name="password"
+                      onChange={this.handleInputChange}
+                      type="text"
+                      placeholder="Password"
+                    />
+
+                </div>
+
+                <div className="form-group">
+                  <button
+                    className="btn btn-primary col-mr-auto"
+                    onClick={this.handleFormSubmit}
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </form>
+
           </div>
         </div>
-      </div>
-    );
-  }
+        </div>
+        </div>
+      );
+    }
   }
 }
 

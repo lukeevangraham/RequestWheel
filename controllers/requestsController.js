@@ -9,8 +9,14 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    db.Request.findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+    console.log("params: ")
+    console.log(req.params.email)
+    db.Request.findAll({ where: { email: req.params.email }})
+      .then(function(dbModel) {
+        console.log("dbModel is: ")
+        console.log(dbModel)
+        return res.json(dbModel);
+      })
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
@@ -18,7 +24,7 @@ module.exports = {
     console.log(req.body);
     db.Request.create(req.body)
       .then(function(dbModel) {
-        console.log("dbModel: ", dbModel)
+        console.log("dbModel: ", dbModel);
         return res.json(dbModel);
       })
       .catch(err => res.status(422).json(err));

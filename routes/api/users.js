@@ -7,7 +7,7 @@ const passport = require("../../passport");
 router.post("/", (req, res) => {
   console.log("user signup");
 
-  const { email, password } = req.body;
+  const { email, password, firstName, lastName } = req.body;
   // ADD VALIDATION
   // db.User.findOne({ email: email }, (err, userMatch) => {
   //     if (err) {
@@ -39,7 +39,9 @@ router.post("/", (req, res) => {
     } else {
       db.User.create({
         email: email,
-        password: password
+        password: password,
+        firstName: firstName,
+        lastName: lastName
       }).then(function(response) {
         // console.log("looking good! response: ")
         // console.log(response)

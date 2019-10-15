@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom'
 import axios from "axios"
 import moment from "moment";
 
@@ -15,9 +16,9 @@ Checkbox.defaultProps = {
 class SubmitRequest extends Component {
   // setting the component's initial state
   state = {
-    name: "",
-    phone: "",
-    email: "",
+    // name: "",
+    // phone: "",
+    // email: "",
     eventName: "",
     submittedDate: "",
     requestDueDate: "",
@@ -77,9 +78,9 @@ class SubmitRequest extends Component {
     console.log(this.state.letterFlyer);
     //request to server here
     axios.post('/requests', {
-    name: this.state.name,
-    phone: this.state.phone,
-    email: this.state.email,
+    // name: this.state.name,
+    // phone: this.state.phone,
+    email: this.props.email,
     eventName: this.state.eventName,
     submittedDate: moment().format("YYYY-MM-DD"),
     requestDueDate: this.state.requestDueDate,
@@ -114,6 +115,7 @@ class SubmitRequest extends Component {
       console.log(response)
       if (response.data) {
         console.log('successful post')
+        alert("Form successfully submited!")
         this.setState({
           redirectTo: '/login'
         })
@@ -127,61 +129,16 @@ class SubmitRequest extends Component {
   };
 
   render() {
+    if (this.state.redirectTo) {
+      return <Redirect to={{ pathname: this.state.reDirectTo }} />
+    } else {
     return (
       <div className="container">
         <div className="row mb-5">
           <div className="col">
-            <h2>Submit a Communications Request</h2>
+            <h2 className="mb-5">Submit a Communications Request</h2>
             <form className="form text-left">
-              <div className="form-group row">
-                <label htmlFor="name" className="col-sm-2 col-form-label">
-                  Name
-                </label>
-                <div className="col-sm-10">
-                  <input
-                    className="form-control"
-                    value={this.state.name}
-                    name="name"
-                    id="name"
-                    onChange={this.handleInputChange}
-                    type="text"
-                    placeholder="Name"
-                  />
-                </div>
-              </div>
 
-              <div className="form-group row">
-                <label htmlFor="phone" className="col-sm-2 col-form-label">
-                  Phone
-                </label>
-                <div className="col-sm-10">
-                  <input
-                    className="form-control"
-                    value={this.state.phone}
-                    name="phone"
-                    id="phone"
-                    onChange={this.handleInputChange}
-                    type="text"
-                    placeholder="Phone"
-                  />
-                </div>
-              </div>
-              <div className="form-group row">
-                <label htmlFor="email" className="col-sm-2 col-form-label">
-                  Email
-                </label>
-                <div className="col-sm-10">
-                  <input
-                    className="form-control"
-                    value={this.state.email}
-                    name="email"
-                    id="email"
-                    onChange={this.handleInputChange}
-                    type="email"
-                    placeholder="Email"
-                  />
-                </div>
-              </div>
               <div className="form-group row">
                 <label htmlFor="eventName" className="col-sm-2 col-form-label">
                   Event Name
@@ -577,7 +534,7 @@ class SubmitRequest extends Component {
 
               <div className="form-group-row">
                 <label htmlFor="body" className="col-sm-2 col-form-label align-top">
-                  Body
+                  Body*
                 </label>
 
                 <textarea
@@ -607,9 +564,11 @@ class SubmitRequest extends Component {
                     type="number"
                     min="1"
                     placeholder="Quantity"
+                    required
                   />
                 </div>
               </div>
+              <p>* indicates required field</p>
 
               <button type="submit" className="btn btn-primary" onClick={this.handleFormSubmit}>
                 Submit
@@ -620,6 +579,7 @@ class SubmitRequest extends Component {
       </div>
     );
   }
+}
 }
 
 export default SubmitRequest;

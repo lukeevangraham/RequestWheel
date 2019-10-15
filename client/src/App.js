@@ -14,7 +14,8 @@ class App extends Component {
     super();
     this.state = {
       loggedIn: false,
-      email: null
+      email: null,
+      firstName: null
     };
 
     this.getUser = this.getUser.bind(this);
@@ -39,13 +40,15 @@ class App extends Component {
 
         this.setState({
           loggedIn: true,
-          email: response.data.user.email
+          email: response.data.user.email,
+          firstName: response.data.user.firstName
         });
       } else {
         console.log("Get user: no user");
         this.setState({
           loggedIn: false,
-          email: null
+          email: null,
+          firstName: null
         });
       }
     });
@@ -58,16 +61,18 @@ class App extends Component {
           <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
           {/* greet user if logged in: */}
           {this.state.loggedIn && (
-            <p className="mt-3">Join the party, {this.state.email}!</p>
+            <p className="mt-3">Join the party, {this.state.firstName}!</p>
           )}
           {/* Routes to different components */}
-          <Route exact path="/" render={() => <Home email={this.state.username} loggedIn={this.state.loggedIn} />} />
+          <Route exact path="/" render={() => <Home email={this.state.email} name={this.state.firstName} loggedIn={this.state.loggedIn} />} />
           <Route
             path="/login"
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
           <Route path="/signup" render={() => <Signup />} />
-          <Route path="/submit-request" render={() => <SubmitRequest />} />
+          {this.state.loggedIn &&
+          <Route path="/submit-request" render={() => <SubmitRequest email={this.state.email} />} />
+          }
         </div>
       </BrowserRouter>
     );
