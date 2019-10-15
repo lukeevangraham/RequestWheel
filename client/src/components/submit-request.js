@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios"
+import moment from "moment";
+
+const Checkbox = ({checked}) => (
+  <div>
+    <input type="checkbox" checked={checked} />
+  </div>
+);
+
+Checkbox.defaultProps = {
+  checked: false
+};
 
 class SubmitRequest extends Component {
   // setting the component's initial state
@@ -12,35 +23,37 @@ class SubmitRequest extends Component {
     requestDueDate: "",
     approver: "",
     approverEmail: "",
-    letterFlyer: "",
-    halfSheetflyer: "",
-    quarterSheetFlyer: "",
-    tvGraphic: "",
-    tabloidPoster: "",
-    mediumPoster: "",
-    largePoster: "",
-    fourByEightBanner: "",
+    letterFlyer: false,
+    halfSheetFlyer: false,
+    quarterSheetFlyer: false,
+    tvGraphic: false,
+    tabloidPoster: false,
+    mediumPoster: false,
+    largePoster: false,
+    fourByEightBanner: false,
     otherDesignFormat: "",
-    plainCopyPaper: "",
-    coloredCopyPaper: "",
+    plainCopyPaper: false,
+    coloredCopyPaper: false,
     color: "",
-    hammermillPaper: "",
-    cardstock: "",
-    collate: "",
-    stack: "",
-    holePunch: "",
-    staple: "",
-    forNewsletter: "",
-    forAnnVideo: "",
-    forTVScreens: "",
-    forConnectionCard: "",
+    hammermillPaper: false,
+    cardstock: false,
+    collate: false,
+    stack: false,
+    holePunch: false,
+    staple: false,
+    forNewsletter: false,
+    forAnnVideo: false,
+    forTVScreens: false,
+    forConnectionCard: false,
     body: "",
     quantity: ""
   };
 
   handleInputChange = event => {
+    const target = event.target;
     // Getting the value and name of the input which triggered the change
-    let value = event.target.value;
+    let value = target.type === 'checkbox' ? target.checked :
+    target.value;
     const name = event.target.name;
 
     // Updating the input's state
@@ -61,19 +74,19 @@ class SubmitRequest extends Component {
     // });
 
     console.log("request-submit-form, eventName: ");
-    console.log(this.state.eventName);
+    console.log(this.state.letterFlyer);
     //request to server here
     axios.post('/requests', {
     name: this.state.name,
     phone: this.state.phone,
     email: this.state.email,
     eventName: this.state.eventName,
-    submittedDate: this.state.submittedDate,
+    submittedDate: moment().format("YYYY-MM-DD"),
     requestDueDate: this.state.requestDueDate,
     approver: this.state.approver,
     approverEmail: this.state.approverEmail,
     letterFlyer: this.state.letterFlyer,
-    halfSheetflyer: this.state.halfSheetFlyer,
+    halfSheetFlyer: this.state.halfSheetFlyer,
     quarterSheetFlyer: this.state.quarterSheetFlyer,
     tvGraphic: this.state.tvGraphic,
     tabloidPoster: this.state.tabloidPoster,
@@ -121,7 +134,7 @@ class SubmitRequest extends Component {
             <h2>Submit a Communications Request</h2>
             <form className="form text-left">
               <div className="form-group row">
-                <label for="name" className="col-sm-2 col-form-label">
+                <label htmlFor="name" className="col-sm-2 col-form-label">
                   Name
                 </label>
                 <div className="col-sm-10">
@@ -138,7 +151,7 @@ class SubmitRequest extends Component {
               </div>
 
               <div className="form-group row">
-                <label for="phone" className="col-sm-2 col-form-label">
+                <label htmlFor="phone" className="col-sm-2 col-form-label">
                   Phone
                 </label>
                 <div className="col-sm-10">
@@ -154,7 +167,7 @@ class SubmitRequest extends Component {
                 </div>
               </div>
               <div className="form-group row">
-                <label for="email" className="col-sm-2 col-form-label">
+                <label htmlFor="email" className="col-sm-2 col-form-label">
                   Email
                 </label>
                 <div className="col-sm-10">
@@ -170,7 +183,7 @@ class SubmitRequest extends Component {
                 </div>
               </div>
               <div className="form-group row">
-                <label for="eventName" className="col-sm-2 col-form-label">
+                <label htmlFor="eventName" className="col-sm-2 col-form-label">
                   Event Name
                 </label>
                 <div className="col-sm-10">
@@ -188,7 +201,7 @@ class SubmitRequest extends Component {
                 </div>
               </div>
               <div className="form-group row">
-                <label for="requestDueDate" className="col-sm-2 col-form-label">
+                <label htmlFor="requestDueDate" className="col-sm-2 col-form-label">
                   Request Due Date
                 </label>
                 <div className="col-sm-10">
@@ -204,7 +217,7 @@ class SubmitRequest extends Component {
                 </div>
               </div>
               <div className="form-group row">
-                <label for="approver" className="col-sm-2 col-form-label">
+                <label htmlFor="approver" className="col-sm-2 col-form-label">
                   Final Proof Approver
                 </label>
                 <div className="col-sm-10">
@@ -220,7 +233,7 @@ class SubmitRequest extends Component {
                 </div>
               </div>
               <div className="form-group row">
-                <label for="approverEmail" className="col-sm-2 col-form-label">
+                <label htmlFor="approverEmail" className="col-sm-2 col-form-label">
                   Final Proof Email Info
                 </label>
                 <div className="col-sm-10">
@@ -239,16 +252,18 @@ class SubmitRequest extends Component {
               <div className="form-group row">
                 <div className="col-sm-2">Printed/Design Size</div>
                 <div className="col-sm-10">
+
                   <div className="form-check">
                     <input
+                      type="checkbox"
                       className="form-check-input"
-                      value={this.state.letterFlyer}
+                      defaultChecked={false}
+                      checked={this.state.letterFlyer}
                       name="letterFlyer"
                       id="letterFlyer"
                       onChange={this.handleInputChange}
-                      type="checkbox"
                     />
-                    <label className="form-check-label" for="letterFlyer">
+                    <label className="form-check-label" htmlFor="letterFlyer">
                       8.5" x 11" Flyer
                     </label>
                   </div>
@@ -262,7 +277,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="halfSheetFlyer">
+                    <label className="form-check-label" htmlFor="halfSheetFlyer">
                       1/2 Sheet Flyer
                     </label>
                   </div>
@@ -276,7 +291,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="quarterSheetFlyer">
+                    <label className="form-check-label" htmlFor="quarterSheetFlyer">
                       1/4 Sheet Flyer
                     </label>
                   </div>
@@ -290,7 +305,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="tvGraphic">
+                    <label className="form-check-label" htmlFor="tvGraphic">
                       TV Graphic
                     </label>
                   </div>
@@ -304,7 +319,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="tabloidPoster">
+                    <label className="form-check-label" htmlFor="tabloidPoster">
                       11" x 17" Poster
                     </label>
                   </div>
@@ -318,7 +333,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="mediumPoster">
+                    <label className="form-check-label" htmlFor="mediumPoster">
                       18" x 24" Poster $
                     </label>
                   </div>
@@ -332,7 +347,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="largePoster">
+                    <label className="form-check-label" htmlFor="largePoster">
                       24" x 36" Poster $
                     </label>
                   </div>
@@ -346,13 +361,13 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="fourByEightBanner">
+                    <label className="form-check-label" htmlFor="fourByEightBanner">
                       4' x 8' Banner
                     </label>
                   </div>
 
                   <div className="form-group mt-1">
-                    <label for="otherDesignFormat">Other:</label>
+                    <label htmlFor="otherDesignFormat">Other:</label>
                     <input
                       type="text"
                       className="form-control mt-n1"
@@ -377,7 +392,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="plainCopyPaper">
+                    <label className="form-check-label" htmlFor="plainCopyPaper">
                       Plain Copy Paper
                     </label>
                   </div>
@@ -391,12 +406,12 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="coloredCopyPaper">
+                    <label className="form-check-label" htmlFor="coloredCopyPaper">
                       Colored Copy Paper
                     </label>
 
                     <div className="form-group mt-1 mb-1">
-                      <label for="color">Color:</label>
+                      <label htmlFor="color">Color:</label>
                       <input
                         type="text"
                         className="form-control mt-n1"
@@ -417,7 +432,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="hammermillPaper">
+                    <label className="form-check-label" htmlFor="hammermillPaper">
                       Hammermill Paper $
                     </label>
                   </div>
@@ -431,7 +446,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="cardstock">
+                    <label className="form-check-label" htmlFor="cardstock">
                       Cardstock
                     </label>
                   </div>
@@ -450,7 +465,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="collate">
+                    <label className="form-check-label" htmlFor="collate">
                       Collate
                     </label>
                   </div>
@@ -464,7 +479,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="stack">
+                    <label className="form-check-label" htmlFor="stack">
                       Stack
                     </label>
                   </div>
@@ -478,7 +493,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="holePunch">
+                    <label className="form-check-label" htmlFor="holePunch">
                       Hole Punch
                     </label>
                   </div>
@@ -492,7 +507,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="staple">
+                    <label className="form-check-label" htmlFor="staple">
                       Staple
                     </label>
                   </div>
@@ -511,7 +526,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="forNewsletter">
+                    <label className="form-check-label" htmlFor="forNewsletter">
                       Newsletter
                     </label>
                   </div>
@@ -525,7 +540,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="forAnnVideo">
+                    <label className="form-check-label" htmlFor="forAnnVideo">
                       Announcement Video
                     </label>
                   </div>
@@ -539,7 +554,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="forTVScreens">
+                    <label className="form-check-label" htmlFor="forTVScreens">
                       TV Screens
                     </label>
                   </div>
@@ -553,7 +568,7 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="checkbox"
                     />
-                    <label className="form-check-label" for="forConnectionCard">
+                    <label className="form-check-label" htmlFor="forConnectionCard">
                       Connection Card
                     </label>
                   </div>
@@ -561,7 +576,7 @@ class SubmitRequest extends Component {
               </div>
 
               <div className="form-group-row">
-                <label for="body" className="col-sm-2 col-form-label align-top">
+                <label htmlFor="body" className="col-sm-2 col-form-label align-top">
                   Body
                 </label>
 
@@ -579,7 +594,7 @@ class SubmitRequest extends Component {
               </div>
 
               <div className="form-group row">
-                <label for="quantity" className="col-sm-2 col-form-label">
+                <label htmlFor="quantity" className="col-sm-2 col-form-label">
                   Quantity
                 </label>
                 <div className="col-sm-3 p-2">

@@ -27,6 +27,7 @@
     "express-session": "^1.17.0",
     "if-env": "^1.0.4",
     "mini-create-react-context": "^0.3.2",
+    "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "mysql2": "^1.7.0",
     "npm-install-peers": "^1.2.1",

@@ -38,23 +38,14 @@ module.exports = function(sequelize, DataTypes) {
     requestDueDate: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        isDate: true
-      }
     },
     approver: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        len: [1]
-      }
     },
     approverEmail: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        isEmail: true
-      }
     },
     letterFlyer: {
       type: DataTypes.BOOLEAN,
@@ -91,9 +82,6 @@ module.exports = function(sequelize, DataTypes) {
     otherDesignFormat: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        len: [1]
-      }
     },
     plainCopyPaper: {
       type: DataTypes.BOOLEAN,
@@ -106,9 +94,6 @@ module.exports = function(sequelize, DataTypes) {
     color: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        len: [1]
-      }
     },
     hammermillPaper: {
       type: DataTypes.BOOLEAN,
@@ -160,9 +145,6 @@ module.exports = function(sequelize, DataTypes) {
     quantity: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        len: [1]
-      }
     }
   });
   return Request;

@@ -33,12 +33,14 @@ class Form extends Component {
     console.log("sign-up-form, email: ");
     console.log(this.state.email);
     //request to server here
-    axios.post('/user', {
+    axios.post('/user/', {
       email: this.state.email,
       password: this.state.password
     })
     .then(response => {
+      console.log("response: ")
       console.log(response)
+      // window.location.replace(response)
       if (response.data) {
         console.log('successful signup')
         this.setState({

@@ -40,9 +40,13 @@ router.post("/", (req, res) => {
       db.User.create({
         email: email,
         password: password
-      }).then(function() {
-        res.redirect(307, "/");
+      }).then(function(response) {
+        // console.log("looking good! response: ")
+        // console.log(response)
+        res.json(response)
+        // res.redirect(307, "/");
       }).catch(function(err) {
+        console.log("post error!")
         console.log(err);
         res.json(err);
       });
@@ -54,8 +58,8 @@ router.post("/", (req, res) => {
 router.post(
   "/login",
   function(req, res, next) {
-    console.log("routes/user.js, login, req.body: ");
-    console.log(req.body);
+    // console.log("routes/user.js, login, req.body: ");
+    // console.log(req.body);
     next()
   },
   passport.authenticate("local"),
