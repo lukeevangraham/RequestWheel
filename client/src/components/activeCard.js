@@ -10,8 +10,10 @@ function ActiveCard(props) {
       {props.eventName} <i className="ml-2 far fa-edit"></i>
       <i
         className=" ml-2 fas fa-trash"
-
-        onClick={() => { if (window.confirm('Are you sure you wish to delete this request?')) props.onClick(props.id) } }
+        onClick={() => {
+          if (window.confirm("Are you sure you wish to delete this request?"))
+            props.onClick(props.id);
+        }}
       ></i>
     </div>
   );

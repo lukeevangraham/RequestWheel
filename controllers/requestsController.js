@@ -9,7 +9,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByEmail: function(req, res) {
-    db.Request.findAll({ where: { email: req.params.email }})
+    db.Request.findAll({ where: { email: req.params.email } })
       .then(function(dbModel) {
         return res.json(dbModel);
       })
@@ -31,8 +31,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Request.findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
+    console.log("request params:")
+    console.log(req.params)
+    db.Request.destroy({
+      where: {
+        id: req.params.email
+      }
+    })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
