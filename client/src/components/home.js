@@ -68,11 +68,8 @@ class Home extends Component {
             </div>
 
             <div className="row mt-3">
-              <div className="col-6">
-                <h4>Processed Requests</h4>
-              </div>
 
-              <div className="col-6">
+              <div className="col-sm-6 mb-5">
                 <h4>Active Requests</h4>
                 <div className="card p-2">
                   {this.state.requests.map(request => {
@@ -86,6 +83,10 @@ class Home extends Component {
                     );
                   })}
                 </div>
+              </div>
+
+              <div className="col-sm-6">
+                <h4>Processed Requests</h4>
               </div>
             </div>
           </div>
