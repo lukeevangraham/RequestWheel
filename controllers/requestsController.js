@@ -8,13 +8,9 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
-    console.log("params: ")
-    console.log(req.params.email)
+  findByEmail: function(req, res) {
     db.Request.findAll({ where: { email: req.params.email }})
       .then(function(dbModel) {
-        console.log("dbModel is: ")
-        console.log(dbModel)
         return res.json(dbModel);
       })
       .catch(err => res.status(422).json(err));

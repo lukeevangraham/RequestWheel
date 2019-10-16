@@ -15,23 +15,26 @@ class Home extends Component {
     this.getRequests(this.props.email);
   }
   componentWillReceiveProps(props) {
-
     this.getRequests(props.email);
-}
+  }
 
   getRequests(email) {
     console.log(email);
 
     Axios.get("/requests/" + email).then(response => {
-      console.log("response: ")
-      console.log(response)
+      console.log("response: ");
+      console.log(response);
       this.setState({
         ...this.state,
         requests: response.data
       });
-      console.log(this.state.requests)
+      console.log(this.state.requests);
     });
   }
+
+  handleDeleteClick = (id) => {
+    console.log("It's delete time!", id);
+  };
 
   render() {
     const imageStyle = {
@@ -64,7 +67,19 @@ class Home extends Component {
               </div>
 
               <div className="col-6">
-                <ActiveCard requests={this.state.requests} />
+                <h4>Active Requests</h4>
+                <div className="card p-2">
+                  {this.state.requests.map(request => {
+                    return (
+                      <ActiveCard
+                        eventName={request.eventName}
+                        requests={this.state.requests}
+                        onClick={this.handleDeleteClick}
+                        id={request.id}
+                      />
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
