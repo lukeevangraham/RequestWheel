@@ -15,7 +15,14 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
-  create: function(req, res) {
+  findById: function(req, res)
+ {
+   console.log("Something's happening")
+   db.Request.findByPk(req.params.id)
+   .then(request => {
+     console.log(request)
+   })
+ },  create: function(req, res) {
     console.log("creating initiated!");
     console.log(req.body);
     db.Request.create(req.body)

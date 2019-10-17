@@ -8,6 +8,7 @@ import LoginForm from "./components/login-form";
 import Navbar from "./components/navbar";
 import Home from "./components/home";
 import SubmitRequest from "./components/submit-request";
+import EditRequest from "./components/edit-request";
 
 class App extends Component {
   constructor() {
@@ -71,7 +72,10 @@ class App extends Component {
           />
           <Route path="/signup" render={() => <Signup />} />
           {this.state.loggedIn &&
+          <div>
           <Route path="/submit-request" render={() => <SubmitRequest email={this.state.email} />} />
+          <Route path="/edit-request/:id" render={(props) => <EditRequest email={this.state.email} {...props} />} />
+          </div>
           }
         </div>
       </BrowserRouter>

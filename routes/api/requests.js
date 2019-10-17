@@ -13,4 +13,10 @@ router
   .put(requestsController.update)
   .delete(requestsController.remove);
 
+  router.route("/ind/:id")
+  // .get(requestsController.findById)
+  .get(function() {
+    console.log("something is really happening")
+  })
+
 module.exports = router;
