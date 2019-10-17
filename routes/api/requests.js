@@ -15,8 +15,6 @@ router
 
   router.route("/ind/:id")
   // .get(requestsController.findById)
-  .get(function() {
-    console.log("something is really happening")
-  })
+  .get(requestsController.findById)
 
 module.exports = router;

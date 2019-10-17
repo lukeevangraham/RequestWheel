@@ -52,10 +52,14 @@ class SubmitRequest extends Component {
 
   handleInputChange = event => {
     const target = event.target;
+    console.log("target: ", target)
     // Getting the value and name of the input which triggered the change
     let value = target.type === 'checkbox' ? target.checked :
     target.value;
     const name = event.target.name;
+
+    console.log("name: ", name)
+    console.log("value: ", value)
 
     // Updating the input's state
     this.setState({
@@ -228,7 +232,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.halfSheetFlyer}
+                      checked={this.state.halfSheetFlyer}
                       name="halfSheetFlyer"
                       id="halfSheetFlyer"
                       onChange={this.handleInputChange}
@@ -242,7 +246,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.quarterSheetFlyer}
+                      checked={this.state.quarterSheetFlyer}
                       name="quarterSheetFlyer"
                       id="quarterSheetFlyer"
                       onChange={this.handleInputChange}
@@ -256,7 +260,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.tvGraphic}
+                      checked={this.state.tvGraphic}
                       name="tvGraphic"
                       id="tvGraphic"
                       onChange={this.handleInputChange}
@@ -270,7 +274,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.tabloidPoster}
+                      checked={this.state.tabloidPoster}
                       name="tabloidPoster"
                       id="tabloidPoster"
                       onChange={this.handleInputChange}
@@ -284,7 +288,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.mediumPoster}
+                      checked={this.state.mediumPoster}
                       name="mediumPoster"
                       id="mediumPoster"
                       onChange={this.handleInputChange}
@@ -298,7 +302,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.largePoster}
+                      checked={this.state.largePoster}
                       name="largePoster"
                       id="largePoster"
                       onChange={this.handleInputChange}
@@ -312,7 +316,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.fourByEightBanner}
+                      checked={this.state.fourByEightBanner}
                       name="fourByEightBanner"
                       id="fourByEightBanner"
                       onChange={this.handleInputChange}
@@ -343,7 +347,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.plainCopyPaper}
+                      checked={this.state.plainCopyPaper}
                       name="plainCopyPaper"
                       id="plainCopyPaper"
                       onChange={this.handleInputChange}
@@ -357,7 +361,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.coloredCopyPaper}
+                      checked={this.state.coloredCopyPaper}
                       name="coloredCopyPaper"
                       id="coloredCopyPaper"
                       onChange={this.handleInputChange}
@@ -383,7 +387,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.hammermillPaper}
+                      checked={this.state.hammermillPaper}
                       name="hammermillPaper"
                       id="hammermillPaper"
                       onChange={this.handleInputChange}
@@ -397,7 +401,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.cardstock}
+                      checked={this.state.cardstock}
                       name="cardstock"
                       id="cardstock"
                       onChange={this.handleInputChange}
@@ -416,7 +420,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.collate}
+                      checked={this.state.collate}
                       name="collate"
                       id="collate"
                       onChange={this.handleInputChange}
@@ -430,7 +434,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.stack}
+                      checked={this.state.stack}
                       name="stack"
                       id="stack"
                       onChange={this.handleInputChange}
@@ -444,7 +448,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.holePunch}
+                      checked={this.state.holePunch}
                       name="holePunch"
                       id="holePunch"
                       onChange={this.handleInputChange}
@@ -458,7 +462,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.staple}
+                      checked={this.state.staple}
                       name="staple"
                       id="staple"
                       onChange={this.handleInputChange}
@@ -477,7 +481,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.forNewsletter}
+                      checked={this.state.forNewsletter}
                       name="forNewsletter"
                       id="forNewsletter"
                       onChange={this.handleInputChange}
@@ -491,7 +495,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.forAnnVideo}
+                      checked={this.state.forAnnVideo}
                       name="forAnnVideo"
                       id="forAnnVideo"
                       onChange={this.handleInputChange}
@@ -505,7 +509,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.forTVScreens}
+                      checked={this.state.forTVScreens}
                       name="forTVScreens"
                       id="forTVScreens"
                       onChange={this.handleInputChange}
@@ -519,7 +523,7 @@ class SubmitRequest extends Component {
                   <div className="form-check">
                     <input
                       className="form-check-input"
-                      value={this.state.forConnectionCard}
+                      checked={this.state.forConnectionCard}
                       name="forConnectionCard"
                       id="forConnectionCard"
                       onChange={this.handleInputChange}
