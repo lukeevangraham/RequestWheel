@@ -185,10 +185,10 @@ class SubmitRequest extends Component {
       return <Redirect to={{ pathname: this.state.reDirectTo }} />;
     } else {
       return (
-        <div className="container">
+        <div className="container pt-4">
           <div className="row mb-5">
             <div className="col">
-              <h2 className="mb-5">Edit a Communications Request</h2>
+              <h2 className="mb-5 text-center">Edit a Communications Request</h2>
               <form className="form text-left">
                 <div className="form-group row">
                   <label

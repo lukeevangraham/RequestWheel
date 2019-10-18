@@ -32,14 +32,13 @@ class Home extends Component {
     });
   }
 
-  handleDeleteClick = (id) => {
+  handleDeleteClick = id => {
     console.log("It's delete time!", id);
 
-    Axios
-    .delete("/requests/" + id).then(response => {
-      console.log("response: ", response)
-      this.getRequests(this.props.email)
-    })
+    Axios.delete("/requests/" + id).then(response => {
+      console.log("response: ", response);
+      this.getRequests(this.props.email);
+    });
   };
 
   render() {
@@ -52,11 +51,11 @@ class Home extends Component {
     console.log(this.props.loggedIn);
 
     return (
-      <div className="container">
+      <div className="container pt-4" style={{ backgroundColor: "#f8f9fc" }}>
         {loggedIn ? (
           <div>
             <div className="row mt-4 mb-5">
-              <div className="col">
+              <div className="col text-center">
                 <Link
                   role="button"
                   className="btn btn-primary"
@@ -67,11 +66,15 @@ class Home extends Component {
               </div>
             </div>
 
-            <div className="row mt-3">
+            <div className="row mt-3 card-deck">
+              <div className="card border-left-primary shadow h-100 py-2 col-sm-6 p-0">
+                <div className="card-header py-3">
+                  <h4 className="m-0 font-weight-bold text-primary text-center">
+                    Active Requests
+                  </h4>
+                </div>
 
-              <div className="col-sm-6 mb-5">
-                <h4>Active Requests</h4>
-                <div className="card p-2">
+                <ul className="list-group list-group-flush">
                   {this.state.requests.map(request => {
                     return (
                       <ActiveCard
@@ -82,11 +85,13 @@ class Home extends Component {
                       />
                     );
                   })}
-                </div>
+                </ul>
               </div>
 
-              <div className="col-sm-6">
-                <h4>Processed Requests</h4>
+              <div className="card border-left-primary shadow h-100 py-2 col-sm-6 p-0">
+                <div className="card-header py-3">
+                  <h4 className="m-0 font-weight-bold text-primary text-center">Processed Requests</h4>
+                </div>
               </div>
             </div>
           </div>

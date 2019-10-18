@@ -67,13 +67,13 @@ class Form extends Component {
     } else {
       // Notice how each input has a `value`, `name`, and `onChange` prop
       return (
-        <div className="container">
+        <div className="container-fluid pt-4" id="login">
           <div className="row justify-content-center">
           <div className="col-sm-6 bg-white rounded pt-3">
-          <h4>Sign up</h4>
+          <h4 className="text-center">Sign up</h4>
           <div className="row justify-content-center mt-3">
 
-              <form className="form">
+              <form className="form col-11">
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <label className="sr-only" htmlFor="firstName">

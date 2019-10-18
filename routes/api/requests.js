@@ -16,5 +16,6 @@ router
   router.route("/ind/:id")
   // .get(requestsController.findById)
   .get(requestsController.findById)
+  .put(requestsController.update)
 
 module.exports = router;

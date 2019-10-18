@@ -38,7 +38,7 @@ class Navbar extends Component {
     return (
       <div>
         <header
-          className="navbar navbar-expand-lg navbar-dark bg-dark mb-4"
+          className="navbar navbar-expand-lg navbar-dark bg-gradient-primary shadow"
           id="nav-container"
         >
           <button
