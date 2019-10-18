@@ -94,6 +94,24 @@ class Home extends Component {
                 </div>
               </div>
             </div>
+
+            <div className="row mt-4">
+              <div className="card col-sm-12">
+                <div className="card-header text-center">Upcoming Communication Plans</div>
+                <div className="card-body">
+                  <div className="col-3">
+                    This Week
+                  </div>
+                  <div className="col-3">
+                    Next Week
+                  </div>
+                  <div className="col-3">
+                    Next Next Week
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="row mt-3">
