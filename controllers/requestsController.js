@@ -1,6 +1,7 @@
-import moment from "moment";
-
+const moment = require("moment");
 const db = require("../models");
+const Sequelize = require("sequelize")
+const Op = Sequelize.Op;
 
 // Defining methods for the requestsController
 module.exports = {
@@ -26,9 +27,21 @@ module.exports = {
   },
   findByDate: function(req, res) {
     console.log("time to find by date!");
-    console.log("query is: ", req.params)
-    console.log("7 days before: ", moment(req.params.date).subtract(7, 'days').format("YYYY-MM-DD"))
-    // db.Request.find(req.query)
+    console.log("query is: ", req.params);
+    let sevenDaysEarlier = moment(req.params.date)
+      .subtract(7, "days")
+      .format("YYYY-MM-DD");
+    db.Request.findAll({
+      where: {
+        requestDueDate: {
+          [Op.between]: [sevenDaysEarlier, req.params.date]
+        }
+      }
+    })
+    .then(response => {
+      return res.json(response);
+    })
+    .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
     db.Request.create(req.body)

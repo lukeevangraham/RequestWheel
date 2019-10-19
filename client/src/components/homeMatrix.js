@@ -4,32 +4,81 @@ import moment from "moment";
 import Axios from "axios";
 
 class HomeMatrix extends Component {
-state = {
-    firstRequests: []
-}
+  state = {
+    firstRequests: [],
+    secondRequests: [],
+    thirdRequests: []
+  };
 
-componentDidMount () {
-    this.getRequests(moment().day(0).format("YYYY-MM-DD"))
-}
+  componentDidMount() {
+    Promise.all([
+      Axios.get(
+        "/requests/date/" +
+          moment()
+            .day(0)
+            .format("YYYY-MM-DD")
+      ),
+      Axios.get(
+        "/requests/date/" +
+          moment()
+            .day(0)
+            .add(7, "d")
+            .format("YYYY-MM-DD")
+      ),
+      Axios.get(
+        "/requests/date/" +
+          moment()
+            .day(0)
+            .add(14, "d")
+            .format("YYYY-MM-DD")
+      )
+    ]).then(resultArray => {
+      this.setState({
+        ...this.state,
+        firstRequests: resultArray[0].data,
+        secondRequests: resultArray[1].data,
+        thirdRequests: resultArray[2].data
+      });
+      console.log("state: ");
+      console.log(this.state);
+    });
+    // this.getRequests(moment().day(0).format("YYYY-MM-DD"))
+  }
 
-getRequests(date) {
-    console.log("Date: ", date)
-Axios.get("/requests/date/" +date).then(response => {
-    console.log("response: ")
-    console.log(response)
-})
-}
+  getRequests(date) {
+    console.log("Date: ", date);
+    Axios.get("/requests/date/" + date).then(response => {
+      console.log("response: ");
+      console.log(response);
+    });
+  }
 
-render() {
+  render() {
     return (
-        <div className="row">
-            <div className="col-sm-4 text-center">Last Weekend</div>
-            <div className="col-sm-4 text-center">This Weekend</div>
-            <div className="col-sm-4 text-center">Next Weekend</div>
+      <div className="row">
+        <div className="col-sm-4 text-center">
+          <h5>Last Weekend</h5>
+          {this.state.firstRequests.map(request => {
+            return <p>{request.eventName}</p>;
+          })}
         </div>
-    )
+
+        <div className="col-sm-4 text-center">
+          <h5>This Weekend</h5>
+          {this.state.secondRequests.map(request => {
+            return <p>{request.eventName}</p>;
+          })}
+        </div>
+
+        <div className="col-sm-4 text-center">
+          <h5>Next Weekend</h5>
+          {this.state.thirdRequests.map(request => {
+            return <p>{request.eventName}</p>;
+          })}
+        </div>
+      </div>
+    );
+  }
 }
 
-}
-
-export default HomeMatrix
+export default HomeMatrix;
