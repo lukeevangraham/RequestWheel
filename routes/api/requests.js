@@ -18,4 +18,7 @@ router
   .get(requestsController.findById)
   .put(requestsController.update)
 
+  router.route("/date/:date")
+  .get(requestsController.findByDate)
+
 module.exports = router;

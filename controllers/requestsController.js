@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const db = require("../models");
 
 // Defining methods for the requestsController
@@ -15,14 +17,20 @@ module.exports = {
       })
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res)
- {
-   db.Request.findByPk(req.params.id)
-   .then(response => {
-     return res.json(response)
-   })
-   .catch(err => res.status(422).json(err));
- },  create: function(req, res) {
+  findById: function(req, res) {
+    db.Request.findByPk(req.params.id)
+      .then(response => {
+        return res.json(response);
+      })
+      .catch(err => res.status(422).json(err));
+  },
+  findByDate: function(req, res) {
+    console.log("time to find by date!");
+    console.log("query is: ", req.params)
+    console.log("7 days before: ", moment(req.params.date).subtract(7, 'days').format("YYYY-MM-DD"))
+    // db.Request.find(req.query)
+  },
+  create: function(req, res) {
     db.Request.create(req.body)
       .then(function(dbModel) {
         console.log("dbModel: ", dbModel);
@@ -31,12 +39,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Request.update(req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      })
+    db.Request.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

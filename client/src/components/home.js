@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ActiveCard from "./activeCard";
+import HomeMatrix from "./homeMatrix"
 import Axios from "axios";
 
 class Home extends Component {
@@ -96,20 +97,10 @@ class Home extends Component {
             </div>
 
             <div className="row mt-4">
-              <div className="card col-sm-12">
-                <div className="card-header text-center">Upcoming Communication Plans</div>
-                <div className="card-body">
-                  <div className="col-3">
-                    This Week
-                  </div>
-                  <div className="col-3">
-                    Next Week
-                  </div>
-                  <div className="col-3">
-                    Next Next Week
-                  </div>
+              <div className="card border-left-primary shadow h-100 py-2 col-sm-12 p-0">
+                <div className="card-header text-center py-3"><h4 className="m-0 font-weight-bold text-primary text-center">Upcoming Communication Plans</h4></div>
+                <HomeMatrix />
 
-                </div>
               </div>
             </div>
           </div>

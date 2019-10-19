@@ -55,7 +55,7 @@ class LoginForm extends Component {
       return <Redirect to={{ pathname: this.state.redirectTo }} />;
     } else {
       return (
-        <div className="container-fluid pt-4" id="login">
+        <div className="container-fluid pt-5" id="login">
             <div className="row justify-content-center">
           <div className="col-sm-6  bg-white rounded pt-3 shadow">
             <h4 className="text-center">Login</h4>
