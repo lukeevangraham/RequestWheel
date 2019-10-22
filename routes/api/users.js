@@ -7,7 +7,7 @@ const passport = require("../../passport");
 router.post("/", (req, res) => {
   console.log("user signup");
 
-  const { email, password, firstName, lastName } = req.body;
+  const { email, password, firstName, lastName, orgName } = req.body;
   // ADD VALIDATION
   // db.User.findOne({ email: email }, (err, userMatch) => {
   //     if (err) {
@@ -41,7 +41,8 @@ router.post("/", (req, res) => {
         email: email,
         password: password,
         firstName: firstName,
-        lastName: lastName
+        lastName: lastName,
+        orgName: orgName
       }).then(function(response) {
         // console.log("looking good! response: ")
         // console.log(response)
@@ -68,7 +69,9 @@ router.post(
   (req, res) => {
     console.log("logged in", req.user);
     var userInfo = {
-      email: req.user.email
+      email: req.user.email,
+      firstName: req.user.firstName,
+      orgName: req.user.orgName
     };
     res.send(userInfo);
   }
@@ -90,6 +93,10 @@ router.post('/logout', (req, res) => {
   } else {
       res.send({ msg: 'no user to log out' })
   }
+});
+
+router.get("/inOrg/:org", (req, res, next) => {
+  console.log("ORG: ", req.params)
 })
 
 module.exports = router;

@@ -8,7 +8,8 @@ class Form extends Component {
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    orgName: ""
   };
 
   handleInputChange = event => {
@@ -40,7 +41,8 @@ class Form extends Component {
         email: this.state.email,
         password: this.state.password,
         firstName: this.state.firstName,
-        lastName: this.state.lastName
+        lastName: this.state.lastName,
+        orgName: this.state.orgName
       })
       .then(response => {
         console.log("response: ");
@@ -69,47 +71,61 @@ class Form extends Component {
       return (
         <div className="container-fluid pt-4" id="login">
           <div className="row justify-content-center">
-          <div className="col-sm-6 bg-white rounded pt-3">
-          <h4 className="text-center">Sign up</h4>
-          <div className="row justify-content-center mt-3">
+            <div className="col-sm-6 bg-white rounded pt-3">
+              <h4 className="text-center">Sign up</h4>
+              <div className="row justify-content-center mt-3">
+                <form className="form col-11">
+                  <div className="form-row">
+                    <div className="form-group col-12">
+                      <label className="sr-only" htmlFor="orgName">
+                        Church or Organization Name
+                      </label>
 
-              <form className="form col-11">
-                <div className="form-row">
-                  <div className="form-group col-md-6">
-                    <label className="sr-only" htmlFor="firstName">
-                      First Name
-                    </label>
+                      <input
+                        className="form-control"
+                        value={this.state.orgName}
+                        name="orgName"
+                        onChange={this.handleInputChange}
+                        type="text"
+                        placeholder="Church or Organization Name"
+                      />
+                    </div>
 
-                    <input
-                      className="form-control"
-                      value={this.state.firstName}
-                      name="firstName"
-                      onChange={this.handleInputChange}
-                      type="text"
-                      placeholder="First Name"
-                    />
+                    <div className="form-group col-md-6">
+                      <label className="sr-only" htmlFor="firstName">
+                        First Name
+                      </label>
+
+                      <input
+                        className="form-control"
+                        value={this.state.firstName}
+                        name="firstName"
+                        onChange={this.handleInputChange}
+                        type="text"
+                        placeholder="First Name"
+                      />
+                    </div>
+
+                    <div className="form-group col-md-6">
+                      <label className="sr-only" htmlFor="lastName">
+                        Last Name
+                      </label>
+
+                      <input
+                        className="form-control"
+                        value={this.state.lastName}
+                        name="lastName"
+                        onChange={this.handleInputChange}
+                        type="text"
+                        placeholder="Last Name"
+                      />
+                    </div>
                   </div>
 
-                  <div className="form-group col-md-6">
-                    <label className="sr-only" htmlFor="lastName">
-                      Last Name
+                  <div className="form-group">
+                    <label className="sr-only" htmlFor="email">
+                      Email
                     </label>
-
-                    <input
-                      className="form-control"
-                      value={this.state.lastName}
-                      name="lastName"
-                      onChange={this.handleInputChange}
-                      type="text"
-                      placeholder="Last Name"
-                    />
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label className="sr-only" htmlFor="email">
-                    Email
-                  </label>
 
                     <input
                       className="form-control"
@@ -119,13 +135,12 @@ class Form extends Component {
                       type="text"
                       placeholder="Email Address"
                     />
+                  </div>
 
-                </div>
-
-                <div className="form-group">
-                  <label className="sr-only" htmlFor="password">
-                    Password
-                  </label>
+                  <div className="form-group">
+                    <label className="sr-only" htmlFor="password">
+                      Password
+                    </label>
                     <input
                       className="form-control"
                       value={this.state.password}
@@ -134,22 +149,20 @@ class Form extends Component {
                       type="text"
                       placeholder="Password"
                     />
+                  </div>
 
-                </div>
-
-                <div className="form-group">
-                  <button
-                    className="btn btn-primary col-mr-auto"
-                    onClick={this.handleFormSubmit}
-                  >
-                    Sign Up
-                  </button>
-                </div>
-              </form>
-
+                  <div className="form-group">
+                    <button
+                      className="btn btn-primary col-mr-auto"
+                      onClick={this.handleFormSubmit}
+                    >
+                      Sign Up
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
-        </div>
-        </div>
         </div>
       );
     }

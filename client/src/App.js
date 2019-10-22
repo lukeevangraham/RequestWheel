@@ -9,6 +9,7 @@ import Navbar from "./components/navbar";
 import Home from "./components/home";
 import SubmitRequest from "./components/submit-request";
 import EditRequest from "./components/edit-request";
+import People from "./components/people";
 
 class App extends Component {
   constructor() {
@@ -16,7 +17,8 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       email: null,
-      firstName: null
+      firstName: null,
+      orgName: null
     };
 
     this.getUser = this.getUser.bind(this);
@@ -42,14 +44,16 @@ class App extends Component {
         this.setState({
           loggedIn: true,
           email: response.data.user.email,
-          firstName: response.data.user.firstName
+          firstName: response.data.user.firstName,
+          orgName: response.data.user.orgName
         });
       } else {
         console.log("Get user: no user");
         this.setState({
           loggedIn: false,
           email: null,
-          firstName: null
+          firstName: null,
+          orgName: null
         });
       }
     });
@@ -59,7 +63,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} orgName={this.state.orgName} />
           {/* greet user if logged in: */}
           {/* Routes to different components */}
           <Route exact path="/" render={() => <Home email={this.state.email} name={this.state.firstName} loggedIn={this.state.loggedIn} />} />
@@ -72,6 +76,7 @@ class App extends Component {
           <div>
           <Route path="/submit-request" render={() => <SubmitRequest email={this.state.email} />} />
           <Route path="/edit-request/:id" render={(props) => <EditRequest email={this.state.email} {...props} />} />
+          <Route path="/people" render={(props) => <People orgName={this.state.orgName} {...props} />} />
           </div>
           }
         </div>

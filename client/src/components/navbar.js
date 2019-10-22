@@ -32,6 +32,7 @@ class Navbar extends Component {
 
   render() {
     const loggedIn = this.props.loggedIn;
+    const currentOrg = this.props.orgName;
     console.log("navbar render, props: ");
     console.log(this.props);
 
@@ -66,6 +67,14 @@ class Navbar extends Component {
                     </Link>
                   </li>
                   <li className="nav-item">
+                    <Link className="nav-link" to={{
+                      pathname: "/people",
+                      state: {
+                        orgName: this.props.orgName
+                      }
+                    }}>people</Link>
+                  </li>
+                  <li className="nav-item">
                     <Link className="nav-link" to="#" onClick={this.logout}>
                       logout
                     </Link>
@@ -98,7 +107,7 @@ class Navbar extends Component {
             )}
           </div>
           <div className="col-sm-8 text-right">
-            <h1 className="navbar-brand">Com Wheel</h1>
+            <h1 className="navbar-brand">Request Wheel</h1>
           </div>
         </header>
       </div>

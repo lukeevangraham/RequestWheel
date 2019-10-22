@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ActiveCard from "./activeCard";
-import HomeMatrix from "./homeMatrix"
+import HomeMatrix from "./homeMatrix";
 import Axios from "axios";
 
 class Home extends Component {
@@ -49,7 +49,7 @@ class Home extends Component {
 
     const loggedIn = this.props.loggedIn;
     console.log("home render, props: ");
-    console.log(this.props.loggedIn);
+    console.log(this.props);
 
     return (
       <div className="container pt-4" style={{ backgroundColor: "#f8f9fc" }}>
@@ -91,27 +91,40 @@ class Home extends Component {
 
               <div className="card border-left-primary shadow h-100 py-2 col-sm-6 p-0">
                 <div className="card-header py-3">
-                  <h4 className="m-0 font-weight-bold text-primary text-center">Processed Requests</h4>
+                  <h4 className="m-0 font-weight-bold text-primary text-center">
+                    Processed Requests
+                  </h4>
                 </div>
               </div>
             </div>
 
             <div className="row mt-4">
               <div className="card border-left-primary shadow h-100 py-2 col-sm-12 p-0">
-                <div className="card-header text-center py-3"><h4 className="m-0 font-weight-bold text-primary text-center">Current Communication Plans</h4></div>
+                <div className="card-header text-center py-3">
+                  <h4 className="m-0 font-weight-bold text-primary text-center">
+                    Current Communication Plans
+                  </h4>
+                </div>
                 <HomeMatrix />
-
               </div>
             </div>
           </div>
         ) : (
           <div className="row mt-3">
             <div className="col">
-              <p>It's good to be home</p>
-              <img
-                style={imageStyle}
-                src="https://i.ytimg.com/vi/N1icEHtgb3g/maxresdefault.jpg"
-              />
+              <div className="jumbotron d-flex">
+                <div className="col-4">
+                  <img
+                    src="/images/wheel.png"
+                    style={imageStyle}
+                    alt=""
+                    className="flex-grow-1 img-fluid"
+                  />
+                </div>
+                <h1 className="display-3 justify-content-center align-self-center pb-5 pl-5 mb-5 text-dark flex-grow-2">
+                  Request Wheel
+                </h1>
+              </div>
             </div>
           </div>
         )}

@@ -145,6 +145,14 @@ module.exports = function(sequelize, DataTypes) {
     quantity: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
+    },
+    approved: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
     }
   });
   return Request;
