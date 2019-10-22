@@ -42,7 +42,8 @@ class Form extends Component {
         password: this.state.password,
         firstName: this.state.firstName,
         lastName: this.state.lastName,
-        orgName: this.state.orgName
+        orgName: this.state.orgName,
+        permissions: "Administrator"
       })
       .then(response => {
         console.log("response: ");
