@@ -67,12 +67,7 @@ class Navbar extends Component {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to={{
-                      pathname: "/people",
-                      state: {
-                        orgName: this.props.orgName
-                      }
-                    }}>people</Link>
+                    <Link className="nav-link" to="/people">people</Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="#" onClick={this.logout}>

@@ -29,9 +29,9 @@ router.post("/", (req, res) => {
   // console.log("let's make a user!")
   // }
   // })
-  console.log("EMAIL: ", email)
+  console.log("EMAIL: ", email);
   db.User.findOne({ where: { email: email } }).then(userMatch => {
-    console.log("USERMATCH: ", userMatch)
+    console.log("USERMATCH: ", userMatch);
     if (userMatch) {
       return res.json({
         error: `Sorry, already a user with the email: ${email}`
@@ -43,19 +43,20 @@ router.post("/", (req, res) => {
         firstName: firstName,
         lastName: lastName,
         orgName: orgName
-      }).then(function(response) {
-        // console.log("looking good! response: ")
-        // console.log(response)
-        res.json(response)
-        // res.redirect(307, "/");
-      }).catch(function(err) {
-        console.log("post error!")
-        console.log(err);
-        res.json(err);
-      });
+      })
+        .then(function(response) {
+          // console.log("looking good! response: ")
+          // console.log(response)
+          res.json(response);
+          // res.redirect(307, "/");
+        })
+        .catch(function(err) {
+          console.log("post error!");
+          console.log(err);
+          res.json(err);
+        });
     }
   });
-  
 });
 
 router.post(
@@ -63,7 +64,7 @@ router.post(
   function(req, res, next) {
     // console.log("routes/user.js, login, req.body: ");
     // console.log(req.body);
-    next()
+    next();
   },
   passport.authenticate("local"),
   (req, res) => {
@@ -87,16 +88,23 @@ router.get("/", (req, res, next) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.user) {
-      res.send({ msg: 'logging out' })
+    res.send({ msg: "logging out" });
   } else {
-      res.send({ msg: 'no user to log out' })
+    res.send({ msg: "no user to log out" });
   }
 });
 
 router.get("/inOrg/:org", (req, res, next) => {
-  console.log("ORG: ", req.params)
-})
+  console.log("ORG: ", req.params.org);
+  db.User.findAll({
+    where: {
+      orgName: req.params.org
+    }
+  })
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
+});
 
 module.exports = router;

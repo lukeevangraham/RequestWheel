@@ -63,22 +63,47 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} orgName={this.state.orgName} />
+          <Navbar
+            updateUser={this.updateUser}
+            loggedIn={this.state.loggedIn}
+            orgName={this.state.orgName}
+          />
           {/* greet user if logged in: */}
           {/* Routes to different components */}
-          <Route exact path="/" render={() => <Home email={this.state.email} name={this.state.firstName} loggedIn={this.state.loggedIn} />} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Home
+                email={this.state.email}
+                name={this.state.firstName}
+                loggedIn={this.state.loggedIn}
+              />
+            )}
+          />
           <Route
             path="/login"
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
           <Route path="/signup" render={() => <Signup />} />
-          {this.state.loggedIn &&
-          <div>
-          <Route path="/submit-request" render={() => <SubmitRequest email={this.state.email} />} />
-          <Route path="/edit-request/:id" render={(props) => <EditRequest email={this.state.email} {...props} />} />
-          <Route path="/people" render={(props) => <People orgName={this.state.orgName} {...props} />} />
-          </div>
-          }
+          {this.state.loggedIn && (
+            <div>
+              <Route
+                path="/submit-request"
+                render={() => <SubmitRequest email={this.state.email} />}
+              />
+              <Route
+                path="/edit-request/:id"
+                render={props => (
+                  <EditRequest email={this.state.email} {...props} />
+                )}
+              />
+              <Route
+                path="/people"
+                render={() => <People orgName={this.state.orgName} />}
+              />
+            </div>
+          )}
         </div>
       </BrowserRouter>
     );
