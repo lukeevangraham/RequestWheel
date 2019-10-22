@@ -52,7 +52,7 @@ class Home extends Component {
     console.log(this.props);
 
     return (
-      <div className="container pt-4" style={{ backgroundColor: "#f8f9fc" }}>
+      <div className="container-fluid pt-4" style={{ backgroundColor: "#f8f9fc" }}>
         {loggedIn ? (
           <div>
             <div className="row mt-4 mb-5">
