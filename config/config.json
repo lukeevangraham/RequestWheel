@@ -22,6 +22,5 @@
     "database": "m19ztfscuo0vx75j",
     "host": "s554ongw9quh1xjs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
-    // "operatorsAliases": false
   }
 }
