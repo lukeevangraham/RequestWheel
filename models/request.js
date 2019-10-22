@@ -146,6 +146,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    notes: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     completed: {
       type: DataTypes.BOOLEAN,
       allowNull: true
