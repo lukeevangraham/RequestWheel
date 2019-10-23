@@ -5,11 +5,11 @@ class Profile extends React.Component {
     org: null
   };
 
-  componentDidMount() {
-    const { org } = this.props.match.params;
+  componentDidMount(props) {
+    // const { org } = this.props.params;
 
-    console.log("ORG is: ", org);
-    this.setState(() => ({ org }))
+    console.log("ORG is: ", props);
+    // this.setState(() => ({ org }))
   }
   render() {
       return (

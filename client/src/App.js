@@ -89,7 +89,7 @@ class App extends Component {
           />
           <Route path="/signup" render={() => <Signup />} />
           <Route path="/addperson/:org" render={(props) => <AddPerson {...props} /> } />
-          <Route path="/profile/:org" render={(props) => <Profile {...props} />} />
+          <Route path="/profile/:org" render={(props) => <Profile {...this.props} />} />
           {this.state.loggedIn && (
             <div>
               <Route
