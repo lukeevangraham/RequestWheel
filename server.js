@@ -49,25 +49,25 @@ var db = require("./models");
 // Define API routes here
 app.use(routes);
 
-app.use((req, res, next) => {
-  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
-    if (error) {
-      res.status(500).alert(error.message)
-    } else if (redirectLocation) {
-      res.redirect(302, redirectLocation.pathname + redirectLocation.search)
-    } else if(renderProps) {
-      res.status(200)
-    } else {
-      res.status(404).send('Not found')
-    }
-  } )
-})
+// app.use((req, res, next) => {
+//   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
+//     if (error) {
+//       res.status(500).alert(error.message)
+//     } else if (redirectLocation) {
+//       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+//     } else if(renderProps) {
+//       res.status(200)
+//     } else {
+//       res.status(404).send('Not found')
+//     }
+//   } )
+// })
 
 // Send every other request to the React app
 // Define any API routes before this runs
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, () => {
