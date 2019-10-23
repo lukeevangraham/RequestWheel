@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 
-class Form extends Component {
+class AddPerson extends Component {
   // Setting the component's initial state
   state = {
     email: "",
@@ -34,15 +34,15 @@ class Form extends Component {
     // });
 
     // Checking that orgName is available
-    axios.get("/user/inOrg/" + this.state.orgName).then(res => {
+    axios.get("/user/inOrg/" + this.props.match.params.org).then(res => {
       console.log("LOOK HERE: ", res);
-      if (res.data[0]) {
+      if (!res.data[0]) {
         alert(
-          "An organization by that name already exists.  Contact the administrator to join Request Wheel."
+          "That church/organization has not yet signed up for Request Wheel."
         );
         return;
       } else {
-        console.log("sign-up-form, email: ");
+        console.log("addPerson-form, email: ");
         console.log(this.state);
         //request to server here
         axios
@@ -51,8 +51,8 @@ class Form extends Component {
             password: this.state.password,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            orgName: this.state.orgName,
-            permissions: "Administrator"
+            orgName: this.props.match.params.org,
+            permissions: "Editor"
           })
           .then(response => {
             console.log("response: ");
@@ -79,16 +79,18 @@ class Form extends Component {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />;
     } else {
+        console.log("PARAMS: ", this.props.match.params.org)
+
       // Notice how each input has a `value`, `name`, and `onChange` prop
       return (
         <div className="container-fluid pt-4" id="login">
           <div className="row justify-content-center">
             <div className="col-sm-6 bg-white rounded pt-3">
-              <h4 className="text-center">Sign up</h4>
+              <h4 className="text-center">Join {this.props.match.params.org}'s Request Wheel</h4>
               <div className="row justify-content-center mt-3">
                 <form className="form col-11">
                   <div className="form-row">
-                    <div className="form-group col-12">
+                    {/* <div className="form-group col-12">
                       <label className="sr-only" htmlFor="orgName">
                         Church or Organization Name
                       </label>
@@ -101,7 +103,7 @@ class Form extends Component {
                         type="text"
                         placeholder="Church or Organization Name"
                       />
-                    </div>
+                    </div> */}
 
                     <div className="form-group col-md-6">
                       <label className="sr-only" htmlFor="firstName">
@@ -181,4 +183,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default AddPerson;

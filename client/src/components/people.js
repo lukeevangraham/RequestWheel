@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import Axios from "axios";
 
@@ -28,8 +29,12 @@ class People extends Component {
 
   render() {
     return (
-      <div className="container">
-        <p>Hi there from {this.props.orgName}</p>
+      <div className="container pt-5">
+        <p>Hi there {this.props.firstName} of {this.props.orgName}!</p>
+        <p className="text-right">Add people to {this.props.orgName}'s Request Wheel by sending them to this link:
+          <br/>
+          <Link to={"/addperson/" + this.props.orgName}>https://{window.location.hostname}/addperson/{this.props.orgName}</Link>
+        </p>
 
         <table className="table">
           <thead>
@@ -39,7 +44,7 @@ class People extends Component {
               <th scope="col">Email Address</th>
               <th scope="col">Last Login</th>
               <th scope="col">Created On</th>
-              <th scope="col">Permissions</th>
+              {/* <th scope="col">Permissions</th> */}
             </tr>
           </thead>
           <tbody>
@@ -52,7 +57,7 @@ class People extends Component {
               <td>{user.email}</td>
               <td>{moment(user.updatedAt).format("MM/DD/YY h:mm a")}</td>
               <td>{moment(user.createdAt).format("MM/DD/YY h:mm a")}</td>
-              <td>{user.permissions}</td>
+              {/* <td>{user.permissions}</td> */}
             </tr>
           )
         })}

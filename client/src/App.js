@@ -10,6 +10,7 @@ import Home from "./components/home";
 import SubmitRequest from "./components/submit-request";
 import EditRequest from "./components/edit-request";
 import People from "./components/people";
+import AddPerson from "./components/addPerson";
 
 class App extends Component {
   constructor() {
@@ -86,6 +87,7 @@ class App extends Component {
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
           <Route path="/signup" render={() => <Signup />} />
+          <Route path="/addperson/:org" render={(props) => <AddPerson {...props} /> } />
           {this.state.loggedIn && (
             <div>
               <Route
@@ -100,7 +102,7 @@ class App extends Component {
               />
               <Route
                 path="/people"
-                render={() => <People orgName={this.state.orgName} />}
+                render={() => <People orgName={this.state.orgName} firstName={this.state.firstName} />}
               />
             </div>
           )}
