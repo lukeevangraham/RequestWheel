@@ -104,6 +104,7 @@ class App extends Component {
                 path="/people"
                 render={() => <People orgName={this.state.orgName} firstName={this.state.firstName} />}
               />
+              <Route path="/addperson/:org" render={(props) => <AddPerson {...props} /> } />
             </div>
           )}
         </div>
