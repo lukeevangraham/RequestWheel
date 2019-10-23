@@ -8,7 +8,7 @@ class Profile extends React.Component {
   componentDidMount(props) {
     // const { org } = this.props.params;
 
-    console.log("ORG is: ", props);
+    console.log("ORG is: ", this.props);
     // this.setState(() => ({ org }))
   }
   render() {
