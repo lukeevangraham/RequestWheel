@@ -30,8 +30,8 @@ class People extends Component {
   render() {
     return (
       <div className="container pt-5">
-        <p>Hi there {this.props.firstName} of {this.props.orgName}!</p>
-        <p className="text-right">Add people to {this.props.orgName}'s Request Wheel by sending them to this link:
+        {/* <p>Hi there {this.props.firstName} of {this.props.orgName}!</p> */}
+        <p className="text-right pb-4">Add people to {this.props.orgName}'s Request Wheel by sending them to this link:
           <br/>
           <Link to={"/addperson/" + this.props.orgName}>https://{window.location.hostname}/addperson/{this.props.orgName}</Link>
         </p>
