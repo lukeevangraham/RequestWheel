@@ -11,6 +11,7 @@ import SubmitRequest from "./components/submit-request";
 import EditRequest from "./components/edit-request";
 import People from "./components/people";
 import AddPerson from "./components/addPerson";
+import Profile from "./components/profile";
 
 class App extends Component {
   constructor() {
@@ -88,6 +89,7 @@ class App extends Component {
           />
           <Route path="/signup" render={() => <Signup />} />
           <Route path="/addperson/:org" render={(props) => <AddPerson {...props} /> } />
+          <Route path="/profile/:org" component={Profile} />
           {this.state.loggedIn && (
             <div>
               <Route

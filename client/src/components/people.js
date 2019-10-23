@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import moment from "moment";
 import Axios from "axios";
 
@@ -28,6 +28,7 @@ class People extends Component {
   }
 
   render() {
+    
     return (
       <div className="container pt-5">
         {/* <p>Hi there {this.props.firstName} of {this.props.orgName}!</p> */}

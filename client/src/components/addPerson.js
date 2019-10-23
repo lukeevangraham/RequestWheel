@@ -80,6 +80,7 @@ class AddPerson extends Component {
       return <Redirect to={{ pathname: this.state.redirectTo }} />;
     } else {
         console.log("PARAMS: ", this.props.match.params.org)
+        console.log("LOOK HERE: ", new URLSearchParams().values())
 
       // Notice how each input has a `value`, `name`, and `onChange` prop
       return (
