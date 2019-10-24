@@ -157,6 +157,16 @@ module.exports = function(sequelize, DataTypes) {
     approved: {
       type: DataTypes.BOOLEAN,
       allowNull: true
+    },
+    newsletterDates: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      get() {
+        return this.getDataValue('newsletterDates').split(';')
+      },
+      set(val) {
+        this.setDataValue('newsletterDates', val.join(';'));
+      },
     }
   });
   return Request;

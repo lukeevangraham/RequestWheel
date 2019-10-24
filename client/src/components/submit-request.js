@@ -141,7 +141,8 @@ class SubmitRequest extends Component {
         forTVScreens: this.state.forTVScreens,
         forConnectionCard: this.state.forConnectionCard,
         body: this.state.body,
-        quantity: this.state.quantity
+        quantity: this.state.quantity,
+        newsletterDates: this.state.newsletterDates
       })
       .then(response => {
         console.log(response);
