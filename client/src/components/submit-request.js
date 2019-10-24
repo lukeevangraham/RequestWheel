@@ -48,7 +48,7 @@ class SubmitRequest extends Component {
     forConnectionCard: false,
     body: "",
     quantity: "",
-    newsletterDates: []
+    newsletterDates: [""]
   };
 
   handleInputChange = event => {
@@ -67,7 +67,7 @@ class SubmitRequest extends Component {
     let newsletterDates = [...this.state.newsletterDates]
     newsletterDates[i] = e.target.value
     this.setState({
-      newsletterDates
+      newsletterDates: newsletterDates
     })
   }
 
@@ -77,7 +77,6 @@ class SubmitRequest extends Component {
     this.setState({
       newsletterDates: dates
     })
-    // console.log("NEWS DATES: ", this.state.newsletterDates)
   }
 
   handleDelete = index => e => {
@@ -90,12 +89,9 @@ class SubmitRequest extends Component {
     // this.setState({
     //   newsletterDates: dates
     // })
-    console.log("LOOK HERE: ", this.state.newsletterDates.filter((_, i) => i !== index))
     this.setState({
       newsletterDates: this.state.newsletterDates.filter((_, i) => i !== index)
     })
-    // console.log("dates: ", dates)
-    console.log("NEWS DATES: ", this.state.newsletterDates)
   }
 
   handleFormSubmit = event => {
@@ -110,7 +106,7 @@ class SubmitRequest extends Component {
     // });
 
     console.log("request-submit-form, eventName: ");
-    console.log(this.state.forNewsletter);
+    console.log(this.state.newsletterDates);
     //request to server here
     axios
       .post("/requests", {
@@ -581,7 +577,7 @@ class SubmitRequest extends Component {
                               </div>
                             </span>
                           ))}
-                          <button className="form-control" onClick={this.addDate}>Add New Date</button>
+                          <button className="form-control" onClick={this.addDate}>Add Another Date</button>
                         </Fragment>
                       ) : (
                         ""
