@@ -21,4 +21,19 @@ router
   router.route("/date/:date")
   .get(requestsController.findByDate)
 
+  router.route("/annVid/:date")
+  .get(requestsController.findAnnVidItemByDate)
+
+  router.route("/connectionCard/:date")
+  .get(requestsController.findConncectionCardItemByDate)
+
+  router.route("/tvScreens/:date")
+  .get(requestsController.findtvScreensItemByDate)
+
+  router.route("/newsletter/:date")
+  .get(requestsController.findNewsletteItemrByDate)
+
+  router.route("/other/:date")
+  .get(requestsController.findOtherItemByDate)
+
 module.exports = router;
