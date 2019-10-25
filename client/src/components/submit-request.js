@@ -162,6 +162,10 @@ class SubmitRequest extends Component {
     //   password: ""
     // });
 
+    if (this.props.body === null) {
+      alert("please add something to the body")
+    }
+
     console.log("request-submit-form, eventName: ");
     console.log(this.state.newsletterDates);
     //request to server here
@@ -233,7 +237,7 @@ class SubmitRequest extends Component {
               <h2 className="mb-5 text-center">
                 Submit a Communications Request
               </h2>
-              <form className="form text-left needs-validation">
+              <form className="form text-left">
                 <div className="form-group row">
                   <label
                     htmlFor="eventName"
@@ -846,9 +850,7 @@ class SubmitRequest extends Component {
                     onChange={this.handleInputChange}
                     type="text"
                     placeholder="Body"
-                    required
                   />
-                  <div className="invalid-feedback">Please provide body content</div>
                 </div>
 
                 <div className="form-group row">

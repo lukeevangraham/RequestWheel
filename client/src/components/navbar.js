@@ -39,9 +39,10 @@ class Navbar extends Component {
     return (
       <div>
         <header
-          className="navbar navbar-expand-lg navbar-dark bg-gradient-primary shadow"
+          className="navbar  navbar-dark bg-gradient-primary shadow"
           id="nav-container"
         >
+          <div className="col-4">
           <button
             className="navbar-toggler"
             type="button"
@@ -54,7 +55,6 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="col-sm-4">
             {loggedIn ? (
               <div
                 className="collapse navbar-collapse"
@@ -101,8 +101,8 @@ class Navbar extends Component {
               </div>
             )}
           </div>
-          <div className="col-sm-8 text-right">
-            <h1 className="navbar-brand">Request Wheel</h1>
+          <div className="col-xs-8 d-flex">
+            <h1 className="navbar-brand justify-content-end">Request Wheel</h1>
           </div>
         </header>
       </div>
