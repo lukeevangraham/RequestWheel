@@ -60,11 +60,9 @@ state = {
   render() {
       return (
           <div>
-          <div className="list-group list-group-flush">
-            <li className="list-group-item bg-gray-300 font-weight-bold">
+            <div className="card-header bg-gray-300 font-weight-bold">
             Announcement Video
-            </li>
-          </div>
+            </div>
           <ul className="list-group list-group-flush">
             {this.state.annVideoRequests.map(request => {
               {/* console.log("Request: ", request.annVideoDates); */}
