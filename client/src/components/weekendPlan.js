@@ -60,17 +60,19 @@ state = {
   render() {
       return (
           <div>
-          <div className="card-header bg-gray-300 text-center">
+          <div className="list-group list-group-flush">
+            <li className="list-group-item bg-gray-300 font-weight-bold">
             Announcement Video
+            </li>
           </div>
           <ul className="list-group list-group-flush">
             {this.state.annVideoRequests.map(request => {
               {/* console.log("Request: ", request.annVideoDates); */}
-              return <li className="list-group-item">{request.eventName}</li>;
+              return <li className="list-group-item text-left">{request.eventName}</li>;
             })}
           </ul>
 
-          <div className="card-header bg-gray-300 text-center">
+          <div className="card-header bg-gray-300 font-weight-bold">
             Connection Card
           </div>
           <ul className="list-group list-group-flush">
@@ -78,7 +80,7 @@ state = {
               return <li className="list-group-item">{request.eventName}</li>;
             })}
           </ul>
-          <div className="card-header bg-gray-300 text-center">
+          <div className="card-header bg-gray-300 font-weight-bold">
             Newsletter
           </div>
           <ul className="list-group list-group-flush">
@@ -86,7 +88,7 @@ state = {
               return <li className="list-group-item">{request.eventName}</li>;
             })}
           </ul>
-          <div className="card-header bg-gray-300 text-center">
+          <div className="card-header bg-gray-300 font-weight-bold">
             TV Screens
           </div>
           <ul className="list-group list-group-flush">
@@ -94,7 +96,7 @@ state = {
               return <li className="list-group-item">{request.eventName}</li>;
             })}
           </ul>
-          <div className="card-header bg-gray-300 text-center">
+          <div className="card-header bg-gray-300 font-weight-bold">
             Other
           </div>
           <ul className="list-group list-group-flush">

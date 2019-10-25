@@ -68,7 +68,7 @@ class Home extends Component {
             </div>
 
             <div className="row mt-3 card-deck">
-              <div className="card border-left-primary shadow h-100 col-sm-6 p-0">
+              <div className="card border-left-primary shadow h-100 col-sm-6 p-0 ml-0">
                 <div className="card-header py-3">
                   <h4 className="m-0 font-weight-bold text-primary text-center">
                     Your Active Requests
@@ -89,7 +89,7 @@ class Home extends Component {
                 </ul>
               </div>
 
-              <div className="card border-left-primary shadow h-100 col-sm-6 p-0">
+              <div className="card border-left-primary shadow h-100 col-sm-6 p-0 mr-0">
                 <div className="card-header py-3">
                   <h4 className="m-0 font-weight-bold text-primary text-center">
                     Your Processed Requests
