@@ -48,7 +48,10 @@ class SubmitRequest extends Component {
     forConnectionCard: false,
     body: "",
     quantity: "",
-    newsletterDates: [""]
+    newsletterDates: [""],
+    annVideoDates: [""],
+    tvScreensDates: [""],
+    connectionCardDates: [""]
   };
 
   handleInputChange = event => {
@@ -64,20 +67,21 @@ class SubmitRequest extends Component {
   };
 
   handleDate = i => e => {
-    let newsletterDates = [...this.state.newsletterDates]
-    newsletterDates[i] = e.target.value
+    console.log("TARGET: ", e.target)
+    let newsletterDates = [...this.state.newsletterDates];
+    newsletterDates[i] = e.target.value;
     this.setState({
       newsletterDates: newsletterDates
-    })
-  }
+    });
+  };
 
   addDate = e => {
-    e.preventDefault()
-    let dates = this.state.newsletterDates.concat([''])
+    e.preventDefault();
+    let dates = this.state.newsletterDates.concat([""]);
     this.setState({
       newsletterDates: dates
-    })
-  }
+    });
+  };
 
   handleDelete = index => e => {
     // console.log("i", i)
@@ -91,8 +95,8 @@ class SubmitRequest extends Component {
     // })
     this.setState({
       newsletterDates: this.state.newsletterDates.filter((_, i) => i !== index)
-    })
-  }
+    });
+  };
 
   handleFormSubmit = event => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
@@ -142,7 +146,10 @@ class SubmitRequest extends Component {
         forConnectionCard: this.state.forConnectionCard,
         body: this.state.body,
         quantity: this.state.quantity,
-        newsletterDates: this.state.newsletterDates
+        newsletterDates: this.state.newsletterDates,
+        annVideoDates: this.state.annVideoDates,
+        tvScreensDates: this.state.tvScreensDates,
+        connectionCardDates: this.state.connectionCardDates
       })
       .then(response => {
         console.log(response);
@@ -216,6 +223,7 @@ class SubmitRequest extends Component {
                     />
                   </div>
                 </div>
+
                 <div className="form-group row">
                   <label htmlFor="approver" className="col-sm-2 col-form-label">
                     Final Proof Approver
@@ -565,72 +573,186 @@ class SubmitRequest extends Component {
                           {this.state.newsletterDates.map((date, index) => (
                             <span className="input-group mr-2" key={index}>
                               <input
-                              className="form-control"
+                                className="form-control"
                                 type="date"
                                 onChange={this.handleDate(index)}
                                 value={date}
                                 placeholder="yyyy-mm-dd"
+                                name="newsletterDates"
                               />
                               <div className="input-group-append">
-                              <button className="form-control bg-danger text-white input-group-text" onClick={this.handleDelete(index)}>
-                                X
-                              </button>
+                                <button
+                                  className="form-control bg-danger text-white input-group-text"
+                                  onClick={this.handleDelete(index)}
+                                >
+                                  X
+                                </button>
                               </div>
                             </span>
                           ))}
-                          <button className="form-control" onClick={this.addDate}>Add Another Date</button>
+                          <button
+                            className="form-control"
+                            onClick={this.addDate}
+                          >
+                            Add Another Date
+                          </button>
                         </Fragment>
                       ) : (
                         ""
                       )}
                     </div>
 
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        checked={this.state.forAnnVideo}
-                        name="forAnnVideo"
-                        id="forAnnVideo"
-                        onChange={this.handleInputChange}
-                        type="checkbox"
-                      />
-                      <label className="form-check-label" htmlFor="forAnnVideo">
-                        Announcement Video
-                      </label>
+                    <div className="form-inline">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          checked={this.state.forAnnVideo}
+                          name="forAnnVideo"
+                          id="forAnnVideo"
+                          onChange={this.handleInputChange}
+                          type="checkbox"
+                        />
+                        <label
+                          className="form-check-label mr-2"
+                          htmlFor="forAnnVideo"
+                        >
+                          Announcement Video
+                        </label>
+                      </div>
+
+                      {this.state.forAnnVideo ? (
+                        <Fragment>
+                          {this.state.annVideoDates.map((date, index) => (
+                            <span className="input-group mr-2" key={index}>
+                              <input
+                                className="form-control"
+                                type="date"
+                                onChange={this.handleDate(index)}
+                                value={date}
+                                placeholder="yyyy-mm-dd"
+                              />
+                              <div className="input-group-append">
+                                <button
+                                  className="form-control bg-danger text-white input-group-text"
+                                  onClick={this.handleDelete(index)}
+                                >
+                                  X
+                                </button>
+                              </div>
+                            </span>
+                          ))}
+                          <button
+                            className="form-control"
+                            onClick={this.addDate}
+                          >
+                            Add Another Date
+                          </button>
+                        </Fragment>
+                      ) : (
+                        ""
+                      )}
                     </div>
 
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        checked={this.state.forTVScreens}
-                        name="forTVScreens"
-                        id="forTVScreens"
-                        onChange={this.handleInputChange}
-                        type="checkbox"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="forTVScreens"
-                      >
-                        TV Screens
-                      </label>
+                    <div className="form-inline">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          checked={this.state.forTVScreens}
+                          name="forTVScreens"
+                          id="forTVScreens"
+                          onChange={this.handleInputChange}
+                          type="checkbox"
+                        />
+                        <label
+                          className="form-check-label mr-2"
+                          htmlFor="forTVScreens"
+                        >
+                          TV Screens
+                        </label>
+                      </div>
+
+                      {this.state.forTVScreens ? (
+                        <Fragment>
+                          {this.state.tvScreensDates.map((date, index) => (
+                            <span className="input-group mr-2" key={index}>
+                              <input
+                                className="form-control"
+                                type="date"
+                                onChange={this.handleDate(index)}
+                                value={date}
+                                placeholder="yyyy-mm-dd"
+                              />
+                              <div className="input-group-append">
+                                <button
+                                  className="form-control bg-danger text-white input-group-text"
+                                  onClick={this.handleDelete(index)}
+                                >
+                                  X
+                                </button>
+                              </div>
+                            </span>
+                          ))}
+                          <button
+                            className="form-control"
+                            onClick={this.addDate}
+                          >
+                            Add Another Date
+                          </button>
+                        </Fragment>
+                      ) : (
+                        ""
+                      )}
                     </div>
 
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        checked={this.state.forConnectionCard}
-                        name="forConnectionCard"
-                        id="forConnectionCard"
-                        onChange={this.handleInputChange}
-                        type="checkbox"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="forConnectionCard"
-                      >
-                        Connection Card
-                      </label>
+                    <div className="form-inline">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          checked={this.state.forConnectionCard}
+                          name="forConnectionCard"
+                          id="forConnectionCard"
+                          onChange={this.handleInputChange}
+                          type="checkbox"
+                        />
+                        <label
+                          className="form-check-label mr-2"
+                          htmlFor="forConnectionCard"
+                        >
+                          Connection Card
+                        </label>
+                      </div>
+
+                      {this.state.forConnectionCard ? (
+                        <Fragment>
+                          {this.state.connectionCardDates.map((date, index) => (
+                            <span className="input-group mr-2" key={index}>
+                              <input
+                                className="form-control"
+                                type="date"
+                                onChange={this.handleDate(index)}
+                                value={date}
+                                placeholder="yyyy-mm-dd"
+                              />
+                              <div className="input-group-append">
+                                <button
+                                  className="form-control bg-danger text-white input-group-text"
+                                  onClick={this.handleDelete(index)}
+                                >
+                                  X
+                                </button>
+                              </div>
+                            </span>
+                          ))}
+                          <button
+                            className="form-control"
+                            onClick={this.addDate}
+                          >
+                            Add Another Date
+                          </button>
+                        </Fragment>
+                      ) : (
+                        ""
+                      )}
                     </div>
                   </div>
                 </div>
