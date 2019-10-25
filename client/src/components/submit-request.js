@@ -66,8 +66,7 @@ class SubmitRequest extends Component {
     });
   };
 
-  handleDate = i => e => {
-    console.log("TARGET: ", e.target)
+  handleNewsletterDate = i => e => {
     let newsletterDates = [...this.state.newsletterDates];
     newsletterDates[i] = e.target.value;
     this.setState({
@@ -75,7 +74,7 @@ class SubmitRequest extends Component {
     });
   };
 
-  addDate = e => {
+  addNewsletterDate = e => {
     e.preventDefault();
     let dates = this.state.newsletterDates.concat([""]);
     this.setState({
@@ -83,18 +82,72 @@ class SubmitRequest extends Component {
     });
   };
 
-  handleDelete = index => e => {
-    // console.log("i", i)
-    // e.preventDefault()
-    // let dates = [
-    //   ...this.state.newsletterDates.slice(0, i),
-    //   ...this.state.newsletterDates.slice(i + 1)
-    // ]
-    // this.setState({
-    //   newsletterDates: dates
-    // })
+  deleteNewsletterDate = index => e => {
     this.setState({
       newsletterDates: this.state.newsletterDates.filter((_, i) => i !== index)
+    });
+  };
+  handleAnnVideoDate = i => e => {
+    let annVideoDates = [...this.state.annVideoDates];
+    annVideoDates[i] = e.target.value;
+    this.setState({
+      annVideoDates: annVideoDates
+    });
+  };
+
+  addAnnVideoDate = e => {
+    e.preventDefault();
+    let dates = this.state.annVideoDates.concat([""]);
+    this.setState({
+      annVideoDates: dates
+    });
+  };
+
+  deleteAnnVideoDate = index => e => {
+    this.setState({
+      annVideoDates: this.state.annVideoDates.filter((_, i) => i !== index)
+    });
+  };
+  handletvScreensDate = i => e => {
+    let tvScreensDates = [...this.state.tvScreensDates];
+    tvScreensDates[i] = e.target.value;
+    this.setState({
+      tvScreensDates: tvScreensDates
+    });
+  };
+
+  addtvScreensDate = e => {
+    e.preventDefault();
+    let dates = this.state.tvScreensDates.concat([""]);
+    this.setState({
+      tvScreensDates: dates
+    });
+  };
+
+  deletetvScreensDate = index => e => {
+    this.setState({
+      tvScreensDates: this.state.tvScreensDates.filter((_, i) => i !== index)
+    });
+  };
+  handleConnectionCardDate = i => e => {
+    let connectionCardDates = [...this.state.connectionCardDates];
+    connectionCardDates[i] = e.target.value;
+    this.setState({
+      connectionCardDates: connectionCardDates
+    });
+  };
+
+  addConnectionCardDate = e => {
+    e.preventDefault();
+    let dates = this.state.connectionCardDates.concat([""]);
+    this.setState({
+      connectionCardDates: dates
+    });
+  };
+
+  deleteConnectionCardDate = index => e => {
+    this.setState({
+      connectionCardDates: this.state.connectionCardDates.filter((_, i) => i !== index)
     });
   };
 
@@ -575,7 +628,7 @@ class SubmitRequest extends Component {
                               <input
                                 className="form-control"
                                 type="date"
-                                onChange={this.handleDate(index)}
+                                onChange={this.handleNewsletterDate(index)}
                                 value={date}
                                 placeholder="yyyy-mm-dd"
                                 name="newsletterDates"
@@ -583,7 +636,7 @@ class SubmitRequest extends Component {
                               <div className="input-group-append">
                                 <button
                                   className="form-control bg-danger text-white input-group-text"
-                                  onClick={this.handleDelete(index)}
+                                  onClick={this.deleteNewsletterDate(index)}
                                 >
                                   X
                                 </button>
@@ -592,7 +645,7 @@ class SubmitRequest extends Component {
                           ))}
                           <button
                             className="form-control"
-                            onClick={this.addDate}
+                            onClick={this.addNewsletterDate}
                           >
                             Add Another Date
                           </button>
@@ -627,14 +680,14 @@ class SubmitRequest extends Component {
                               <input
                                 className="form-control"
                                 type="date"
-                                onChange={this.handleDate(index)}
+                                onChange={this.handleAnnVideoDate(index)}
                                 value={date}
                                 placeholder="yyyy-mm-dd"
                               />
                               <div className="input-group-append">
                                 <button
                                   className="form-control bg-danger text-white input-group-text"
-                                  onClick={this.handleDelete(index)}
+                                  onClick={this.deleteAnnVideoDate(index)}
                                 >
                                   X
                                 </button>
@@ -643,7 +696,7 @@ class SubmitRequest extends Component {
                           ))}
                           <button
                             className="form-control"
-                            onClick={this.addDate}
+                            onClick={this.addAnnVideoDate}
                           >
                             Add Another Date
                           </button>
@@ -678,14 +731,14 @@ class SubmitRequest extends Component {
                               <input
                                 className="form-control"
                                 type="date"
-                                onChange={this.handleDate(index)}
+                                onChange={this.handletvScreensDate(index)}
                                 value={date}
                                 placeholder="yyyy-mm-dd"
                               />
                               <div className="input-group-append">
                                 <button
                                   className="form-control bg-danger text-white input-group-text"
-                                  onClick={this.handleDelete(index)}
+                                  onClick={this.deletetvScreensDate(index)}
                                 >
                                   X
                                 </button>
@@ -694,7 +747,7 @@ class SubmitRequest extends Component {
                           ))}
                           <button
                             className="form-control"
-                            onClick={this.addDate}
+                            onClick={this.addtvScreensDate}
                           >
                             Add Another Date
                           </button>
@@ -729,14 +782,14 @@ class SubmitRequest extends Component {
                               <input
                                 className="form-control"
                                 type="date"
-                                onChange={this.handleDate(index)}
+                                onChange={this.handleConnectionCardDate(index)}
                                 value={date}
                                 placeholder="yyyy-mm-dd"
                               />
                               <div className="input-group-append">
                                 <button
                                   className="form-control bg-danger text-white input-group-text"
-                                  onClick={this.handleDelete(index)}
+                                  onClick={this.deleteConnectionCardDate(index)}
                                 >
                                   X
                                 </button>
@@ -745,7 +798,7 @@ class SubmitRequest extends Component {
                           ))}
                           <button
                             className="form-control"
-                            onClick={this.addDate}
+                            onClick={this.addConnectionCardDate}
                           >
                             Add Another Date
                           </button>

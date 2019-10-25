@@ -167,6 +167,36 @@ module.exports = function(sequelize, DataTypes) {
       set(val) {
         this.setDataValue('newsletterDates', val.join(';'));
       },
+    },
+    annVideoDates: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      get() {
+        return this.getDataValue('annVideoDates').split(';')
+      },
+      set(val) {
+        this.setDataValue('annVideoDates', val.join(';'));
+      },
+    },
+    tvScreensDates: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      get() {
+        return this.getDataValue('tvScreensDates').split(';')
+      },
+      set(val) {
+        this.setDataValue('tvScreensDates', val.join(';'));
+      },
+    },
+    connectionCardDates: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      get() {
+        return this.getDataValue('connectionCardDates').split(';')
+      },
+      set(val) {
+        this.setDataValue('connectionCardDates', val.join(';'));
+      },
     }
   });
   return Request;
