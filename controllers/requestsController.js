@@ -1,6 +1,6 @@
 const moment = require("moment");
 const db = require("../models");
-const Sequelize = require("sequelize")
+const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
 // Defining methods for the requestsController
@@ -33,15 +33,35 @@ module.exports = {
       .format("YYYY-MM-DD");
     db.Request.findAll({
       where: {
-        requestDueDate: {
-          [Op.between]: [sevenDaysEarlier, req.params.date]
-        }
+        [Op.or]: [
+          {
+            newsletterDates: {
+              [Op.between]: [sevenDaysEarlier, req.params.date]
+            },
+          },
+          {
+            annVideoDates: {
+              [Op.between]: [sevenDaysEarlier, req.params.date]
+            },
+          },
+          {
+            tvScreensDates: {
+              [Op.between]: [sevenDaysEarlier, req.params.date]
+            },
+          },
+          {
+            connectionCardDates: {
+              [Op.between]: [sevenDaysEarlier, req.params.date]
+            },
+          }
+        ]
       }
     })
-    .then(response => {
-      return res.json(response);
-    })
-    .catch(err => res.status(422).json(err));
+      .then(response => {
+        console.log("LOOK HERE: ", response)
+        return res.json(response);
+      })
+      .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
     db.Request.create(req.body)
