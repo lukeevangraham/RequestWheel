@@ -20,7 +20,8 @@ class App extends Component {
       loggedIn: false,
       email: null,
       firstName: null,
-      orgName: null
+      orgName: null,
+      permissions: null
     };
 
     this.getUser = this.getUser.bind(this);
@@ -47,7 +48,8 @@ class App extends Component {
           loggedIn: true,
           email: response.data.user.email,
           firstName: response.data.user.firstName,
-          orgName: response.data.user.orgName
+          orgName: response.data.user.orgName,
+          permissions: response.data.user.permissions
         });
       } else {
         console.log("Get user: no user");
@@ -55,7 +57,8 @@ class App extends Component {
           loggedIn: false,
           email: null,
           firstName: null,
-          orgName: null
+          orgName: null,
+          permissions: null
         });
       }
     });
@@ -80,6 +83,7 @@ class App extends Component {
                 email={this.state.email}
                 name={this.state.firstName}
                 loggedIn={this.state.loggedIn}
+                permissions={this.state.permissions}
               />
             )}
           />

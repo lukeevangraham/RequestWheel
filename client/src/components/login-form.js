@@ -8,7 +8,8 @@ class LoginForm extends Component {
     this.state = {
       email: "",
       password: "",
-      redirectTo: null
+      redirectTo: null,
+      permissions: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -38,7 +39,8 @@ class LoginForm extends Component {
             loggedIn: true,
             email: response.data.email,
             firstName: response.data.firstName,
-            orgName: response.data.orgName
+            orgName: response.data.orgName,
+            permissions: response.data.permissions
           });
           // update the state to redirect to home
           this.setState({

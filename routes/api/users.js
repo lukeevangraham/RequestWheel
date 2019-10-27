@@ -73,7 +73,8 @@ router.post(
     var userInfo = {
       email: req.user.email,
       firstName: req.user.firstName,
-      orgName: req.user.orgName
+      orgName: req.user.orgName,
+      permissions: req.user.permissions
     };
     res.send(userInfo);
   }

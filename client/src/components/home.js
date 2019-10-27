@@ -105,7 +105,7 @@ class Home extends Component {
                     Current Communication Plans
                   </h4>
                 </div>
-                <HomeMatrix />
+                <HomeMatrix permissions={this.props.permissions} />
               </div>
             </div>
           </div>

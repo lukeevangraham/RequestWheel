@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import moment from "moment";
 import Axios from "axios";
 
@@ -13,8 +14,7 @@ state = {
   };
 
   componentDidMount() {
-      console.log("WEEKEND PLAN PROPS: ", this.props.date)
-    console.log("Home matrix is here!")
+      console.log("WEEKEND PLAN PROPS: ", this.props)
     Promise.all([
       Axios.get(
         "/requests/annVid/" +
@@ -66,7 +66,7 @@ state = {
           <ul className="list-group list-group-flush">
             {this.state.annVideoRequests.map(request => {
               {/* console.log("Request: ", request.annVideoDates); */}
-              return <li className="list-group-item text-left">{request.eventName}</li>;
+              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item text-left">{request.eventName}</li></Link>;
             })}
           </ul>
 
@@ -75,7 +75,7 @@ state = {
           </div>
           <ul className="list-group list-group-flush">
             {this.state.connectionCardRequests.map(request => {
-              return <li className="list-group-item">{request.eventName}</li>;
+              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item">{request.eventName}</li></Link>;
             })}
           </ul>
           <div className="card-header bg-gray-300 font-weight-bold">
@@ -83,7 +83,7 @@ state = {
           </div>
           <ul className="list-group list-group-flush">
             {this.state.newsletterRequests.map(request => {
-              return <li className="list-group-item">{request.eventName}</li>;
+              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item">{request.eventName}</li></Link>;
             })}
           </ul>
           <div className="card-header bg-gray-300 font-weight-bold">
@@ -91,7 +91,7 @@ state = {
           </div>
           <ul className="list-group list-group-flush">
             {this.state.tvScreensRequests.map(request => {
-              return <li className="list-group-item">{request.eventName}</li>;
+              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item">{request.eventName}</li></Link>;
             })}
           </ul>
           <div className="card-header bg-gray-300 font-weight-bold">
@@ -99,7 +99,7 @@ state = {
           </div>
           <ul className="list-group list-group-flush">
             {this.state.otherRequests.map(request => {
-              return <li className="list-group-item">{request.eventName}</li>;
+              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item">{request.eventName}</li></Link>;
             })}
           </ul>
           </div>

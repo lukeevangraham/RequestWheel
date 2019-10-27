@@ -7,6 +7,7 @@ import WeekendPlan from "./weekendPlan";
 class HomeMatrix extends Component {
   componentDidMount() {
     console.log("Home matrix is here!");
+    console.log("PROPS: ", this.props);
   }
 
   render() {
@@ -27,6 +28,7 @@ class HomeMatrix extends Component {
               date={moment()
                 .day(0)
                 .format("YYYY-MM-DD")}
+              permissions={this.props.permissions}
             />
           </div>
         </div>
@@ -46,6 +48,7 @@ class HomeMatrix extends Component {
               date={moment()
                 .day(7)
                 .format("YYYY-MM-DD")}
+              permissions={this.props.permissions}
             />
           </div>
         </div>
@@ -64,6 +67,7 @@ class HomeMatrix extends Component {
               date={moment()
                 .day(14)
                 .format("YYYY-MM-DD")}
+              permissions={this.props.permissions}
             />
           </div>
         </div>
@@ -83,6 +87,7 @@ class HomeMatrix extends Component {
               date={moment()
                 .day(21)
                 .format("YYYY-MM-DD")}
+              permissions={this.props.permissions}
             />
           </div>
         </div>
