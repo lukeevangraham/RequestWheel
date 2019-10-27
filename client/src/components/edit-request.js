@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
+import DatePicker from "react-datepicker";
 import "../components/styles/form.css";
 
 const Checkbox = ({ checked }) => (

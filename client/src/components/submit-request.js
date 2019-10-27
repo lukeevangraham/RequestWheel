@@ -2,6 +2,9 @@ import React, { Component, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
+import DatePicker from "react-datepicker";
+import { registerLocale, setDefaultLocale } from  "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Checkbox = ({ checked }) => (
   <div>
@@ -21,7 +24,7 @@ class SubmitRequest extends Component {
     // email: "",
     eventName: "",
     submittedDate: "",
-    requestDueDate: "",
+    requestDueDate: new Date(),
     approver: "",
     approverEmail: "",
     letterFlyer: false,
@@ -63,6 +66,12 @@ class SubmitRequest extends Component {
     // Updating the input's state
     this.setState({
       [name]: value
+    });
+  };
+
+  handleChange = date => {
+    this.setState({
+      requestDueDate: date
     });
   };
 
@@ -147,7 +156,9 @@ class SubmitRequest extends Component {
 
   deleteConnectionCardDate = index => e => {
     this.setState({
-      connectionCardDates: this.state.connectionCardDates.filter((_, i) => i !== index)
+      connectionCardDates: this.state.connectionCardDates.filter(
+        (_, i) => i !== index
+      )
     });
   };
 
@@ -163,7 +174,7 @@ class SubmitRequest extends Component {
     // });
 
     if (this.props.body === null) {
-      alert("please add something to the body")
+      alert("please add something to the body");
     }
 
     console.log("request-submit-form, eventName: ");
@@ -176,7 +187,7 @@ class SubmitRequest extends Component {
         email: this.props.email,
         eventName: this.state.eventName,
         submittedDate: moment().format("YYYY-MM-DD"),
-        requestDueDate: this.state.requestDueDate,
+        requestDueDate: moment(this.state.requestDueDate).format("YYYY-MM-DD"),
         approver: this.state.approver,
         approverEmail: this.state.approverEmail,
         letterFlyer: this.state.letterFlyer,
@@ -269,7 +280,7 @@ class SubmitRequest extends Component {
                     Request Due Date
                   </label>
                   <div className="col-sm-10">
-                    <input
+                    {/* <input
                       className="form-control"
                       value={this.state.requestDueDate}
                       name="requestDueDate"
@@ -277,6 +288,11 @@ class SubmitRequest extends Component {
                       onChange={this.handleInputChange}
                       type="date"
                       placeholder="Due Date"
+                    /> */}
+                    <DatePicker
+                      className="form-control"
+                      selected={this.state.requestDueDate}
+                      onChange={this.handleChange}
                     />
                   </div>
                 </div>
