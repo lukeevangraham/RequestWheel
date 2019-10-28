@@ -51,10 +51,10 @@ class SubmitRequest extends Component {
     forConnectionCard: false,
     body: "",
     quantity: "",
-    newsletterDates: [""],
-    annVideoDates: [""],
-    tvScreensDates: [""],
-    connectionCardDates: [""]
+    newsletterDates: [ new Date() ],
+    annVideoDates: [ new Date() ],
+    tvScreensDates: [ new Date() ],
+    connectionCardDates: [ new Date() ]
   };
 
   handleInputChange = event => {
@@ -70,14 +70,25 @@ class SubmitRequest extends Component {
   };
 
   handleChange = date => {
+    console.log("DATE: ", date)
     this.setState({
       requestDueDate: date
     });
   };
 
-  handleNewsletterDate = i => e => {
+  // handleNewsletterChange = i => date => {
+  //   console.log("I: ", i)
+  //   console.log("DATE: ", moment(date).format("YYYY-MM-DD"))
+  //   let newsletterDates = [...this.state.newsletterDates]
+  //   newsletterDates[i] = date
+  //   this.setState({
+  //     newsletterDates: newsletterDates
+  //   });
+  // };
+
+  handleNewsletterDate = i => date => {
     let newsletterDates = [...this.state.newsletterDates];
-    newsletterDates[i] = e.target.value;
+    newsletterDates[i] = date;
     this.setState({
       newsletterDates: newsletterDates
     });
@@ -96,9 +107,9 @@ class SubmitRequest extends Component {
       newsletterDates: this.state.newsletterDates.filter((_, i) => i !== index)
     });
   };
-  handleAnnVideoDate = i => e => {
+  handleAnnVideoDate = i => date => {
     let annVideoDates = [...this.state.annVideoDates];
-    annVideoDates[i] = e.target.value;
+    annVideoDates[i] = date;
     this.setState({
       annVideoDates: annVideoDates
     });
@@ -117,9 +128,9 @@ class SubmitRequest extends Component {
       annVideoDates: this.state.annVideoDates.filter((_, i) => i !== index)
     });
   };
-  handletvScreensDate = i => e => {
+  handletvScreensDate = i => date => {
     let tvScreensDates = [...this.state.tvScreensDates];
-    tvScreensDates[i] = e.target.value;
+    tvScreensDates[i] = date;
     this.setState({
       tvScreensDates: tvScreensDates
     });
@@ -138,9 +149,9 @@ class SubmitRequest extends Component {
       tvScreensDates: this.state.tvScreensDates.filter((_, i) => i !== index)
     });
   };
-  handleConnectionCardDate = i => e => {
+  handleConnectionCardDate = i => date => {
     let connectionCardDates = [...this.state.connectionCardDates];
-    connectionCardDates[i] = e.target.value;
+    connectionCardDates[i] = date;
     this.setState({
       connectionCardDates: connectionCardDates
     });
@@ -644,18 +655,24 @@ class SubmitRequest extends Component {
                         {this.state.forNewsletter ? (
                           <Fragment>
                             {this.state.newsletterDates.map((date, index) => (
+                              console.log("DATE from map: ", date),
+                              console.log("INDEX from map: ", index),
                               <span
                                 className="input-group input-group-sm mb-1"
                                 key={index}
                               >
-                                <input
+                                {/* <input
                                   className="form-control"
                                   type="date"
                                   onChange={this.handleNewsletterDate(index)}
                                   value={date}
                                   placeholder="yyyy-mm-dd"
                                   name="newsletterDates"
-                                />
+                                /> */}
+                                <DatePicker
+                      selected={date}
+                      onChange={this.handleNewsletterDate(index)}
+                    />
                                 <div className="input-group-append">
                                   <span
                                     className="input-group-text bg-danger text-white smallAppend"
@@ -703,13 +720,17 @@ class SubmitRequest extends Component {
                                 className="input-group input-group-sm mb-1"
                                 key={index}
                               >
-                                <input
+                                {/* <input
                                   className="form-control"
                                   type="date"
                                   onChange={this.handleAnnVideoDate(index)}
                                   value={date}
                                   placeholder="yyyy-mm-dd"
-                                />
+                                /> */}
+                                <DatePicker
+                      selected={date}
+                      onChange={this.handleAnnVideoDate(index)}
+                    />
                                 <div className="input-group-append">
                                   <span
                                     className="input-group-text bg-danger text-white smallAppend"
@@ -757,13 +778,17 @@ class SubmitRequest extends Component {
                                 className="input-group input-group-sm mb-1"
                                 key={index}
                               >
-                                <input
+                                {/* <input
                                   className="form-control"
                                   type="date"
                                   onChange={this.handletvScreensDate(index)}
                                   value={date}
                                   placeholder="yyyy-mm-dd"
-                                />
+                                /> */}
+                                <DatePicker
+                      selected={date}
+                      onChange={this.handletvScreensDate(index)}
+                    />
                                 <div className="input-group-append">
                                   <span
                                     className="input-group-text bg-danger text-white smallAppend"
@@ -812,7 +837,7 @@ class SubmitRequest extends Component {
                                   className="input-group input-group-sm mb-1"
                                   key={index}
                                 >
-                                  <input
+                                  {/* <input
                                     className="form-control"
                                     type="date"
                                     onChange={this.handleConnectionCardDate(
@@ -820,7 +845,11 @@ class SubmitRequest extends Component {
                                     )}
                                     value={date}
                                     placeholder="yyyy-mm-dd"
-                                  />
+                                  /> */}
+                                  <DatePicker
+                      selected={date}
+                      onChange={this.handleConnectionCardDate(index)}
+                    />
                                   <div className="input-group-append">
                                     <span
                                       className="input-group-text bg-danger text-white smallAppend"
