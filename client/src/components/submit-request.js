@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import DatePicker from "react-datepicker";
-import { registerLocale, setDefaultLocale } from  "react-datepicker";
+// import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const Checkbox = ({ checked }) => (
@@ -197,8 +197,8 @@ class SubmitRequest extends Component {
         // phone: this.state.phone,
         email: this.props.email,
         eventName: this.state.eventName,
-        submittedDate: moment().format("YYYY-MM-DD"),
-        requestDueDate: moment(this.state.requestDueDate).format("YYYY-MM-DD"),
+        submittedDate: moment(),
+        requestDueDate: this.state.requestDueDate,
         approver: this.state.approver,
         approverEmail: this.state.approverEmail,
         letterFlyer: this.state.letterFlyer,
