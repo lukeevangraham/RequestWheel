@@ -6,8 +6,13 @@ const Op = Sequelize.Op;
 // Defining methods for the requestsController
 module.exports = {
   findAll: function(req, res) {
-    db.Request.find(req.query)
-      .sort({ date: -1 })
+    console.log("FINDING ALL: ", req);
+    // db.Request.findAll(req.query)
+    db.Request.findAll({
+      limit: 10,
+      order: [["createdAt", "DESC"]]
+    })
+      // .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -26,8 +31,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAnnVidItemByDate: function(req, res) {
-    console.log("finding ann vid items by date");
-    console.log("query is: ", req.params);
     let sevenDaysEarlier = moment(req.params.date)
       .subtract(7, "days")
       .format("YYYY-MM-DD");
@@ -39,14 +42,11 @@ module.exports = {
       }
     })
       .then(response => {
-        console.log("LOOK HERE: ", response);
         return res.json(response);
       })
       .catch(err => res.status(422).json(err));
   },
   findConncectionCardItemByDate: function(req, res) {
-    console.log("finding Connection Card Item by date");
-    console.log("query is: ", req.params);
     let sevenDaysEarlier = moment(req.params.date)
       .subtract(7, "days")
       .format("YYYY-MM-DD");
@@ -58,14 +58,11 @@ module.exports = {
       }
     })
       .then(response => {
-        console.log("LOOK HERE: ", response);
         return res.json(response);
       })
       .catch(err => res.status(422).json(err));
   },
   findtvScreensItemByDate: function(req, res) {
-    console.log("finding tv Screen items by date");
-    console.log("query is: ", req.params);
     let sevenDaysEarlier = moment(req.params.date)
       .subtract(7, "days")
       .format("YYYY-MM-DD");
@@ -77,14 +74,11 @@ module.exports = {
       }
     })
       .then(response => {
-        console.log("LOOK HERE: ", response);
         return res.json(response);
       })
       .catch(err => res.status(422).json(err));
   },
   findNewsletteItemrByDate: function(req, res) {
-    console.log("finding newsletter items by date");
-    console.log("query is: ", req.params);
     let sevenDaysEarlier = moment(req.params.date)
       .subtract(7, "days")
       .format("YYYY-MM-DD");
@@ -96,14 +90,11 @@ module.exports = {
       }
     })
       .then(response => {
-        console.log("LOOK HERE: ", response);
         return res.json(response);
       })
       .catch(err => res.status(422).json(err));
   },
   findOtherItemByDate: function(req, res) {
-    console.log("finding other items by date");
-    console.log("query is: ", req.params);
     let sevenDaysEarlier = moment(req.params.date)
       .subtract(7, "days")
       .format("YYYY-MM-DD");
@@ -115,14 +106,11 @@ module.exports = {
       }
     })
       .then(response => {
-        console.log("LOOK HERE: ", response);
         return res.json(response);
       })
       .catch(err => res.status(422).json(err));
   },
   findByDate: function(req, res) {
-    console.log("time to find by date!");
-    console.log("query is: ", req.params);
     let sevenDaysEarlier = moment(req.params.date)
       .subtract(7, "days")
       .format("YYYY-MM-DD");
@@ -153,7 +141,6 @@ module.exports = {
       }
     })
       .then(response => {
-        console.log("LOOK HERE: ", response);
         return res.json(response);
       })
       .catch(err => res.status(422).json(err));
@@ -161,7 +148,6 @@ module.exports = {
   create: function(req, res) {
     db.Request.create(req.body)
       .then(function(dbModel) {
-        console.log("dbModel: ", dbModel);
         return res.json(dbModel);
       })
       .catch(err => res.status(422).json(err));

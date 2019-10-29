@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import DatePicker from "react-datepicker";
-import subDays from "date-fns/subDays"
 // import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 

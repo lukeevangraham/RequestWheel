@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ActiveCard from "./activeCard";
 import HomeMatrix from "./homeMatrix";
+import RecentSubmissions from "./recentSubmissions";
 import Axios from "axios";
 
 class Home extends Component {
   state = {
-    requests: []
+    requests: [],
+    recentRequests: []
   };
   constructor() {
     super();
@@ -14,6 +16,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.getRequests(this.props.email);
+    this.getRecentRequests();
   }
   componentWillReceiveProps(props) {
     this.getRequests(props.email);
@@ -30,6 +33,17 @@ class Home extends Component {
         requests: response.data
       });
       console.log(this.state.requests);
+    });
+  }
+
+  getRecentRequests() {
+    Axios.get("/requests/").then(response => {
+      console.log("response for All: ");
+      console.log(response);
+      this.setState({
+        ...this.state,
+        recentRequests: response.data
+      });
     });
   }
 
@@ -52,7 +66,10 @@ class Home extends Component {
     console.log(this.props);
 
     return (
-      <div className="container-fluid pt-4" style={{ backgroundColor: "#f8f9fc" }}>
+      <div
+        className="container-fluid pt-4"
+        style={{ backgroundColor: "#f8f9fc" }}
+      >
         {loggedIn ? (
           <div>
             <div className="row mt-4 mb-5">
@@ -108,6 +125,19 @@ class Home extends Component {
                 <HomeMatrix permissions={this.props.permissions} />
               </div>
             </div>
+
+            <div className="row mt-4">
+              <div className="card border-left-primary shadow h-100 col-sm-12 p-0">
+                <div className="card-header text-center py-3">
+                  <h4 className="m-0 font-weight-bold text-primary text-center">
+                    10 Most Recent Submissions
+                  </h4>
+                </div>
+                <RecentSubmissions permissions={this.props.permissions} tenRecent={this.state.recentRequests} />
+              </div>
+            </div>
+
+
           </div>
         ) : (
           <div className="row mt-3">
