@@ -59,7 +59,8 @@ class SubmitRequest extends Component {
         annVideoDates: request.annVideoDates.map(date => moment(date).isValid() ? new Date(date) : ""),
         tvScreensDates: request.tvScreensDates.map(date => moment(date).isValid() ? new Date(date) : ""),
         connectionCardDates: request.connectionCardDates.map(date => moment(date).isValid() ? new Date(date) : ""),
-        reqId: requestId
+        reqId: requestId,
+        createdAt: request.createdAt
       });
 
       Object.entries(this.state).map(([key, value]) => {
@@ -110,7 +111,8 @@ class SubmitRequest extends Component {
     annVideoDates: [new Date() ],
     tvScreensDates: [new Date() ],
     connectionCardDates: [new Date() ],
-    reqId: ""
+    reqId: "",
+    createdAt: ""
   };
 
   handleInputChange = event => {
@@ -270,7 +272,7 @@ class SubmitRequest extends Component {
         annVideoDates: this.state.annVideoDates,
         tvScreensDates: this.state.tvScreensDates,
         connectionCardDates: this.state.connectionCardDates,
-        id: this.state.reqId
+        // id: this.state.reqId
       })
       .then(response => {
         console.log(response);
@@ -305,14 +307,22 @@ class SubmitRequest extends Component {
           <div className="row mb-5">
             <div className="col">
               <h2 className="mb-4 text-center">
-                Submit a Communications Request
+                Edit a Communications Request
               </h2>
               <h5>DEADLINES</h5>
               <p className="mb-1"><span className="font-weight-bold">Newsletter, Announement Video, Connection Card: </span><br /> Mondays @ 5:00 pm; Two weeks notice</p>
-              <p><span className="font-weight-bold">Posters, banners, booklets, programs, graphics, etc: </span><br />
+              <p className="mb-5"><span className="font-weight-bold">Posters, banners, booklets, programs, graphics, etc: </span><br />
               Minimum of three weeks notice <br/>
               All content must be submitted two weeks before you need final product</p>
               <form className="form text-left">
+                <div className="form-group row">
+                  <label htmlFor="eventSubmitted" className="col-sm-2 col-form-label">
+                    Request Submitted
+                  </label>
+                  <div className="col-sm-2 d-flex align-items-center">
+                    {moment(this.state.createdAt).format("MM/DD/YYYY")}
+                  </div>
+                </div>
                 <div className="form-group row">
                   <label
                     htmlFor="eventName"

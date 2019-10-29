@@ -268,7 +268,7 @@ class SubmitRequest extends Component {
               </h2>
               <h5>DEADLINES</h5>
               <p className="mb-1"><span className="font-weight-bold">Newsletter, Announement Video, Connection Card: </span><br /> Mondays @ 5:00 pm; Two weeks notice</p>
-              <p><span className="font-weight-bold">Posters, banners, booklets, programs, graphics, etc: </span><br />
+              <p className="mb-5"><span className="font-weight-bold">Posters, banners, booklets, programs, graphics, etc: </span><br />
               Minimum of three weeks notice <br/>
               All content must be submitted two weeks before you need final product</p>
               <form className="form text-left">
