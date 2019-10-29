@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import DatePicker from "react-datepicker";
+import subDays from "date-fns/subDays"
 // import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -252,6 +253,12 @@ class SubmitRequest extends Component {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.reDirectTo }} />;
     } else {
+
+      const isWeekendDate = date => {
+        const day = date.getDay();
+        return day !== 1 && day !== 2 && day !== 3 && day !== 4 && day !== 5;
+      };
+
       return (
         <div className="container pt-4">
           <div className="row mb-5">
@@ -310,6 +317,7 @@ class SubmitRequest extends Component {
                       selected={this.state.requestDueDate}
                       onChange={this.handleChange}
                     />
+                    <small id="dueDateHelp" className="form-text text-muted">Two weeks notice for newsletter, announcement video or connection card.  Three weeks notice for posters, banner, booklets, etc.</small>
                   </div>
                 </div>
                 <div className="form-group row">
@@ -677,6 +685,7 @@ class SubmitRequest extends Component {
                                 <DatePicker
                       selected={date}
                       onChange={this.handleNewsletterDate(index)}
+                      filterDate={isWeekendDate}
                     />
                                 <div className="input-group-append">
                                   <span
@@ -735,6 +744,7 @@ class SubmitRequest extends Component {
                                 <DatePicker
                       selected={date}
                       onChange={this.handleAnnVideoDate(index)}
+                      filterDate={isWeekendDate}
                     />
                                 <div className="input-group-append">
                                   <span
@@ -793,6 +803,7 @@ class SubmitRequest extends Component {
                                 <DatePicker
                       selected={date}
                       onChange={this.handletvScreensDate(index)}
+                      filterDate={isWeekendDate}
                     />
                                 <div className="input-group-append">
                                   <span
@@ -854,6 +865,7 @@ class SubmitRequest extends Component {
                                   <DatePicker
                       selected={date}
                       onChange={this.handleConnectionCardDate(index)}
+                      filterDate={isWeekendDate}
                     />
                                   <div className="input-group-append">
                                     <span
