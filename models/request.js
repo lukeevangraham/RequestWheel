@@ -197,6 +197,14 @@ module.exports = function(sequelize, DataTypes) {
       set(val) {
         this.setDataValue('connectionCardDates', val.join(';'));
       },
+    },
+    orgName: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    orgId: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   });
   return Request;

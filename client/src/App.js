@@ -84,6 +84,7 @@ class App extends Component {
                 name={this.state.firstName}
                 loggedIn={this.state.loggedIn}
                 permissions={this.state.permissions}
+                orgName={this.state.orgName}
               />
             )}
           />
@@ -98,12 +99,12 @@ class App extends Component {
             <div>
               <Route
                 path="/submit-request"
-                render={() => <SubmitRequest email={this.state.email} />}
+                render={() => <SubmitRequest email={this.state.email} orgName={this.state.orgName} />}
               />
               <Route
                 path="/edit-request/:id"
                 render={props => (
-                  <EditRequest email={this.state.email} {...props} />
+                  <EditRequest email={this.state.email} orgName={this.state.orgName} {...props} />
                 )}
               />
               <Route

@@ -60,7 +60,7 @@ class SubmitRequest extends Component {
         tvScreensDates: request.tvScreensDates.map(date => moment(date).isValid() ? new Date(date) : ""),
         connectionCardDates: request.connectionCardDates.map(date => moment(date).isValid() ? new Date(date) : ""),
         reqId: requestId,
-        createdAt: request.createdAt
+        createdAt: request.createdAt,
       });
 
       Object.entries(this.state).map(([key, value]) => {
@@ -272,7 +272,8 @@ class SubmitRequest extends Component {
         annVideoDates: this.state.annVideoDates,
         tvScreensDates: this.state.tvScreensDates,
         connectionCardDates: this.state.connectionCardDates,
-        // id: this.state.reqId
+        orgName: this.props.orgName,
+        id: this.state.reqId
       })
       .then(response => {
         console.log(response);

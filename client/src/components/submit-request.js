@@ -188,8 +188,8 @@ class SubmitRequest extends Component {
       alert("please add something to the body");
     }
 
-    console.log("request-submit-form, eventName: ");
-    console.log(this.state.newsletterDates);
+    console.log("request-submit-form, org: ");
+    console.log(this.props.orgName);
     //request to server here
     axios
       .post("/requests", {
@@ -228,7 +228,8 @@ class SubmitRequest extends Component {
         newsletterDates: this.state.newsletterDates,
         annVideoDates: this.state.annVideoDates,
         tvScreensDates: this.state.tvScreensDates,
-        connectionCardDates: this.state.connectionCardDates
+        connectionCardDates: this.state.connectionCardDates,
+        orgName: this.props.orgName
       })
       .then(response => {
         console.log(response);
@@ -252,6 +253,8 @@ class SubmitRequest extends Component {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.reDirectTo }} />;
     } else {
+
+      console.log("ORGNAME: ", this.props.orgName)
 
       const isWeekendDate = date => {
         const day = date.getDay();

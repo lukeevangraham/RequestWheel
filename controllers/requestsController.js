@@ -146,6 +146,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log("CREATING!")
+    console.log("BODY: ", req.body)
     db.Request.create(req.body)
       .then(function(dbModel) {
         return res.json(dbModel);
@@ -153,6 +155,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    console.log("UPDATE:")
+    console.log(req.body)
     db.Request.update(req.body, {
       where: {
         id: req.body.id

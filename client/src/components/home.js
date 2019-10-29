@@ -122,7 +122,7 @@ class Home extends Component {
                     Current Communication Plans
                   </h4>
                 </div>
-                <HomeMatrix permissions={this.props.permissions} />
+                <HomeMatrix permissions={this.props.permissions} orgName={this.props.orgName} />
               </div>
             </div>
 
@@ -133,7 +133,7 @@ class Home extends Component {
                     10 Most Recent Submissions
                   </h4>
                 </div>
-                <RecentSubmissions permissions={this.props.permissions} tenRecent={this.state.recentRequests} />
+                <RecentSubmissions permissions={this.props.permissions} tenRecent={this.state.recentRequests} orgName={this.props.orgName} />
               </div>
             </div>
 

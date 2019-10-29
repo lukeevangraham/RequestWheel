@@ -4,8 +4,7 @@ import moment from "moment";
 import Axios from "axios";
 
 class WeekendPlan extends Component {
-
-state = {
+  state = {
     annVideoRequests: [],
     connectionCardRequests: [],
     newsletterRequests: [],
@@ -14,35 +13,26 @@ state = {
   };
 
   componentDidMount() {
-      console.log("WEEKEND PLAN PROPS: ", this.props)
+    console.log("WEEKEND PLAN PROPS: ", this.props);
     Promise.all([
       Axios.get(
-        "/requests/annVid/" +
-          moment(this.props.date)
-            .format("YYYY-MM-DD")
+        "/requests/annVid/" + moment(this.props.date).format("YYYY-MM-DD")
       ),
       Axios.get(
         "/requests/connectionCard/" +
-          moment(this.props.date)
-            .format("YYYY-MM-DD")
+          moment(this.props.date).format("YYYY-MM-DD")
       ),
       Axios.get(
-        "/requests/tvScreens/" +
-          moment(this.props.date)
-            .format("YYYY-MM-DD")
+        "/requests/tvScreens/" + moment(this.props.date).format("YYYY-MM-DD")
       ),
       Axios.get(
-        "/requests/newsletter/" +
-          moment(this.props.date)
-            .format("YYYY-MM-DD")
+        "/requests/newsletter/" + moment(this.props.date).format("YYYY-MM-DD")
       ),
       Axios.get(
-        "/requests/other/" +
-          moment(this.props.date)
-            .format("YYYY-MM-DD")
+        "/requests/other/" + moment(this.props.date).format("YYYY-MM-DD")
       )
     ]).then(resultArray => {
-      console.log("PROMISE RESULT: ", resultArray)
+      console.log("PROMISE RESULT: ", resultArray);
       this.setState({
         ...this.state,
         annVideoRequests: resultArray[0].data,
@@ -58,53 +48,86 @@ state = {
   }
 
   render() {
-      return (
-          <div>
-            <div className="card-header bg-gray-300 font-weight-bold">
-            Announcement Video
-            </div>
-          <ul className="list-group list-group-flush">
-            {this.state.annVideoRequests.map(request => {
-              {/* console.log("Request: ", request.annVideoDates); */}
-              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item text-left">{request.eventName}</li></Link>;
-            })}
-          </ul>
+    return (
+      <div>
+        <div className="card-header bg-gray-300 font-weight-bold">
+          Announcement Video
+        </div>
+        <ul className="list-group list-group-flush">
+          {this.state.annVideoRequests.map(request => {
+            console.log("REQUEST: ", request, request.eventName);
+            if (request.forAnnVideo) {
+              return (
+                <Link to={`/edit-request/${request.id}`}>
+                  <li className="list-group-item text-left">
+                    {request.eventName}
+                  </li>
+                </Link>
+              );
+            }
+          })}
+        </ul>
 
-          <div className="card-header bg-gray-300 font-weight-bold">
-            Connection Card
-          </div>
-          <ul className="list-group list-group-flush">
-            {this.state.connectionCardRequests.map(request => {
-              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item">{request.eventName}</li></Link>;
-            })}
-          </ul>
-          <div className="card-header bg-gray-300 font-weight-bold">
-            Newsletter
-          </div>
-          <ul className="list-group list-group-flush">
-            {this.state.newsletterRequests.map(request => {
-              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item">{request.eventName}</li></Link>;
-            })}
-          </ul>
-          <div className="card-header bg-gray-300 font-weight-bold">
-            TV Screens
-          </div>
-          <ul className="list-group list-group-flush">
-            {this.state.tvScreensRequests.map(request => {
-              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item">{request.eventName}</li></Link>;
-            })}
-          </ul>
-          <div className="card-header bg-gray-300 font-weight-bold">
-            Other
-          </div>
-          <ul className="list-group list-group-flush">
-            {this.state.otherRequests.map(request => {
-              return <Link to={`/edit-request/${request.id}`}><li className="list-group-item">{request.eventName}</li></Link>;
-            })}
-          </ul>
-          </div>
-      )
+        <div className="card-header bg-gray-300 font-weight-bold">
+          Connection Card
+        </div>
+        <ul className="list-group list-group-flush">
+          {this.state.connectionCardRequests.map(request => {
+                if (request.forConnectionCard) {
+                  return (
+                    <Link to={`/edit-request/${request.id}`}>
+                      <li className="list-group-item">{request.eventName}</li>
+                    </Link>
+                  );
+                }
+              })
+           }
+        </ul>
+        <div className="card-header bg-gray-300 font-weight-bold">
+          Newsletter
+        </div>
+        <ul className="list-group list-group-flush">
+          {this.state.newsletterRequests.map(request => {
+            if (request.forNewsletter) {
+                return (
+                  <Link to={`/edit-request/${request.id}`}>
+                    <li className="list-group-item">{request.eventName}</li>
+                  </Link>
+                );
+              
+            }
+              })
+           }
+        </ul>
+        <div className="card-header bg-gray-300 font-weight-bold">
+          TV Screens
+        </div>
+        <ul className="list-group list-group-flush">
+          {this.state.tvScreensRequests.map(request => {
+            if (request.forTVScreens) {
+                return (
+                  <Link to={`/edit-request/${request.id}`}>
+                    <li className="list-group-item">{request.eventName}</li>
+                  </Link>
+                );
+              
+            }
+              })
+         }
+        </ul>
+        <div className="card-header bg-gray-300 font-weight-bold">Other</div>
+        <ul className="list-group list-group-flush">
+          {this.state.otherRequests.map(request => {
+            return (
+              <Link to={`/edit-request/${request.id}`}>
+                <li className="list-group-item">{request.eventName}</li>
+              </Link>
+            );
+          })}
+        </ul>
+      </div>
+    );
   }
 }
 
-export default WeekendPlan
+export default WeekendPlan;
