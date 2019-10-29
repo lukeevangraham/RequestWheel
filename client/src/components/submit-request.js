@@ -24,7 +24,7 @@ class SubmitRequest extends Component {
     // email: "",
     eventName: "",
     submittedDate: "",
-    requestDueDate: new Date(),
+    requestDueDate: new Date(moment().add(2, 'w')),
     approver: "",
     approverEmail: "",
     letterFlyer: false,
@@ -51,10 +51,10 @@ class SubmitRequest extends Component {
     forConnectionCard: false,
     body: "",
     quantity: "",
-    newsletterDates: [ new Date() ],
-    annVideoDates: [ new Date() ],
-    tvScreensDates: [ new Date() ],
-    connectionCardDates: [ new Date() ]
+    newsletterDates: [ new Date(moment().add(2, 'w')) ],
+    annVideoDates: [ new Date(moment().add(2, 'w')) ],
+    tvScreensDates: [ new Date(moment().add(2, 'w')) ],
+    connectionCardDates: [ new Date(moment().add(2, 'w')) ]
   };
 
   handleInputChange = event => {
@@ -256,9 +256,14 @@ class SubmitRequest extends Component {
         <div className="container pt-4">
           <div className="row mb-5">
             <div className="col">
-              <h2 className="mb-5 text-center">
+              <h2 className="mb-4 text-center">
                 Submit a Communications Request
               </h2>
+              <h5>DEADLINES</h5>
+              <p className="mb-1"><span className="font-weight-bold">Newsletter, Announement Video, Connection Card: </span><br /> Mondays @ 5:00 pm; Two weeks notice</p>
+              <p><span className="font-weight-bold">Posters, banners, booklets, programs, graphics, etc: </span><br />
+              Minimum of three weeks notice <br/>
+              All content must be submitted two weeks before you need final product</p>
               <form className="form text-left">
                 <div className="form-group row">
                   <label
