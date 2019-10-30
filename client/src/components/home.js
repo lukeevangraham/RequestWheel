@@ -32,7 +32,7 @@ class Home extends Component {
         ...this.state,
         requests: response.data
       });
-      console.log(this.state.requests);
+      // console.log(this.state.requests);
     });
   }
 

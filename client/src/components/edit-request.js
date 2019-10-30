@@ -27,7 +27,7 @@ class SubmitRequest extends Component {
       console.log(request);
       this.setState({
         eventName: request.eventName,
-        requestDueDate: new Date(request.requestDueDate),
+        requestDueDate: new Date(moment(request.requestDueDate).format()),
         approver: request.approver,
         approverEmail: request.approverEmail,
         body: request.body,
@@ -55,10 +55,10 @@ class SubmitRequest extends Component {
         staple: request.staple,
         tabloidPoster: request.tabloidPoster,
         tvGraphic: request.tvGraphic,
-        newsletterDates: request.newsletterDates.map(date => moment(date).isValid() ? new Date(date) : ""),
-        annVideoDates: request.annVideoDates.map(date => moment(date).isValid() ? new Date(date) : ""),
-        tvScreensDates: request.tvScreensDates.map(date => moment(date).isValid() ? new Date(date) : ""),
-        connectionCardDates: request.connectionCardDates.map(date => moment(date).isValid() ? new Date(date) : ""),
+        newsletterDates: request.newsletterDates.map(date => moment(date).isValid() ? new Date(moment(date).format()) : ""),
+        annVideoDates: request.annVideoDates.map(date => moment(date).isValid() ? new Date(moment(date).format()) : ""),
+        tvScreensDates: request.tvScreensDates.map(date => moment(date).isValid() ? new Date(moment(date).format()) : ""),
+        connectionCardDates: request.connectionCardDates.map(date => moment(date).isValid() ? new Date(moment(date).format()) : ""),
         reqId: requestId,
         createdAt: request.createdAt,
       });
@@ -241,7 +241,7 @@ class SubmitRequest extends Component {
         email: this.props.email,
         eventName: this.state.eventName,
         submittedDate: moment().format("YYYY-MM-DD"),
-        requestDueDate: this.state.requestDueDate,
+        requestDueDate: moment(this.state.requestDueDate).format("YYYY-MM-DD"),
         approver: this.state.approver,
         approverEmail: this.state.approverEmail,
         letterFlyer: this.state.letterFlyer,
@@ -268,10 +268,18 @@ class SubmitRequest extends Component {
         forConnectionCard: this.state.forConnectionCard,
         body: this.state.body,
         quantity: this.state.quantity,
-        newsletterDates: this.state.newsletterDates,
-        annVideoDates: this.state.annVideoDates,
-        tvScreensDates: this.state.tvScreensDates,
-        connectionCardDates: this.state.connectionCardDates,
+        newsletterDates: this.state.newsletterDates.map( date => {
+          return moment(date).format("YYYY-MM-DD")
+        }),
+        annVideoDates: this.state.annVideoDates.map( date => {
+          return moment(date).format("YYYY-MM-DD")
+        }),
+        tvScreensDates: this.state.tvScreensDates.map( date => {
+          return moment(date).format("YYYY-MM-DD")
+        }),
+        connectionCardDates: this.state.connectionCardDates.map( date => {
+          return moment(date).format("YYYY-MM-DD")
+        }),
         orgName: this.props.orgName,
         id: this.state.reqId
       })

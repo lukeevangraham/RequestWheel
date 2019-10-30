@@ -113,6 +113,7 @@ class SubmitRequest extends Component {
     this.setState({
       annVideoDates: annVideoDates
     });
+    console.log("LOOK HERE: ", this.state.annVideoDates)
   };
 
   addAnnVideoDate = e => {
@@ -188,6 +189,11 @@ class SubmitRequest extends Component {
       alert("please add something to the body");
     }
 
+    let formattedAnnVideoDates = this.state.annVideoDates.map( date => {
+      return moment(date).format("YYYY-MM-DD")
+    }
+      )
+
     console.log("request-submit-form, org: ");
     console.log(this.props.orgName);
     //request to server here
@@ -198,7 +204,7 @@ class SubmitRequest extends Component {
         email: this.props.email,
         eventName: this.state.eventName,
         submittedDate: moment(),
-        requestDueDate: this.state.requestDueDate,
+        requestDueDate: moment(this.state.requestDueDate).format("YYYY-MM-DD"),
         approver: this.state.approver,
         approverEmail: this.state.approverEmail,
         letterFlyer: this.state.letterFlyer,
@@ -225,10 +231,18 @@ class SubmitRequest extends Component {
         forConnectionCard: this.state.forConnectionCard,
         body: this.state.body,
         quantity: this.state.quantity,
-        newsletterDates: this.state.newsletterDates,
-        annVideoDates: this.state.annVideoDates,
-        tvScreensDates: this.state.tvScreensDates,
-        connectionCardDates: this.state.connectionCardDates,
+        newsletterDates: this.state.newsletterDates.map( date => {
+          return moment(date).format("YYYY-MM-DD")
+        }),
+        annVideoDates: this.state.annVideoDates.map( date => {
+          return moment(date).format("YYYY-MM-DD")
+        }),
+        tvScreensDates: this.state.tvScreensDates.map( date => {
+          return moment(date).format("YYYY-MM-DD")
+        }),
+        connectionCardDates: this.state.connectionCardDates.map( date => {
+          return moment(date).format("YYYY-MM-DD")
+        }),
         orgName: this.props.orgName
       })
       .then(response => {

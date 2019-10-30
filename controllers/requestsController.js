@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 // Defining methods for the requestsController
 module.exports = {
   findAll: function(req, res) {
-    console.log("FINDING ALL: ", req);
+    // console.log("FINDING ALL: ", req);
     // db.Request.findAll(req.query)
     db.Request.findAll({
       limit: 10,
@@ -31,17 +31,21 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAnnVidItemByDate: function(req, res) {
-    let sevenDaysEarlier = moment(req.params.date)
-      .subtract(7, "days")
-      .format("YYYY-MM-DD");
+    console.log("REQ DATE: ", new Date(req.params.date).toISOString())
+    let convertedToISO = moment(req.params.date).format()
+      // .subtract(7, "days")
+      let sevenDaysEarlier = moment(convertedToISO)
+      .subtract(2, "days");
+      console.log("SEVEN DAYS EARLIER: ", moment(sevenDaysEarlier).format())
     db.Request.findAll({
       where: {
         annVideoDates: {
-          [Op.between]: [sevenDaysEarlier, req.params.date]
+          [Op.between]: [moment(sevenDaysEarlier).format(), moment(req.params.date).format()]
         }
       }
     })
       .then(response => {
+        // console.log("RESPONSE: ", response.annVideoDates[0])
         return res.json(response);
       })
       .catch(err => res.status(422).json(err));
