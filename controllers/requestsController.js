@@ -40,7 +40,7 @@ module.exports = {
     db.Request.findAll({
       where: {
         annVideoDates: {
-          [Op.between]: [moment(sevenDaysEarlier).format(), moment(req.params.date).format()]
+          [Op.between]: [sevenDaysEarlier, req.params.date]
         }
       }
     })
@@ -83,9 +83,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findNewsletteItemrByDate: function(req, res) {
+    console.log("looking at newsletter dates!")
     let sevenDaysEarlier = moment(req.params.date)
       .subtract(7, "days")
       .format("YYYY-MM-DD");
+      console.log("7 days earlier: ", sevenDaysEarlier)
+      console.log("day: ", req.params.date)
     db.Request.findAll({
       where: {
         newsletterDates: {

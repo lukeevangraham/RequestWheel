@@ -24,7 +24,7 @@ class SubmitRequest extends Component {
     // email: "",
     eventName: "",
     submittedDate: "",
-    requestDueDate: new Date(moment().add(2, 'w')),
+    requestDueDate: new Date(moment().add(2, "w")),
     approver: "",
     approverEmail: "",
     letterFlyer: false,
@@ -51,10 +51,10 @@ class SubmitRequest extends Component {
     forConnectionCard: false,
     body: "",
     quantity: "",
-    newsletterDates: [ new Date(moment().add(2, 'w')) ],
-    annVideoDates: [ new Date(moment().add(2, 'w')) ],
-    tvScreensDates: [ new Date(moment().add(2, 'w')) ],
-    connectionCardDates: [ new Date(moment().add(2, 'w')) ]
+    newsletterDates: [new Date(moment().add(2, "w"))],
+    annVideoDates: [new Date(moment().add(2, "w"))],
+    tvScreensDates: [new Date(moment().add(2, "w"))],
+    connectionCardDates: [new Date(moment().add(2, "w"))]
   };
 
   handleInputChange = event => {
@@ -70,7 +70,7 @@ class SubmitRequest extends Component {
   };
 
   handleChange = date => {
-    console.log("DATE: ", date)
+    console.log("DATE: ", date);
     this.setState({
       requestDueDate: date
     });
@@ -113,7 +113,7 @@ class SubmitRequest extends Component {
     this.setState({
       annVideoDates: annVideoDates
     });
-    console.log("LOOK HERE: ", this.state.annVideoDates)
+    console.log("LOOK HERE: ", this.state.annVideoDates);
   };
 
   addAnnVideoDate = e => {
@@ -189,10 +189,9 @@ class SubmitRequest extends Component {
       alert("please add something to the body");
     }
 
-    let formattedAnnVideoDates = this.state.annVideoDates.map( date => {
-      return moment(date).format("YYYY-MM-DD")
-    }
-      )
+    let formattedAnnVideoDates = this.state.annVideoDates.map(date => {
+      return moment(date).format("YYYY-MM-DD");
+    });
 
     console.log("request-submit-form, org: ");
     console.log(this.props.orgName);
@@ -231,17 +230,17 @@ class SubmitRequest extends Component {
         forConnectionCard: this.state.forConnectionCard,
         body: this.state.body,
         quantity: this.state.quantity,
-        newsletterDates: this.state.newsletterDates.map( date => {
-          return moment(date).format("YYYY-MM-DD")
+        newsletterDates: this.state.newsletterDates.map(date => {
+          return moment(date).format("YYYY-MM-DD");
         }),
-        annVideoDates: this.state.annVideoDates.map( date => {
-          return moment(date).format("YYYY-MM-DD")
+        annVideoDates: this.state.annVideoDates.map(date => {
+          return moment(date).format("YYYY-MM-DD");
         }),
-        tvScreensDates: this.state.tvScreensDates.map( date => {
-          return moment(date).format("YYYY-MM-DD")
+        tvScreensDates: this.state.tvScreensDates.map(date => {
+          return moment(date).format("YYYY-MM-DD");
         }),
-        connectionCardDates: this.state.connectionCardDates.map( date => {
-          return moment(date).format("YYYY-MM-DD")
+        connectionCardDates: this.state.connectionCardDates.map(date => {
+          return moment(date).format("YYYY-MM-DD");
         }),
         orgName: this.props.orgName
       })
@@ -267,8 +266,7 @@ class SubmitRequest extends Component {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.reDirectTo }} />;
     } else {
-
-      console.log("ORGNAME: ", this.props.orgName)
+      console.log("ORGNAME: ", this.props.orgName);
 
       const isWeekendDate = date => {
         const day = date.getDay();
@@ -283,10 +281,21 @@ class SubmitRequest extends Component {
                 Submit a Communications Request
               </h2>
               <h5>DEADLINES</h5>
-              <p className="mb-1"><span className="font-weight-bold">Newsletter, Announement Video, Connection Card: </span><br /> Mondays @ 5:00 pm; Two weeks notice</p>
-              <p className="mb-5"><span className="font-weight-bold">Posters, banners, booklets, programs, graphics, etc: </span><br />
-              Minimum of three weeks notice <br/>
-              All content must be submitted two weeks before you need final product</p>
+              <p className="mb-1">
+                <span className="font-weight-bold">
+                  Newsletter, Announement Video, Connection Card:{" "}
+                </span>
+                <br /> Mondays @ 5:00 pm; Two weeks notice
+              </p>
+              <p className="mb-5">
+                <span className="font-weight-bold">
+                  Posters, banners, booklets, programs, graphics, etc:{" "}
+                </span>
+                <br />
+                Minimum of three weeks notice <br />
+                All content must be submitted two weeks before you need final
+                product
+              </p>
               <form className="form text-left">
                 <div className="form-group row">
                   <label
@@ -333,7 +342,11 @@ class SubmitRequest extends Component {
                       selected={this.state.requestDueDate}
                       onChange={this.handleChange}
                     />
-                    <small id="dueDateHelp" className="form-text text-muted">Two weeks notice for newsletter, announcement video or connection card.  Three weeks notice for posters, banner, booklets, etc.</small>
+                    <small id="dueDateHelp" className="form-text text-muted">
+                      Two weeks notice for newsletter, announcement video or
+                      connection card. Three weeks notice for posters, banner,
+                      booklets, etc.
+                    </small>
                   </div>
                 </div>
                 <div className="form-group row">
@@ -683,14 +696,16 @@ class SubmitRequest extends Component {
                         </div>
                         {this.state.forNewsletter ? (
                           <Fragment>
-                            {this.state.newsletterDates.map((date, index) => (
-                              console.log("DATE from map: ", date),
-                              console.log("INDEX from map: ", index),
-                              <span
-                                className="input-group input-group-sm mb-1"
-                                key={index}
-                              >
-                                {/* <input
+                            {this.state.newsletterDates.map(
+                              (date, index) => (
+                                console.log("DATE from map: ", date),
+                                console.log("INDEX from map: ", index),
+                                (
+                                  <span
+                                    className="input-group input-group-sm mb-1"
+                                    key={index}
+                                  >
+                                    {/* <input
                                   className="form-control"
                                   type="date"
                                   onChange={this.handleNewsletterDate(index)}
@@ -698,21 +713,27 @@ class SubmitRequest extends Component {
                                   placeholder="yyyy-mm-dd"
                                   name="newsletterDates"
                                 /> */}
-                                <DatePicker
-                      selected={date}
-                      onChange={this.handleNewsletterDate(index)}
-                      filterDate={isWeekendDate}
-                    />
-                                <div className="input-group-append">
-                                  <span
-                                    className="input-group-text bg-danger text-white smallAppend"
-                                    onClick={this.deleteNewsletterDate(index)}
-                                  >
-                                    X
+                                    <DatePicker
+                                      selected={date}
+                                      onChange={this.handleNewsletterDate(
+                                        index
+                                      )}
+                                      filterDate={isWeekendDate}
+                                    />
+                                    <div className="input-group-append">
+                                      <span
+                                        className="input-group-text bg-danger text-white smallAppend"
+                                        onClick={this.deleteNewsletterDate(
+                                          index
+                                        )}
+                                      >
+                                        X
+                                      </span>
+                                    </div>
                                   </span>
-                                </div>
-                              </span>
-                            ))}
+                                )
+                              )
+                            )}
                             <button
                               className="form-control mb-4"
                               onClick={this.addNewsletterDate}
@@ -758,10 +779,10 @@ class SubmitRequest extends Component {
                                   placeholder="yyyy-mm-dd"
                                 /> */}
                                 <DatePicker
-                      selected={date}
-                      onChange={this.handleAnnVideoDate(index)}
-                      filterDate={isWeekendDate}
-                    />
+                                  selected={date}
+                                  onChange={this.handleAnnVideoDate(index)}
+                                  filterDate={isWeekendDate}
+                                />
                                 <div className="input-group-append">
                                   <span
                                     className="input-group-text bg-danger text-white smallAppend"
@@ -817,10 +838,10 @@ class SubmitRequest extends Component {
                                   placeholder="yyyy-mm-dd"
                                 /> */}
                                 <DatePicker
-                      selected={date}
-                      onChange={this.handletvScreensDate(index)}
-                      filterDate={isWeekendDate}
-                    />
+                                  selected={date}
+                                  onChange={this.handletvScreensDate(index)}
+                                  filterDate={isWeekendDate}
+                                />
                                 <div className="input-group-append">
                                   <span
                                     className="input-group-text bg-danger text-white smallAppend"
@@ -879,10 +900,12 @@ class SubmitRequest extends Component {
                                     placeholder="yyyy-mm-dd"
                                   /> */}
                                   <DatePicker
-                      selected={date}
-                      onChange={this.handleConnectionCardDate(index)}
-                      filterDate={isWeekendDate}
-                    />
+                                    selected={date}
+                                    onChange={this.handleConnectionCardDate(
+                                      index
+                                    )}
+                                    filterDate={isWeekendDate}
+                                  />
                                   <div className="input-group-append">
                                     <span
                                       className="input-group-text bg-danger text-white smallAppend"
