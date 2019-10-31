@@ -84,7 +84,7 @@ class WeekendPlan extends Component {
            }
         </ul>
         <div className="card-header bg-gray-300 font-weight-bold">
-          Newsletter
+          <Link to={{ pathname: '/newsletter-content', state: { newsletterRequests: this.state.newsletterRequests }  }} >Newsletter</Link>
         </div>
         <ul className="list-group list-group-flush">
           {this.state.newsletterRequests.map(request => {

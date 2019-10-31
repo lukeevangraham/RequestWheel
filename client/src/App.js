@@ -12,6 +12,7 @@ import EditRequest from "./components/edit-request";
 import People from "./components/people";
 import AddPerson from "./components/addPerson";
 import Profile from "./components/profile";
+import NewsletterContent from "./components/newsletterContent";
 
 class App extends Component {
   constructor() {
@@ -110,6 +111,10 @@ class App extends Component {
               <Route
                 path="/people"
                 render={() => <People orgName={this.state.orgName} firstName={this.state.firstName} />}
+              />
+              <Route
+              path="/newsletter-content"
+              render={props => ( <NewsletterContent {...props} />)}
               />
             </div>
           )}
