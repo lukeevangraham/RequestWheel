@@ -21,6 +21,14 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     eventName: {
       type: DataTypes.STRING,
       allowNull: true,

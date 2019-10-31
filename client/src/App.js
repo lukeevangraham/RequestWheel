@@ -21,6 +21,7 @@ class App extends Component {
       loggedIn: false,
       email: null,
       firstName: null,
+      lastName: null,
       orgName: null,
       permissions: null
     };
@@ -49,6 +50,7 @@ class App extends Component {
           loggedIn: true,
           email: response.data.user.email,
           firstName: response.data.user.firstName,
+          lastName: response.data.user.lastName,
           orgName: response.data.user.orgName,
           permissions: response.data.user.permissions
         });
@@ -94,27 +96,49 @@ class App extends Component {
             render={() => <LoginForm updateUser={this.updateUser} />}
           />
           <Route path="/signup" render={() => <Signup />} />
-          <Route path="/addperson/:org" render={(props) => <AddPerson {...props} /> } />
-          <Route path="/profile/:org" render={(props) => <Profile {...props} />} />
+          <Route
+            path="/addperson/:org"
+            render={props => <AddPerson {...props} />}
+          />
+          <Route
+            path="/profile/:org"
+            render={props => <Profile {...props} />}
+          />
           {this.state.loggedIn && (
             <div>
               <Route
                 path="/submit-request"
-                render={() => <SubmitRequest email={this.state.email} orgName={this.state.orgName} />}
+                render={() => (
+                  <SubmitRequest
+                    email={this.state.email}
+                    orgName={this.state.orgName}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
+                  />
+                )}
               />
               <Route
                 path="/edit-request/:id"
                 render={props => (
-                  <EditRequest email={this.state.email} orgName={this.state.orgName} {...props} />
+                  <EditRequest
+                    email={this.state.email}
+                    orgName={this.state.orgName}
+                    {...props}
+                  />
                 )}
               />
               <Route
                 path="/people"
-                render={() => <People orgName={this.state.orgName} firstName={this.state.firstName} />}
+                render={() => (
+                  <People
+                    orgName={this.state.orgName}
+                    firstName={this.state.firstName}
+                  />
+                )}
               />
               <Route
-              path="/newsletter-content"
-              render={props => ( <NewsletterContent {...props} />)}
+                path="/newsletter-content"
+                render={props => <NewsletterContent {...props} />}
               />
             </div>
           )}

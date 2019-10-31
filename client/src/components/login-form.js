@@ -39,6 +39,7 @@ class LoginForm extends Component {
             loggedIn: true,
             email: response.data.email,
             firstName: response.data.firstName,
+            lastName: response.data.firstName,
             orgName: response.data.orgName,
             permissions: response.data.permissions
           });
