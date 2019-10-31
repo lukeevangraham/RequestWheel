@@ -73,6 +73,7 @@ router.post(
     var userInfo = {
       email: req.user.email,
       firstName: req.user.firstName,
+      lastName: req.user.lastName,
       orgName: req.user.orgName,
       permissions: req.user.permissions
     };

@@ -123,6 +123,8 @@ class App extends Component {
                   <EditRequest
                     email={this.state.email}
                     orgName={this.state.orgName}
+                    firstName={this.state.firstName}
+                    lastName={this.state.lastName}
                     {...props}
                   />
                 )}

@@ -246,7 +246,7 @@ class SubmitRequest extends Component {
       .put("/requests/" + this.state.reqId, {
         // name: this.state.name,
         // phone: this.state.phone,
-        email: this.props.email,
+        // email: this.props.email,
         eventName: this.state.eventName,
         submittedDate: moment().format("YYYY-MM-DD"),
         requestDueDate: moment(this.state.requestDueDate).format("YYYY-MM-DD"),
@@ -313,6 +313,7 @@ class SubmitRequest extends Component {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.reDirectTo }} />;
     } else {
+      console.log("PROPS: ", this.props);
       const isWeekendDate = date => {
         const day = date.getDay();
         return day !== 1 && day !== 2 && day !== 3 && day !== 4 && day !== 5;
