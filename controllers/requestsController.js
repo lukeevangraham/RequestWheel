@@ -31,15 +31,20 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAnnVidItemByDate: function(req, res) {
-    console.log("REQ DATE: ", new Date(req.params.date).toISOString());
-    let convertedToISO = moment(req.params.date).format();
-    // .subtract(7, "days")
-    let sevenDaysEarlier = moment(convertedToISO).subtract(2, "days");
-    console.log("SEVEN DAYS EARLIER: ", moment(sevenDaysEarlier).format());
+    let oneDayEarlier = moment(req.params.date)
+      .subtract(1, "days")
+      .format("YYYY-MM-DD");
     db.Request.findAll({
       where: {
         annVideoDates: {
-          [Op.between]: [sevenDaysEarlier, req.params.date]
+          [Op.or]: [
+            {
+              [Op.substring]: req.params.date
+            },
+            {
+              [Op.substring]: oneDayEarlier
+            }
+          ]
         }
       }
     })
@@ -50,13 +55,20 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findConncectionCardItemByDate: function(req, res) {
-    let sevenDaysEarlier = moment(req.params.date)
-      .subtract(7, "days")
+    let oneDayEarlier = moment(req.params.date)
+      .subtract(1, "days")
       .format("YYYY-MM-DD");
     db.Request.findAll({
       where: {
         connectionCardDates: {
-          [Op.between]: [sevenDaysEarlier, req.params.date]
+          [Op.or]: [
+            {
+              [Op.substring]: req.params.date
+            },
+            {
+              [Op.substring]: oneDayEarlier
+            }
+          ]
         }
       }
     })
@@ -66,13 +78,20 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findtvScreensItemByDate: function(req, res) {
-    let sevenDaysEarlier = moment(req.params.date)
-      .subtract(7, "days")
+   let oneDayEarlier = moment(req.params.date)
+      .subtract(1, "days")
       .format("YYYY-MM-DD");
     db.Request.findAll({
       where: {
         tvScreensDates: {
-          [Op.between]: [sevenDaysEarlier, req.params.date]
+          [Op.or]: [
+            {
+              [Op.substring]: req.params.date
+            },
+            {
+              [Op.substring]: oneDayEarlier
+            }
+          ]
         }
       }
     })
@@ -82,15 +101,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findNewsletteItemrByDate: function(req, res) {
-    console.log("looking at newsletter dates!");
+    // console.log("looking at newsletter dates!");
     let oneDayEarlier = moment(req.params.date)
       .subtract(1, "days")
       .format("YYYY-MM-DD");
-    console.log("1 day earlier: ", oneDayEarlier);
-    console.log("day: ", req.params.date);
     db.Request.findAll({
       where: {
-        // body: "day"
         newsletterDates: {
           [Op.or]: [
             {
@@ -109,13 +125,20 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findOtherItemByDate: function(req, res) {
-    let sevenDaysEarlier = moment(req.params.date)
-      .subtract(7, "days")
+    let oneDayEarlier = moment(req.params.date)
+      .subtract(1, "days")
       .format("YYYY-MM-DD");
     db.Request.findAll({
       where: {
         requestDueDate: {
-          [Op.between]: [sevenDaysEarlier, req.params.date]
+          [Op.or]: [
+            {
+              [Op.substring]: req.params.date
+            },
+            {
+              [Op.substring]: oneDayEarlier
+            }
+          ]
         }
       }
     })

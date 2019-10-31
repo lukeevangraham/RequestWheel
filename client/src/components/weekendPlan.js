@@ -13,7 +13,7 @@ class WeekendPlan extends Component {
   };
 
   componentDidMount() {
-    // console.log("WEEKEND PLAN PROPS: ", this.props);
+    console.log("WEEKEND PLAN PROPS: ", this.props);
     Promise.all([
       Axios.get(
         "/requests/annVid/" + moment(this.props.date).format("YYYY-MM-DD")
