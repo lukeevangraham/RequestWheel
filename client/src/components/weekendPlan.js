@@ -118,11 +118,13 @@ class WeekendPlan extends Component {
         <div className="card-header bg-gray-300 font-weight-bold">Other</div>
         <ul className="list-group list-group-flush">
           {this.state.otherRequests.map(request => {
+            if (!request.forAnnVideo && !request.forConnectionCard && !request.forNewsletter && !request.forTVScreens ) {
             return (
               <Link to={`/edit-request/${request.id}`}>
                 <li className="list-group-item">{request.eventName}</li>
               </Link>
-            );
+            ); 
+            }
           })}
         </ul>
       </div>
