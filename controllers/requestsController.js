@@ -43,6 +43,31 @@ module.exports = {
             },
             {
               [Op.substring]: oneDayEarlier
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(2, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(3, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(4, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(5, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(6, "d")
+                .format("YYYY-MM-DD")
             }
           ]
         }
@@ -67,6 +92,31 @@ module.exports = {
             },
             {
               [Op.substring]: oneDayEarlier
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(2, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(3, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(4, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(5, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(6, "d")
+                .format("YYYY-MM-DD")
             }
           ]
         }
@@ -78,7 +128,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findtvScreensItemByDate: function(req, res) {
-   let oneDayEarlier = moment(req.params.date)
+    let oneDayEarlier = moment(req.params.date)
       .subtract(1, "days")
       .format("YYYY-MM-DD");
     db.Request.findAll({
@@ -90,6 +140,31 @@ module.exports = {
             },
             {
               [Op.substring]: oneDayEarlier
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(2, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(3, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(4, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(5, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(6, "d")
+                .format("YYYY-MM-DD")
             }
           ]
         }
@@ -114,6 +189,31 @@ module.exports = {
             },
             {
               [Op.substring]: oneDayEarlier
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(2, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(3, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(4, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(5, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(6, "d")
+                .format("YYYY-MM-DD")
             }
           ]
         }
@@ -137,6 +237,31 @@ module.exports = {
             },
             {
               [Op.substring]: oneDayEarlier
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(2, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(3, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(4, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(5, "d")
+                .format("YYYY-MM-DD")
+            },
+            {
+              [Op.substring]: moment(req.params.date)
+                .subtract(6, "d")
+                .format("YYYY-MM-DD")
             }
           ]
         }
