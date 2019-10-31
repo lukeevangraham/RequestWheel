@@ -31,12 +31,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAnnVidItemByDate: function(req, res) {
-    console.log("REQ DATE: ", new Date(req.params.date).toISOString())
-    let convertedToISO = moment(req.params.date).format()
-      // .subtract(7, "days")
-      let sevenDaysEarlier = moment(convertedToISO)
-      .subtract(2, "days");
-      console.log("SEVEN DAYS EARLIER: ", moment(sevenDaysEarlier).format())
+    console.log("REQ DATE: ", new Date(req.params.date).toISOString());
+    let convertedToISO = moment(req.params.date).format();
+    // .subtract(7, "days")
+    let sevenDaysEarlier = moment(convertedToISO).subtract(2, "days");
+    console.log("SEVEN DAYS EARLIER: ", moment(sevenDaysEarlier).format());
     db.Request.findAll({
       where: {
         annVideoDates: {
@@ -83,16 +82,24 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findNewsletteItemrByDate: function(req, res) {
-    console.log("looking at newsletter dates!")
-    let sevenDaysEarlier = moment(req.params.date)
-      .subtract(7, "days")
+    console.log("looking at newsletter dates!");
+    let oneDayEarlier = moment(req.params.date)
+      .subtract(1, "days")
       .format("YYYY-MM-DD");
-      console.log("7 days earlier: ", sevenDaysEarlier)
-      console.log("day: ", req.params.date)
+    console.log("1 day earlier: ", oneDayEarlier);
+    console.log("day: ", req.params.date);
     db.Request.findAll({
       where: {
+        // body: "day"
         newsletterDates: {
-          [Op.between]: [sevenDaysEarlier, req.params.date]
+          [Op.or]: [
+            {
+              [Op.substring]: req.params.date
+            },
+            {
+              [Op.substring]: oneDayEarlier
+            }
+          ]
         }
       }
     })
@@ -153,8 +160,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log("CREATING!")
-    console.log("BODY: ", req.body)
+    console.log("CREATING!");
+    console.log("BODY: ", req.body);
     db.Request.create(req.body)
       .then(function(dbModel) {
         return res.json(dbModel);
@@ -162,8 +169,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    console.log("UPDATE:")
-    console.log(req.body)
+    console.log("UPDATE:");
+    console.log(req.body);
     db.Request.update(req.body, {
       where: {
         id: req.body.id
