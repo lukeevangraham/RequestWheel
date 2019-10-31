@@ -84,6 +84,19 @@ class Home extends Component {
               </div>
             </div>
 
+            
+
+            <div className="row mt-4">
+              <div className="card border-left-primary shadow h-100 col-sm-12 p-0">
+                <div className="card-header text-center py-3">
+                  <h4 className="m-0 font-weight-bold text-primary text-center">
+                    Current Communication Plans
+                  </h4>
+                </div>
+                <HomeMatrix permissions={this.props.permissions} orgName={this.props.orgName} />
+              </div>
+            </div>
+
             <div className="row mt-3 card-deck">
               <div className="card border-left-primary shadow h-100 col-sm-6 p-0 ml-0">
                 <div className="card-header py-3">
@@ -112,17 +125,6 @@ class Home extends Component {
                     Your Processed Requests
                   </h4>
                 </div>
-              </div>
-            </div>
-
-            <div className="row mt-4">
-              <div className="card border-left-primary shadow h-100 col-sm-12 p-0">
-                <div className="card-header text-center py-3">
-                  <h4 className="m-0 font-weight-bold text-primary text-center">
-                    Current Communication Plans
-                  </h4>
-                </div>
-                <HomeMatrix permissions={this.props.permissions} orgName={this.props.orgName} />
               </div>
             </div>
 
