@@ -317,6 +317,8 @@ module.exports = {
   findAllInOrg: function(req, res) {
 console.log("ORGNAME: ", req.params.orgName)
 db.Request.findAll({
+  limit: 10,
+  order: [["createdAt", "DESC"]],
   where: {
     orgName: req.params.orgName
   }
