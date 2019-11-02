@@ -21,19 +21,19 @@ router
   router.route("/date/:date")
   .get(requestsController.findByDate)
 
-  router.route("/annVid/:date")
+  router.route("/annVid/:date&:orgName")
   .get(requestsController.findAnnVidItemByDate)
 
-  router.route("/connectionCard/:date")
+  router.route("/connectionCard/:date&:orgName")
   .get(requestsController.findConncectionCardItemByDate)
 
-  router.route("/tvScreens/:date")
+  router.route("/tvScreens/:date&:orgName")
   .get(requestsController.findtvScreensItemByDate)
 
-  router.route("/newsletter/:date")
+  router.route("/newsletter/:date&:orgName")
   .get(requestsController.findNewsletteItemrByDate)
 
-  router.route("/other/:date")
+  router.route("/other/:date&:orgName")
   .get(requestsController.findOtherItemByDate)
 
   router.route("/orgName/:orgName")

@@ -71,7 +71,8 @@ module.exports = {
                 .format("YYYY-MM-DD")
             }
           ]
-        }
+        },
+        orgName: req.params.orgName
       }
     })
       .then(response => {
@@ -120,7 +121,8 @@ module.exports = {
                 .format("YYYY-MM-DD")
             }
           ]
-        }
+        },
+        orgName: req.params.orgName
       }
     })
       .then(response => {
@@ -168,7 +170,8 @@ module.exports = {
                 .format("YYYY-MM-DD")
             }
           ]
-        }
+        },
+        orgName: req.params.orgName
       }
     })
       .then(response => {
@@ -178,6 +181,7 @@ module.exports = {
   },
   findNewsletteItemrByDate: function(req, res) {
     // console.log("looking at newsletter dates!");
+    console.log("PARAMS: ", req.params)
     let oneDayEarlier = moment(req.params.date)
       .subtract(1, "days")
       .format("YYYY-MM-DD");
@@ -217,7 +221,8 @@ module.exports = {
                 .format("YYYY-MM-DD")
             }
           ]
-        }
+        },
+        orgName: req.params.orgName
       }
     })
       .then(response => {
@@ -265,7 +270,8 @@ module.exports = {
                 .format("YYYY-MM-DD")
             }
           ]
-        }
+        },
+        orgName: req.params.orgName
       }
     })
       .then(response => {

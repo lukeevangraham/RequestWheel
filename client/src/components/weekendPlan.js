@@ -16,20 +16,20 @@ class WeekendPlan extends Component {
     console.log("WEEKEND PLAN PROPS: ", this.props);
     Promise.all([
       Axios.get(
-        "/requests/annVid/" + moment(this.props.date).format("YYYY-MM-DD")
+        "/requests/annVid/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
       ),
       Axios.get(
         "/requests/connectionCard/" +
-          moment(this.props.date).format("YYYY-MM-DD")
+          moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
       ),
       Axios.get(
-        "/requests/tvScreens/" + moment(this.props.date).format("YYYY-MM-DD")
+        "/requests/tvScreens/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
       ),
       Axios.get(
-        "/requests/newsletter/" + moment(this.props.date).format("YYYY-MM-DD")
+        "/requests/newsletter/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
       ),
       Axios.get(
-        "/requests/other/" + moment(this.props.date).format("YYYY-MM-DD")
+        "/requests/other/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
       )
     ]).then(resultArray => {
       console.log("PROMISE RESULT: ", resultArray);
