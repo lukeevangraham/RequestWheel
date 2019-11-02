@@ -11,7 +11,7 @@ function NewsletterContent(props) {
         return (
             <div>
             <h3>{req.eventName}</h3>
-            <p>{req.body}</p>
+            <p style={{ whiteSpace: "pre-wrap" }}>{req.body}</p>
             </div>
         )
       }
