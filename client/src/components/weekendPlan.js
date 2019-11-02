@@ -56,7 +56,7 @@ class WeekendPlan extends Component {
         <ul className="list-group list-group-flush">
           {this.state.annVideoRequests.map(request => {
             console.log("REQUEST: ", request, request.eventName);
-            if (request.forAnnVideo) {
+            if (request.forAnnVideo && request.approved) {
               return (
                 <Link to={`/edit-request/${request.id}`}>
                   <li className="list-group-item text-left">
@@ -73,7 +73,7 @@ class WeekendPlan extends Component {
         </div>
         <ul className="list-group list-group-flush">
           {this.state.connectionCardRequests.map(request => {
-                if (request.forConnectionCard) {
+                if (request.forConnectionCard && request.approved) {
                   return (
                     <Link to={`/edit-request/${request.id}`}>
                       <li className="list-group-item">{request.eventName}</li>
@@ -88,7 +88,7 @@ class WeekendPlan extends Component {
         </div>
         <ul className="list-group list-group-flush">
           {this.state.newsletterRequests.map(request => {
-            if (request.forNewsletter) {
+            if (request.forNewsletter && request.approved) {
                 return (
                   <Link to={`/edit-request/${request.id}`}>
                     <li className="list-group-item">{request.eventName}</li>
@@ -104,7 +104,7 @@ class WeekendPlan extends Component {
         </div>
         <ul className="list-group list-group-flush">
           {this.state.tvScreensRequests.map(request => {
-            if (request.forTVScreens) {
+            if (request.forTVScreens && request.approved) {
                 return (
                   <Link to={`/edit-request/${request.id}`}>
                     <li className="list-group-item">{request.eventName}</li>
@@ -118,7 +118,7 @@ class WeekendPlan extends Component {
         <div className="card-header bg-gray-300 font-weight-bold">Other</div>
         <ul className="list-group list-group-flush">
           {this.state.otherRequests.map(request => {
-            if (request.letterFlyer || request.halfSheetFlyer || request.quarterSheetFlyer || request.tvGraphic || request.tabloidPoster || request.mediumPoster || request.largePoster || request.fourByEightBanner || request.otherDesignFormat ) {
+            if (request.letterFlyer || request.halfSheetFlyer || request.quarterSheetFlyer || request.tvGraphic || request.tabloidPoster || request.mediumPoster || request.largePoster || request.fourByEightBanner || request.otherDesignFormat && request.approved ) {
             return (
               <Link to={`/edit-request/${request.id}`}>
                 <li className="list-group-item">{request.eventName}</li>

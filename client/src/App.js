@@ -125,6 +125,7 @@ class App extends Component {
                     orgName={this.state.orgName}
                     firstName={this.state.firstName}
                     lastName={this.state.lastName}
+                    permissions={this.state.permissions}
                     {...props}
                   />
                 )}

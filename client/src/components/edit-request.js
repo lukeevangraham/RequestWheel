@@ -68,7 +68,8 @@ class SubmitRequest extends Component {
           moment(date).isValid() ? new Date(moment(date).format()) : ""
         ),
         reqId: requestId,
-        createdAt: request.createdAt
+        createdAt: request.createdAt,
+        approved: request.approved
       });
 
       Object.entries(this.state).map(([key, value]) => {
@@ -120,7 +121,8 @@ class SubmitRequest extends Component {
     tvScreensDates: [new Date()],
     connectionCardDates: [new Date()],
     reqId: "",
-    createdAt: ""
+    createdAt: "",
+    approved: ""
   };
 
   handleInputChange = event => {
@@ -289,7 +291,8 @@ class SubmitRequest extends Component {
           return moment(date).format("YYYY-MM-DD");
         }),
         orgName: this.props.orgName,
-        id: this.state.reqId
+        id: this.state.reqId,
+        approved: this.state.approved
       })
       .then(response => {
         console.log(response);
@@ -1029,6 +1032,33 @@ class SubmitRequest extends Component {
                     />
                   </div>
                 </div>
+
+                {this.props.permissions == "Administrator"
+                  ?  (
+                      <div className="form-group row">
+                        <div className="col-sm-2">Approval</div>
+                        <div className="col-sm-10">
+                          <div className="form-check">
+                            <input
+                              className="form-check-input"
+                              checked={this.state.approved}
+                              name="approved"
+                              id="approved"
+                              onChange={this.handleInputChange}
+                              type="checkbox"
+                            />
+                            <label
+                              className="form-check-label"
+                              htmlFor="approved"
+                            >
+                              Approved
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  : ""}
+
                 <p>* indicates required field</p>
 
                 <button

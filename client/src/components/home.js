@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ActiveCard from "./activeCard";
 import HomeMatrix from "./homeMatrix";
 import RecentSubmissions from "./recentSubmissions";
+import AwaitingApproval from "./awaitingApproval"
 import Axios from "axios";
 
 class Home extends Component {
@@ -122,9 +123,10 @@ class Home extends Component {
               <div className="card border-left-primary shadow h-100 col-sm-6 p-0 mr-0">
                 <div className="card-header py-3">
                   <h4 className="m-0 font-weight-bold text-primary text-center">
-                    Your Processed Requests
+                    Requests Awaiting Approval
                   </h4>
                 </div>
+                <AwaitingApproval permissions={this.props.permissions} tenRecent={this.state.recentRequests} orgName={this.props.orgName} />
               </div>
             </div>
 
@@ -132,7 +134,7 @@ class Home extends Component {
               <div className="card border-left-primary shadow h-100 col-sm-12 p-0">
                 <div className="card-header text-center py-3">
                   <h4 className="m-0 font-weight-bold text-primary text-center">
-                    10 Most Recent Submissions
+                    Recent Submissions
                   </h4>
                 </div>
                 <RecentSubmissions permissions={this.props.permissions} tenRecent={this.state.recentRequests} orgName={this.props.orgName} />
