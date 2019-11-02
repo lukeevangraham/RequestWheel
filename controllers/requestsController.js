@@ -17,6 +17,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByEmail: function(req, res) {
+    console.log("LET THE GOOD TIMES ROLL!")
     db.Request.findAll({ where: { email: req.params.email } })
       .then(function(dbModel) {
         return res.json(dbModel);
@@ -306,6 +307,17 @@ module.exports = {
         return res.json(response);
       })
       .catch(err => res.status(422).json(err));
+  },
+  findAllInOrg: function(req, res) {
+console.log("ORGNAME: ", req.params.orgName)
+db.Request.findAll({
+  where: {
+    orgName: req.params.orgName
+  }
+}).then(response => {
+  return res.json(response);
+})
+.catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
     console.log("CREATING!");

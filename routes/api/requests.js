@@ -36,4 +36,7 @@ router
   router.route("/other/:date")
   .get(requestsController.findOtherItemByDate)
 
+  router.route("/orgName/:orgName")
+  .get(requestsController.findAllInOrg)
+
 module.exports = router;

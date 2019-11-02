@@ -16,7 +16,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.getRequests(this.props.email);
-    this.getRecentRequests();
+    this.getRecentRequests(this.props.orgName);
   }
   componentWillReceiveProps(props) {
     this.getRequests(props.email);
@@ -36,8 +36,8 @@ class Home extends Component {
     });
   }
 
-  getRecentRequests() {
-    Axios.get("/requests/").then(response => {
+  getRecentRequests(orgName) {
+    Axios.get("/requests/orgName/" + orgName).then(response => {
       console.log("response for All: ");
       console.log(response);
       this.setState({
