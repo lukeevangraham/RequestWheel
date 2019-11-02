@@ -29,6 +29,7 @@ class HomeMatrix extends Component {
                 .day(0)
                 .format("YYYY-MM-DD")}
               permissions={this.props.permissions}
+              orgName={this.props.orgName}
             />
           </div>
         </div>
@@ -49,6 +50,7 @@ class HomeMatrix extends Component {
                 .day(7)
                 .format("YYYY-MM-DD")}
               permissions={this.props.permissions}
+              orgName={this.props.orgName}
             />
           </div>
         </div>
@@ -68,6 +70,7 @@ class HomeMatrix extends Component {
                 .day(14)
                 .format("YYYY-MM-DD")}
               permissions={this.props.permissions}
+              orgName={this.props.orgName}
             />
           </div>
         </div>
