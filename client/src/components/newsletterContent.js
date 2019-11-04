@@ -1,11 +1,12 @@
 import React from "react";
 
 function NewsletterContent(props) {
-  console.log(props.location.state.newsletterRequests);
+  console.log(props);
 
 
   return (
 <div className="container mt-4">
+  <h2 className="text-center">Assembeled Newsletter Content</h2>
     {props.location.state.newsletterRequests.map(req => {
       if (req.forNewsletter) {
         return (
