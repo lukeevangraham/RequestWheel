@@ -15,8 +15,8 @@ class HomeMatrix extends Component {
       <div className="row">
         <div className="col-sm-3">
           <div className="card">
-            <div className="card-body bg-gray-200">
-              <h5 className="card-title m-0 font-weight-bold">
+            <div className="card-body bg-gray-800">
+              <h5 className="card-title m-0 font-weight-bold text-gray-100">
                 Last Weekend (
                 {moment()
                   .day(0)
@@ -36,8 +36,8 @@ class HomeMatrix extends Component {
 
         <div className="col-sm-3">
           <div className="card">
-            <div className="card-body bg-gray-200">
-              <h5 className="card-title m-0 font-weight-bold">
+            <div className="card-body bg-gray-800">
+              <h5 className="card-title m-0 font-weight-bold text-gray-100">
                 This Weekend (
                 {moment()
                   .day(7)
@@ -56,8 +56,8 @@ class HomeMatrix extends Component {
         </div>
         <div className="col-sm-3">
           <div className="card">
-            <div className="card-body bg-gray-200">
-              <h5 className="card-title m-0 font-weight-bold">
+            <div className="card-body  bg-gray-800">
+              <h5 className="card-title m-0 font-weight-bold text-gray-100">
                 Next Weekend (
                 {moment()
                   .day(14)
@@ -77,8 +77,8 @@ class HomeMatrix extends Component {
 
         <div className="col-sm-3">
           <div className="card">
-            <div className="card-body bg-gray-200">
-              <h5 className="card-title m-0 font-weight-bold">
+            <div className="card-body bg-gray-800">
+              <h5 className="card-title m-0 font-weight-bold text-gray-100">
                 2 Weekends Out (
                 {moment()
                   .day(21)
