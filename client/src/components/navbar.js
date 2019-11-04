@@ -53,7 +53,7 @@ class Navbar extends Component {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <Link className="navbar-brand" to="#">Request Wheel</Link>
+          <Link className="navbar-brand" to="/">Request Wheel</Link>
 
             {loggedIn ? (
               <div

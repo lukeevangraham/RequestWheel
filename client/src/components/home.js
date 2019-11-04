@@ -157,10 +157,10 @@ class Home extends Component {
             </div>
           </div>
         ) : (
-          <div className="row mt-3">
-            <div className="col">
-              <div className="jumbotron d-flex">
-                <div className="col-sm-4">
+          <div className="jumbotron jumbotron-fluid rounded">
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-4 col-12">
                   <img
                     src="/images/wheel.png"
                     style={imageStyle}
@@ -168,11 +168,13 @@ class Home extends Component {
                     className="flex-grow-1 img-fluid"
                   />
                 </div>
-                <div className="col-sm-8">
+                <div className="col-sm-8 col-12">
                   <h1 className="display-3 pl-5 text-dark flex-grow-2">
                     Request Wheel
                   </h1>
-                  <p className="lead pl-5 text-uppercase">Streamlined Church Communications</p>
+                  <p className="lead pl-5 text-uppercase">
+                    Streamlined Church Communications
+                  </p>
                 </div>
               </div>
             </div>
