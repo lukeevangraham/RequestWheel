@@ -42,6 +42,7 @@ class Navbar extends Component {
           className="navbar navbar-expand-lg navbar-dark bg-gradient-primary shadow"
           id="nav-container"
         >
+          <Link className="navbar-brand order-md-last" to="/">Request Wheel</Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -53,7 +54,6 @@ class Navbar extends Component {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <Link className="navbar-brand" to="/">Request Wheel</Link>
 
             {loggedIn ? (
               <div
