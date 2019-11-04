@@ -126,18 +126,25 @@ class Home extends Component {
                     Requests Awaiting Approval
                   </h4>
                 </div>
+
+                <ul className="list-group list-group-flush">
                 <AwaitingApproval permissions={this.props.permissions} tenRecent={this.state.recentRequests} orgName={this.props.orgName} />
+                </ul>
               </div>
             </div>
 
-            <div className="row mt-4">
-              <div className="card border-left-primary shadow h-100 col-sm-12 p-0">
+            <div className="row mt-4 card-deck">
+              <div className="card border-left-primary shadow h-100 col-sm-12 p-0 ml-0">
                 <div className="card-header text-center py-3">
                   <h4 className="m-0 font-weight-bold text-primary text-center">
                     Recent Submissions
                   </h4>
                 </div>
+
+                <ul className="list-group list-group-flush">
                 <RecentSubmissions permissions={this.props.permissions} tenRecent={this.state.recentRequests} orgName={this.props.orgName} />
+
+                </ul>
               </div>
             </div>
 

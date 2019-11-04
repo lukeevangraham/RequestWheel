@@ -9,7 +9,9 @@ function RecentSubmissions(props) {
       {props.tenRecent.map(request => {
           {/* console.log("REQUEST: ", request) */}
           return (
-          <Link to={`/edit-request/${request.id}`}><p>{request.eventName} by {request.email}</p></Link>
+          <Link to={`/edit-request/${request.id}`} className="list-group-item p-0">
+          <li className="list-group-item text-left">
+              {request.eventName} by {request.email}</li></Link>
 
           )
       })}
