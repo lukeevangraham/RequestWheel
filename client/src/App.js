@@ -13,6 +13,7 @@ import People from "./components/people";
 import AddPerson from "./components/addPerson";
 import Profile from "./components/profile";
 import NewsletterContent from "./components/newsletterContent";
+import Footer from "./components/footer"
 
 class App extends Component {
   constructor() {
@@ -69,6 +70,7 @@ class App extends Component {
 
   render() {
     return (
+      <div>
       <BrowserRouter>
         <div className="App">
           <Navbar
@@ -147,6 +149,8 @@ class App extends Component {
           )}
         </div>
       </BrowserRouter>
+      <Footer />
+      </div>
     );
   }
 }

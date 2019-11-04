@@ -761,8 +761,8 @@ class SubmitRequest extends Component {
                                 console.log("DATE from map: ", date),
                                 console.log("INDEX from map: ", index),
                                 (
-                                  <span
-                                    className="input-group input-group-sm mb-1"
+                                  <div
+                                    className="input-group input-group-sm mb-1 flex-nowrap"
                                     key={index}
                                   >
                                     {/* <input
@@ -779,6 +779,7 @@ class SubmitRequest extends Component {
                                         index
                                       )}
                                       filterDate={isWeekendDate}
+                                      className="form-control border-right-0"
                                     />
                                     <div className="input-group-append">
                                       <span
@@ -790,7 +791,7 @@ class SubmitRequest extends Component {
                                         X
                                       </span>
                                     </div>
-                                  </span>
+                                  </div>
                                 )
                               )
                             )}
@@ -828,7 +829,7 @@ class SubmitRequest extends Component {
                           <Fragment>
                             {this.state.annVideoDates.map((date, index) => (
                               <span
-                                className="input-group input-group-sm mb-1"
+                              className="input-group input-group-sm mb-1 flex-nowrap"
                                 key={index}
                               >
                                 {/* <input
@@ -842,6 +843,7 @@ class SubmitRequest extends Component {
                                   selected={date}
                                   onChange={this.handleAnnVideoDate(index)}
                                   filterDate={isWeekendDate}
+                                  className="form-control border-right-0"
                                 />
                                 <div className="input-group-append">
                                   <span
@@ -887,7 +889,7 @@ class SubmitRequest extends Component {
                           <Fragment>
                             {this.state.tvScreensDates.map((date, index) => (
                               <span
-                                className="input-group input-group-sm mb-1"
+                              className="input-group input-group-sm mb-1 flex-nowrap"
                                 key={index}
                               >
                                 {/* <input
@@ -901,6 +903,7 @@ class SubmitRequest extends Component {
                                   selected={date}
                                   onChange={this.handletvScreensDate(index)}
                                   filterDate={isWeekendDate}
+                                  className="form-control border-right-0"
                                 />
                                 <div className="input-group-append">
                                   <span
@@ -947,7 +950,7 @@ class SubmitRequest extends Component {
                             {this.state.connectionCardDates.map(
                               (date, index) => (
                                 <span
-                                  className="input-group input-group-sm mb-1"
+                                className="input-group input-group-sm mb-1 flex-nowrap"
                                   key={index}
                                 >
                                   {/* <input
@@ -965,6 +968,7 @@ class SubmitRequest extends Component {
                                       index
                                     )}
                                     filterDate={isWeekendDate}
+                                    className="form-control border-right-0"
                                   />
                                   <div className="input-group-append">
                                     <span
