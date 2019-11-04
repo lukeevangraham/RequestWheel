@@ -176,7 +176,7 @@ class Home extends Component {
                     Streamlined Church Communications
                   </p>
                   <hr className="my-4"/>
-                  <p>Empowers people in your church to submit content for your church newsletter, in-service announcements, flyers & more.  Then organizes what people submit.</p>
+                  <p>Empowers people in your church to submit content for your church newsletter, in-service announcements, flyers & more.  Then organizes your content.</p>
                 </div>
               </div>
             </div>
