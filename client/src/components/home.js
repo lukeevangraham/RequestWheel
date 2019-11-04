@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ActiveCard from "./activeCard";
 import HomeMatrix from "./homeMatrix";
 import RecentSubmissions from "./recentSubmissions";
-import AwaitingApproval from "./awaitingApproval"
+import AwaitingApproval from "./awaitingApproval";
 import Axios from "axios";
 
 class Home extends Component {
@@ -85,8 +85,6 @@ class Home extends Component {
               </div>
             </div>
 
-            
-
             <div className="row mt-4">
               <div className="card border-left-primary shadow h-100 col-sm-12 p-0">
                 <div className="card-header text-center py-3">
@@ -94,7 +92,10 @@ class Home extends Component {
                     Current Communication Plans
                   </h4>
                 </div>
-                <HomeMatrix permissions={this.props.permissions} orgName={this.props.orgName} />
+                <HomeMatrix
+                  permissions={this.props.permissions}
+                  orgName={this.props.orgName}
+                />
               </div>
             </div>
 
@@ -128,7 +129,11 @@ class Home extends Component {
                 </div>
 
                 <ul className="list-group list-group-flush">
-                <AwaitingApproval permissions={this.props.permissions} tenRecent={this.state.recentRequests} orgName={this.props.orgName} />
+                  <AwaitingApproval
+                    permissions={this.props.permissions}
+                    tenRecent={this.state.recentRequests}
+                    orgName={this.props.orgName}
+                  />
                 </ul>
               </div>
             </div>
@@ -142,19 +147,20 @@ class Home extends Component {
                 </div>
 
                 <ul className="list-group list-group-flush">
-                <RecentSubmissions permissions={this.props.permissions} tenRecent={this.state.recentRequests} orgName={this.props.orgName} />
-
+                  <RecentSubmissions
+                    permissions={this.props.permissions}
+                    tenRecent={this.state.recentRequests}
+                    orgName={this.props.orgName}
+                  />
                 </ul>
               </div>
             </div>
-
-
           </div>
         ) : (
           <div className="row mt-3">
             <div className="col">
               <div className="jumbotron d-flex">
-                <div className="col-4">
+                <div className="col-sm-4">
                   <img
                     src="/images/wheel.png"
                     style={imageStyle}
@@ -162,9 +168,12 @@ class Home extends Component {
                     className="flex-grow-1 img-fluid"
                   />
                 </div>
-                <h1 className="display-3 justify-content-center align-self-center pb-5 pl-5 mb-5 text-dark flex-grow-2">
-                  Request Wheel
-                </h1>
+                <div className="col-sm-8">
+                  <h1 className="display-3 pl-5 text-dark flex-grow-2">
+                    Request Wheel
+                  </h1>
+                  <p className="lead pl-5 text-uppercase">Streamlined Church Communications</p>
+                </div>
               </div>
             </div>
           </div>
