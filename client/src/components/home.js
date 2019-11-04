@@ -168,11 +168,11 @@ class Home extends Component {
                     className="flex-grow-1 img-fluid"
                   />
                 </div>
-                <div className="col-sm-8 col-12">
-                  <h1 className="display-3 pl-5 text-dark flex-grow-2">
+                <div className="col-sm-8 col-12 p-4">
+                  <h1 className="display-3 text-dark flex-grow-2">
                     Request Wheel
                   </h1>
-                  <p className="lead pl-5 text-uppercase">
+                  <p className="lead text-uppercase">
                     Streamlined Church Communications
                   </p>
                 </div>
