@@ -9,7 +9,7 @@ function NewsletterContent(props) {
   <h2 className="text-center">Assembeled Newsletter Content</h2>
   <hr className="mb-5" />
     {props.location.state.newsletterRequests.map(req => {
-      if (req.forNewsletter) {
+      if (req.forNewsletter  && req.approved) {
         return (
             <div>
             <h3>{req.eventName}</h3>
