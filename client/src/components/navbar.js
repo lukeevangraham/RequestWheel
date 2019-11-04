@@ -54,7 +54,7 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="col-sm-4">
+          <div className="">
             {loggedIn ? (
               <div
                 className="collapse navbar-collapse"
@@ -101,7 +101,7 @@ class Navbar extends Component {
               </div>
             )}
           </div>
-          <div className="col-sm-8 text-right">
+          <div className="col text-right">
             <h1 className="navbar-brand">Request Wheel</h1>
           </div>
         </header>
