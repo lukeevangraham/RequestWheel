@@ -175,6 +175,8 @@ class Home extends Component {
                   <p className="lead text-uppercase pl-1">
                     Streamlined Church Communications
                   </p>
+                  <hr className="my-4"/>
+                  <p>Empowers people in your church to submit content for your church newsletter, in-service announcements, flyers & more.  Then organizes what people submit.</p>
                 </div>
               </div>
             </div>
