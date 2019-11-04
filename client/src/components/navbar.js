@@ -102,7 +102,7 @@ class Navbar extends Component {
             )}
           </div>
           <div className="col text-right">
-            <h1 className="navbar-brand">Request Wheel</h1>
+            <h1 className="navbar-brand pb-0">Request Wheel</h1>
           </div>
         </header>
       </div>
