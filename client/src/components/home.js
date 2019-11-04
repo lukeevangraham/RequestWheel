@@ -172,7 +172,7 @@ class Home extends Component {
                   <h1 className="display-3 text-dark flex-grow-2">
                     Request Wheel
                   </h1>
-                  <p className="lead text-uppercase">
+                  <p className="lead text-uppercase pl-1">
                     Streamlined Church Communications
                   </p>
                 </div>
