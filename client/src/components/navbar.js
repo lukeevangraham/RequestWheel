@@ -37,8 +37,8 @@ class Navbar extends Component {
     console.log(this.props);
 
     return (
-      <div>
-        <header
+
+        <nav
           className="navbar navbar-expand-lg navbar-dark bg-gradient-primary shadow"
           id="nav-container"
         >
@@ -53,14 +53,14 @@ class Navbar extends Component {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+          <Link className="navbar-brand" to="#">Request Wheel</Link>
 
-          <div className="">
             {loggedIn ? (
               <div
                 className="collapse navbar-collapse"
                 id="navbarSupportedContent"
               >
-                <ul className="navbar-nav mr-auto">
+                <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                   <li className="nav-item">
                     <Link className="nav-link" to="/">
                       home
@@ -81,7 +81,7 @@ class Navbar extends Component {
                 className="collapse navbar-collapse"
                 id="navbarSupportedContent"
               >
-                <ul className="navbar-nav mr-auto">
+                <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                   <li className="nav-item">
                     <Link to="/" className="nav-link">
                       home
@@ -100,12 +100,8 @@ class Navbar extends Component {
                 </ul>
               </div>
             )}
-          </div>
-          <div className="col text-right">
-            <h1 className="navbar-brand pb-0">Request Wheel</h1>
-          </div>
-        </header>
-      </div>
+        </nav>
+
     );
   }
 }
