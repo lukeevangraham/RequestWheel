@@ -7,6 +7,7 @@ function NewsletterContent(props) {
   return (
 <div className="container mt-4">
   <h2 className="text-center">Assembeled Newsletter Content</h2>
+  <hr className="mb-5" />
     {props.location.state.newsletterRequests.map(req => {
       if (req.forNewsletter) {
         return (
