@@ -133,7 +133,8 @@ class SubmitRequest extends Component {
 
     // Updating the input's state
     this.setState({
-      [name]: value
+      [name]: value,
+      approved: 0
     });
   };
 
@@ -149,7 +150,8 @@ class SubmitRequest extends Component {
     let newsletterDates = [...this.state.newsletterDates];
     newsletterDates[i] = date;
     this.setState({
-      newsletterDates: newsletterDates
+      newsletterDates: newsletterDates,
+      approved: 0
     });
   };
 
@@ -157,20 +159,23 @@ class SubmitRequest extends Component {
     e.preventDefault();
     let dates = this.state.newsletterDates.concat([""]);
     this.setState({
-      newsletterDates: dates
+      newsletterDates: dates,
+      approved: 0
     });
   };
 
   deleteNewsletterDate = index => e => {
     this.setState({
-      newsletterDates: this.state.newsletterDates.filter((_, i) => i !== index)
+      newsletterDates: this.state.newsletterDates.filter((_, i) => i !== index),
+      approved: 0
     });
   };
   handleAnnVideoDate = i => date => {
     let annVideoDates = [...this.state.annVideoDates];
     annVideoDates[i] = date;
     this.setState({
-      annVideoDates: annVideoDates
+      annVideoDates: annVideoDates,
+      approved: 0
     });
   };
 
@@ -178,20 +183,23 @@ class SubmitRequest extends Component {
     e.preventDefault();
     let dates = this.state.annVideoDates.concat([""]);
     this.setState({
-      annVideoDates: dates
+      annVideoDates: dates,
+      approved: 0
     });
   };
 
   deleteAnnVideoDate = index => e => {
     this.setState({
-      annVideoDates: this.state.annVideoDates.filter((_, i) => i !== index)
+      annVideoDates: this.state.annVideoDates.filter((_, i) => i !== index),
+      approved: 0
     });
   };
   handletvScreensDate = i => date => {
     let tvScreensDates = [...this.state.tvScreensDates];
     tvScreensDates[i] = date;
     this.setState({
-      tvScreensDates: tvScreensDates
+      tvScreensDates: tvScreensDates,
+      approved: 0
     });
   };
 
@@ -199,20 +207,23 @@ class SubmitRequest extends Component {
     e.preventDefault();
     let dates = this.state.tvScreensDates.concat([""]);
     this.setState({
-      tvScreensDates: dates
+      tvScreensDates: dates,
+      approved: 0
     });
   };
 
   deletetvScreensDate = index => e => {
     this.setState({
-      tvScreensDates: this.state.tvScreensDates.filter((_, i) => i !== index)
+      tvScreensDates: this.state.tvScreensDates.filter((_, i) => i !== index),
+      approved: 0
     });
   };
   handleConnectionCardDate = i => date => {
     let connectionCardDates = [...this.state.connectionCardDates];
     connectionCardDates[i] = date;
     this.setState({
-      connectionCardDates: connectionCardDates
+      connectionCardDates: connectionCardDates,
+      approved: 0
     });
   };
 
@@ -220,7 +231,8 @@ class SubmitRequest extends Component {
     e.preventDefault();
     let dates = this.state.connectionCardDates.concat([""]);
     this.setState({
-      connectionCardDates: dates
+      connectionCardDates: dates,
+      approved: 0
     });
   };
 
@@ -228,7 +240,8 @@ class SubmitRequest extends Component {
     this.setState({
       connectionCardDates: this.state.connectionCardDates.filter(
         (_, i) => i !== index
-      )
+      ),
+      approved: 0
     });
   };
 
