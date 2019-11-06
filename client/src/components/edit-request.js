@@ -133,8 +133,8 @@ class SubmitRequest extends Component {
 
     // Updating the input's state
     this.setState({
-      [name]: value,
-      approved: 0
+      approved: 0,
+      [name]: value
     });
   };
 
