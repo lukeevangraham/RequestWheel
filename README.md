@@ -38,7 +38,7 @@ After a request is approved it appears in the 'Current Communication Plans Matri
 The 'Your Active Requests' box only shows requests submitted by you.  The 'Recent Submissions' box displays recent submissions within your church (whether or not you made them).
 
 ### Previewing Newsletter Content
-Clicking on the word 'Newsletter' in the 'Current Communication Plans Matrix' displays a page containing the body all the newsletter content.
+Clicking on the word 'Newsletter' in the 'Current Communication Plans Matrix' displays a page containing the body of all that weekend's newsletter content.
 ![newsletter](./readmeImages/newsletter.png?raw=true "Newsletter")
 
 
