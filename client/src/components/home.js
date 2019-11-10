@@ -21,10 +21,10 @@ class Home extends Component {
   }
   componentWillReceiveProps(props) {
     this.getRequests(props.email);
+    this.getRecentRequests(props.orgName);
   }
 
   getRequests(email) {
-    console.log(email);
 
     Axios.get("/requests/" + email).then(response => {
       console.log("response: ");
