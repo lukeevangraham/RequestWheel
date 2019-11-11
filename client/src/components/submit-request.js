@@ -978,6 +978,34 @@ class SubmitRequest extends Component {
                     />
                   </div>
                 </div>
+
+                {this.props.permissions == "Administrator"
+                  ?  (
+                      <div className="form-group row">
+                        <div className="col-sm-2">Approval</div>
+                        <div className="col-sm-10">
+                          <div className="form-check">
+                            <input
+                              className="form-check-input"
+                              checked={this.state.approved}
+                              name="approved"
+                              id="approved"
+                              onChange={this.handleInputChange}
+                              type="checkbox"
+                            />
+                            <label
+                              className="form-check-label"
+                              htmlFor="approved"
+                            >
+                              Approved
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  : ""}
+
+
                 <p>* indicates required field</p>
 
                 <button
