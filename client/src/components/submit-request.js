@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import DatePicker from "react-datepicker";
@@ -575,7 +575,7 @@ class SubmitRequest extends Component {
                           className="form-control mt-n1"
                           id="color"
                           value={this.state.color}
-                          name="clor"
+                          name="color"
                           onChange={this.handleInputChange}
                         />
                       </div>
@@ -771,7 +771,7 @@ class SubmitRequest extends Component {
                           <Fragment>
                             {this.state.annVideoDates.map((date, index) => (
                               <span
-                              className="input-group input-group-sm mb-1 flex-nowrap"
+                                className="input-group input-group-sm mb-1 flex-nowrap"
                                 key={index}
                               >
                                 {/* <input
@@ -831,7 +831,7 @@ class SubmitRequest extends Component {
                           <Fragment>
                             {this.state.tvScreensDates.map((date, index) => (
                               <span
-                              className="input-group input-group-sm mb-1 flex-nowrap"
+                                className="input-group input-group-sm mb-1 flex-nowrap"
                                 key={index}
                               >
                                 {/* <input
@@ -892,7 +892,7 @@ class SubmitRequest extends Component {
                             {this.state.connectionCardDates.map(
                               (date, index) => (
                                 <span
-                                className="input-group input-group-sm mb-1 flex-nowrap"
+                                  className="input-group input-group-sm mb-1 flex-nowrap"
                                   key={index}
                                 >
                                   {/* <input
@@ -979,34 +979,34 @@ class SubmitRequest extends Component {
                   </div>
                 </div>
 
-                {this.props.permissions == "Administrator"
-                  ?  (
-                      <div className="form-group row">
-                        <div className="col-sm-2">Approval</div>
-                        <div className="col-sm-10">
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              checked={this.state.approved}
-                              name="approved"
-                              id="approved"
-                              onChange={this.handleInputChange}
-                              type="checkbox"
-                            />
-                            <label
-                              className="form-check-label"
-                              htmlFor="approved"
-                            >
-                              Approved
-                            </label>
-                          </div>
-                        </div>
+                {this.props.permissions == "Administrator" ? (
+                  <div className="form-group row">
+                    <div className="col-sm-2">Approval</div>
+                    <div className="col-sm-10">
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          checked={this.state.approved}
+                          name="approved"
+                          id="approved"
+                          onChange={this.handleInputChange}
+                          type="checkbox"
+                        />
+                        <label className="form-check-label" htmlFor="approved">
+                          Approved
+                        </label>
                       </div>
-                    )
-                  : ""}
-
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
 
                 <p>* indicates required field</p>
+
+                <Link to="/">
+                  <button className="btn btn-secondary mr-3">Cancel</button>
+                </Link>
 
                 <button
                   type="submit"

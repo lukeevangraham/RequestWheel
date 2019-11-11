@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import DatePicker from "react-datepicker";
@@ -646,7 +646,7 @@ class SubmitRequest extends Component {
                           className="form-control mt-n1"
                           id="color"
                           value={this.state.color}
-                          name="clor"
+                          name="color"
                           onChange={this.handleInputChange}
                         />
                       </div>
@@ -1077,6 +1077,10 @@ class SubmitRequest extends Component {
                   : ""}
 
                 <p>* indicates required field</p>
+
+                <Link to="/">
+                  <button className="btn btn-secondary mr-3">Cancel</button>
+                </Link>
 
                 <button
                   type="submit"
