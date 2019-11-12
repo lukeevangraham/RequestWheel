@@ -1,0 +1,6 @@
+@media print {
+    .thead-dark {
+      color: black !important;
+      background-color: gray !important;
+    }
+  }

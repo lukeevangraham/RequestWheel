@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import moment from "moment";
 import Axios from "axios";
+import "../components/styles/weekendPlanPrint.css"
 
 class WeekendPlanPrint extends Component {
   state = {
