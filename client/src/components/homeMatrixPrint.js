@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import moment from "moment";
 import Axios from "axios";
-import WeekendPlan from "./weekendPlan";
+import WeekendPlanPrint from "./weekendPlanPrint";
 
 class HomeMatrixPrint extends Component {
   componentDidMount() {
@@ -15,16 +15,16 @@ class HomeMatrixPrint extends Component {
       <div className="row">
         <div className="col-sm-3">
           <table className="table">
-            <div className="card-body bg-gray-800">
-              <h5 className="card-title m-0 font-weight-bold text-gray-100">
+            <thead className="thead-dark">
+              <th>
                 Last Weekend (
                 {moment()
                   .day(0)
                   .format("MM/DD")}
                 )
-              </h5>
-            </div>
-            <WeekendPlan
+              </th>
+            </thead>
+            <WeekendPlanPrint
               date={moment()
                 .day(0)
                 .format("YYYY-MM-DD")}
@@ -36,16 +36,17 @@ class HomeMatrixPrint extends Component {
 
         <div className="col-sm-3">
           <table className="table">
-            <div className="card-body bg-gray-800">
-              <h5 className="card-title m-0 font-weight-bold text-gray-100">
+            <thead className="thead-dark">
+              <th>
                 This Weekend (
                 {moment()
                   .day(7)
                   .format("MM/DD")}
                 )
-              </h5>
-            </div>
-            <WeekendPlan
+              </th>
+            </thead>
+
+            <WeekendPlanPrint
               date={moment()
                 .day(7)
                 .format("YYYY-MM-DD")}
@@ -54,18 +55,20 @@ class HomeMatrixPrint extends Component {
             />
           </table>
         </div>
+
         <div className="col-sm-3">
           <table className="table">
-            <div className="card-body  bg-gray-800">
-              <h5 className="card-title m-0 font-weight-bold text-gray-100">
+<thead className="thead-dark">
+              <th>
                 Next Weekend (
                 {moment()
                   .day(14)
                   .format("MM/DD")}
                 )
-              </h5>
-            </div>
-            <WeekendPlan
+                </th>
+              </thead>
+
+            <WeekendPlanPrint
               date={moment()
                 .day(14)
                 .format("YYYY-MM-DD")}
@@ -77,16 +80,17 @@ class HomeMatrixPrint extends Component {
 
         <div className="col-sm-3">
           <table className="table">
-            <div className="card-body bg-gray-800">
-              <h5 className="card-title m-0 font-weight-bold text-gray-100">
+            <thead className="thead-dark">
+                <th>
                 2 Weekends Out (
                 {moment()
                   .day(21)
                   .format("MM/DD")}
                 )
-              </h5>
-            </div>
-            <WeekendPlan
+                </th>
+              </thead>
+
+            <WeekendPlanPrint
               date={moment()
                 .day(21)
                 .format("YYYY-MM-DD")}
