@@ -13,6 +13,7 @@ import People from "./components/people";
 import AddPerson from "./components/addPerson";
 import Profile from "./components/profile";
 import NewsletterContent from "./components/newsletterContent";
+import HomeMatrixPrint from "./components/homeMatrixPrint";
 import Footer from "./components/footer"
 
 class App extends Component {
@@ -145,6 +146,10 @@ class App extends Component {
               <Route
                 path="/newsletter-content"
                 render={props => <NewsletterContent {...props} />}
+              />
+              <Route
+                path="/home-matrix-print"
+                render={props => <HomeMatrixPrint {...props} />}
               />
             </div>
           )}

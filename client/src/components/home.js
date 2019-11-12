@@ -89,6 +89,7 @@ class Home extends Component {
                 <div className="card-header text-center py-3">
                   <h4 className="m-0 font-weight-bold text-primary text-center">
                     Current Communication Plans
+                  <Link to="/home-matrix-print"><i class="fas fa-print text-secondary ml-2"></i></Link>
                   </h4>
                 </div>
                 <HomeMatrix
@@ -193,7 +194,7 @@ class Home extends Component {
                   <div className="row d-flex align-items-center">
                     <div className="col-sm-6 p-4 rounded">
                       <img
-                        src="/images/organizedContent.svg"
+                        src="/images/fillForms.svg"
                         alt="lady organizing content"
                         className="img-fluid"
                       />{" "}
