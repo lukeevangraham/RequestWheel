@@ -64,7 +64,7 @@ class WeekendPlanPrint extends Component {
   render() {
     return (
       <>
-        <thead className="thead-light">
+        <thead className="thead-dark">
           <th>Announcement Video</th>
         </thead>
 
@@ -81,7 +81,7 @@ class WeekendPlanPrint extends Component {
           })}
         </tbody>
 
-        <thead className="thead-light">
+        <thead className="thead-dark">
           <th>Connection Card</th>
         </thead>
 
@@ -97,7 +97,7 @@ class WeekendPlanPrint extends Component {
           })}
         </tbody>
 
-        <thead className="thead-light">
+        <thead className="thead-dark">
           <th>Newsletter</th>
         </thead>
 
@@ -113,7 +113,7 @@ class WeekendPlanPrint extends Component {
           })}
         </tbody>
 
-        <thead className="thead-light">
+        <thead className="thead-dark">
           <th>TV Screens</th>
         </thead>
 
@@ -129,7 +129,7 @@ class WeekendPlanPrint extends Component {
           })}
         </tbody>
 
-        <thead className="thead-light">
+        <thead className="thead-dark">
           <th>Other</th>
         </thead>
 
