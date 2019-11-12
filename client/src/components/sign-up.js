@@ -105,7 +105,7 @@ class Form extends Component {
 
                     <div className="form-group col-md-6">
                       <label className="sr-only" htmlFor="firstName">
-                        First Name
+                        Admin's First Name
                       </label>
 
                       <input
@@ -114,13 +114,13 @@ class Form extends Component {
                         name="firstName"
                         onChange={this.handleInputChange}
                         type="text"
-                        placeholder="First Name"
+                        placeholder="Admin's First Name"
                       />
                     </div>
 
                     <div className="form-group col-md-6">
                       <label className="sr-only" htmlFor="lastName">
-                        Last Name
+                        Admin's Last Name
                       </label>
 
                       <input
@@ -129,14 +129,14 @@ class Form extends Component {
                         name="lastName"
                         onChange={this.handleInputChange}
                         type="text"
-                        placeholder="Last Name"
+                        placeholder="Admin's Last Name"
                       />
                     </div>
                   </div>
 
                   <div className="form-group">
                     <label className="sr-only" htmlFor="email">
-                      Email
+                      Admin's Email
                     </label>
 
                     <input
@@ -145,13 +145,13 @@ class Form extends Component {
                       name="email"
                       onChange={this.handleInputChange}
                       type="text"
-                      placeholder="Email Address"
+                      placeholder="Admin's Email Address"
                     />
                   </div>
 
                   <div className="form-group">
                     <label className="sr-only" htmlFor="password">
-                      Password
+                      Admin's Password
                     </label>
                     <input
                       className="form-control"
@@ -159,7 +159,7 @@ class Form extends Component {
                       name="password"
                       onChange={this.handleInputChange}
                       type="password"
-                      placeholder="Password"
+                      placeholder="Admin's Password"
                     />
                   </div>
 

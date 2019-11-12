@@ -43,7 +43,7 @@ class People extends Component {
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
               <th scope="col">Email Address</th>
-              <th scope="col">Last Login</th>
+              {/* <th scope="col">Last Login</th> */}
               <th scope="col">Created On</th>
               {/* <th scope="col">Permissions</th> */}
             </tr>
@@ -56,7 +56,7 @@ class People extends Component {
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td>{user.email}</td>
-              <td>{moment(user.updatedAt).format("MM/DD/YY h:mm a")}</td>
+              {/* <td>{moment(user.updatedAt).format("MM/DD/YY h:mm a")}</td> */}
               <td>{moment(user.createdAt).format("MM/DD/YY h:mm a")}</td>
               {/* <td>{user.permissions}</td> */}
             </tr>
