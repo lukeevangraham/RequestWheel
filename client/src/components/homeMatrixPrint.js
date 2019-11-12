@@ -7,7 +7,7 @@ import WeekendPlan from "./weekendPlan";
 class HomeMatrixPrint extends Component {
   componentDidMount() {
     console.log("Home matrix print is here!");
-    console.log("PROPS: ", this.props);
+    console.log("PROPS: ", this.props.location.state);
   }
 
   render() {
@@ -28,8 +28,8 @@ class HomeMatrixPrint extends Component {
               date={moment()
                 .day(0)
                 .format("YYYY-MM-DD")}
-              permissions={this.props.permissions}
-              orgName={this.props.orgName}
+              permissions={this.props.location.state.permissions}
+              orgName={this.props.location.state.orgName}
             />
           </table>
         </div>
@@ -49,8 +49,8 @@ class HomeMatrixPrint extends Component {
               date={moment()
                 .day(7)
                 .format("YYYY-MM-DD")}
-              permissions={this.props.permissions}
-              orgName={this.props.orgName}
+              permissions={this.props.location.state.permissions}
+              orgName={this.props.location.state.orgName}
             />
           </table>
         </div>
@@ -69,8 +69,8 @@ class HomeMatrixPrint extends Component {
               date={moment()
                 .day(14)
                 .format("YYYY-MM-DD")}
-              permissions={this.props.permissions}
-              orgName={this.props.orgName}
+              permissions={this.props.location.state.permissions}
+              orgName={this.props.location.state.orgName}
             />
           </table>
         </div>
@@ -90,8 +90,8 @@ class HomeMatrixPrint extends Component {
               date={moment()
                 .day(21)
                 .format("YYYY-MM-DD")}
-              permissions={this.props.permissions}
-              orgName={this.props.orgName}
+              permissions={this.props.location.state.permissions}
+              orgName={this.props.location.state.orgName}
             />
           </table>
         </div>

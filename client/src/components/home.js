@@ -89,7 +89,7 @@ class Home extends Component {
                 <div className="card-header text-center py-3">
                   <h4 className="m-0 font-weight-bold text-primary text-center">
                     Current Communication Plans
-                  <Link to="/home-matrix-print"><i class="fas fa-print text-secondary ml-2"></i></Link>
+                  <Link to={{pathname: '/home-matrix-print', state: { permissions: this.props.permissions, orgName: this.props.orgName}}}><i class="fas fa-print text-secondary ml-2"></i></Link>
                   </h4>
                 </div>
                 <HomeMatrix
