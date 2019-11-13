@@ -54,7 +54,8 @@ class SubmitRequest extends Component {
     newsletterDates: [new Date(moment().add(2, "w"))],
     annVideoDates: [new Date(moment().add(2, "w"))],
     tvScreensDates: [new Date(moment().add(2, "w"))],
-    connectionCardDates: [new Date(moment().add(2, "w"))]
+    connectionCardDates: [new Date(moment().add(2, "w"))],
+    approved: ""
   };
 
   handleInputChange = event => {
@@ -244,7 +245,8 @@ class SubmitRequest extends Component {
         connectionCardDates: this.state.connectionCardDates.map(date => {
           return moment(date).format("YYYY-MM-DD");
         }),
-        orgName: this.props.orgName
+        orgName: this.props.orgName,
+        approved: this.state.approved
       })
       .then(response => {
         console.log(response);
