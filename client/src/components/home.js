@@ -71,7 +71,7 @@ class Home extends Component {
         style={{ backgroundColor: "#f8f9fc" }}
       >
         {loggedIn ? (
-          <div className="container-fluid px-5">
+          <div className="container-fluid">
             <div className="row mt-4 mb-5">
               <div className="col text-center">
                 <Link
