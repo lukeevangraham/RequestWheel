@@ -186,7 +186,9 @@ class SubmitRequest extends Component {
     //   password: ""
     // });
 
-    if (this.props.body === null) {
+    console.log("BODY: ", this.props.body)
+
+    if (this.props.body == null) {
       alert("please add something to the body");
     }
 
