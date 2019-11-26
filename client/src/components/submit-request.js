@@ -55,7 +55,7 @@ class SubmitRequest extends Component {
     annVideoDates: [new Date(moment().add(2, "w"))],
     tvScreensDates: [new Date(moment().add(2, "w"))],
     connectionCardDates: [new Date(moment().add(2, "w"))],
-    approved: ""
+    approved: false
   };
 
   handleInputChange = event => {
