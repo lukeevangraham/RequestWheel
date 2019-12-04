@@ -71,7 +71,6 @@ class SubmitRequest extends Component {
   };
 
   handleChange = date => {
-    console.log("DATE: ", date);
     this.setState({
       requestDueDate: date
     });
@@ -114,7 +113,6 @@ class SubmitRequest extends Component {
     this.setState({
       annVideoDates: annVideoDates
     });
-    console.log("LOOK HERE: ", this.state.annVideoDates);
   };
 
   addAnnVideoDate = e => {
@@ -186,7 +184,7 @@ class SubmitRequest extends Component {
     //   password: ""
     // });
 
-    console.log("BODY: ", this.state)
+    // console.log("BODY: ", this.state)
 
     if (this.state.body === "") {
       alert("please add something to the body");
