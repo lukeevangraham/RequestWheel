@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 // import logo from "../logo.svg";
 import "../App.css";
@@ -62,12 +62,16 @@ class Navbar extends Component {
               >
                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                   <li className="nav-item">
-                    <Link className="nav-link" to="/">
+                    <NavLink className="nav-link" activeClassName="active" exact to="/">
                       home
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/people">people</Link>
+                    <NavLink
+                    to="/people"
+                    className="nav-link"
+                    activeClassName="active"
+                     >people</NavLink>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="#" onClick={this.logout}>
@@ -83,19 +87,19 @@ class Navbar extends Component {
               >
                 <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                   <li className="nav-item">
-                    <Link to="/" className="nav-link">
+                    <NavLink exact to="/" className="nav-link">
                       home
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link to="/login" className="nav-link">
+                    <NavLink to="/login" className="nav-link">
                       login
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link to="/signup" className="nav-link">
+                    <NavLink to="/signup" className="nav-link">
                       sign up
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </div>

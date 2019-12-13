@@ -82,8 +82,7 @@ class App extends Component {
           {/* greet user if logged in: */}
           {/* Routes to different components */}
           <Route
-            exact
-            path="/"
+            exact path="/"
             render={() => (
               <Home
                 email={this.state.email}
@@ -135,7 +134,7 @@ class App extends Component {
                 )}
               />
               <Route
-                path="/people"
+                exact path="/people"
                 render={() => (
                   <People
                     orgName={this.state.orgName}
