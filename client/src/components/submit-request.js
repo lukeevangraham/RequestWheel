@@ -190,12 +190,12 @@ class SubmitRequest extends Component {
       alert("please add something to the body");
     }
 
-    let formattedAnnVideoDates = this.state.annVideoDates.map(date => {
-      return moment(date).format("YYYY-MM-DD");
-    });
+    // let formattedAnnVideoDates = this.state.annVideoDates.map(date => {
+    //   return moment(date).format("YYYY-MM-DD");
+    // });
 
-    console.log("request-submit-form, org: ");
-    console.log(this.props.orgName);
+    // console.log("request-submit-form, org: ");
+    // console.log(this.props.orgName);
     //request to server here
     axios
       .post("/requests", {
@@ -249,9 +249,9 @@ class SubmitRequest extends Component {
         approved: this.state.approved
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         if (response.data) {
-          console.log("successful post");
+          // console.log("successful post");
           alert("Form successfully submited!");
           this.setState({
             redirectTo: "/login"
@@ -270,7 +270,7 @@ class SubmitRequest extends Component {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.reDirectTo }} />;
     } else {
-      console.log("PROPS: ", this.props);
+      // console.log("PROPS: ", this.props);
 
       const isWeekendDate = date => {
         const day = date.getDay();
@@ -981,7 +981,7 @@ class SubmitRequest extends Component {
                   </div>
                 </div>
 
-                {this.props.permissions == "Administrator" ? (
+                {this.props.permissions === "Administrator" ? (
                   <div className="form-group row">
                     <div className="col-sm-2">Approval</div>
                     <div className="col-sm-10">

@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
 import moment from "moment";
-import Axios from "axios";
 import WeekendPlanPrint from "./weekendPlanPrint";
 
 class HomeMatrixPrint extends Component {
   componentDidMount() {
-    console.log("Home matrix print is here!");
-    console.log("PROPS: ", this.props.location.state);
+    // console.log("Home matrix print is here!");
+    // console.log("PROPS: ", this.props.location.state);
   }
 
   render() {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 // import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
@@ -43,10 +43,10 @@ class App extends Component {
 
   getUser() {
     axios.get("/user/").then(response => {
-      console.log("Get user response: ");
-      console.log(response.data);
+      // console.log("Get user response: ");
+      // console.log(response.data);
       if (response.data.user) {
-        console.log("Get User: There is a user saved in the server session: ");
+        // console.log("Get User: There is a user saved in the server session: ");
 
         this.setState({
           loggedIn: true,
@@ -57,7 +57,7 @@ class App extends Component {
           permissions: response.data.user.permissions
         });
       } else {
-        console.log("Get user: no user");
+        // console.log("Get user: no user");
         this.setState({
           loggedIn: false,
           email: null,

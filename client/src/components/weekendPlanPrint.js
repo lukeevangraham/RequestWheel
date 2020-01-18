@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
 import moment from "moment";
 import Axios from "axios";
 import "../components/styles/weekendPlanPrint.css"
@@ -14,7 +13,7 @@ class WeekendPlanPrint extends Component {
   };
 
   componentDidMount() {
-    console.log("WEEKEND PLAN PRINT PROPS: ", this.props);
+    // console.log("WEEKEND PLAN PRINT PROPS: ", this.props);
     Promise.all([
       Axios.get(
         "/requests/annVid/" +
@@ -47,7 +46,7 @@ class WeekendPlanPrint extends Component {
           this.props.orgName
       )
     ]).then(resultArray => {
-      console.log("PROMISE RESULT: ", resultArray);
+      // console.log("PROMISE RESULT: ", resultArray);
       this.setState({
         ...this.state,
         annVideoRequests: resultArray[0].data,
@@ -71,14 +70,14 @@ class WeekendPlanPrint extends Component {
 
         <tbody>
           {this.state.annVideoRequests.map(request => {
-            console.log("REQUEST: ", request, request.eventName);
+            {/* console.log("REQUEST: ", request, request.eventName); */}
             if (request.forAnnVideo && request.approved) {
               return (
                 <tr>
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
-            }
+            } else return undefined
           })}
         </tbody>
 

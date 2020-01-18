@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
 import moment from "moment";
-import Axios from "axios";
 import WeekendPlan from "./weekendPlan";
 
 class HomeMatrix extends Component {
   componentDidMount() {
-    console.log("Home matrix is here!");
-    console.log("PROPS: ", this.props);
+    // console.log("Home matrix is here!");
+    // console.log("PROPS: ", this.props);
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React from "react";
 
 function NewsletterContent(props) {
-  console.log(props);
+  // console.log(props);
 
 
   return (
@@ -16,6 +16,8 @@ function NewsletterContent(props) {
             <p style={{ whiteSpace: "pre-wrap" }}>{req.body}</p>
             </div>
         )
+      } else {
+        return undefined
       }
     })
     }

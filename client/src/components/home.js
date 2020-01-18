@@ -11,9 +11,9 @@ class Home extends Component {
     requests: [],
     recentRequests: []
   };
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   componentDidMount() {
     this.getRequests(this.props.email);
@@ -26,8 +26,8 @@ class Home extends Component {
 
   getRequests(email) {
     Axios.get("/requests/" + email).then(response => {
-      console.log("response: ");
-      console.log(response);
+      // console.log("response: ");
+      // console.log(response);
       this.setState({
         ...this.state,
         requests: response.data
@@ -38,8 +38,8 @@ class Home extends Component {
 
   getRecentRequests(orgName) {
     Axios.get("/requests/orgName/" + orgName).then(response => {
-      console.log("response for All: ");
-      console.log(response);
+      // console.log("response for All: ");
+      // console.log(response);
       this.setState({
         ...this.state,
         recentRequests: response.data
@@ -62,8 +62,8 @@ class Home extends Component {
     };
 
     const loggedIn = this.props.loggedIn;
-    console.log("home render, props: ");
-    console.log(this.props);
+    // console.log("home render, props: ");
+    // console.log(this.props);
 
     return (
       <div
@@ -89,7 +89,7 @@ class Home extends Component {
                 <div className="card-header text-center py-3">
                   <h4 className="m-0 font-weight-bold text-primary text-center">
                     Current Communication Plans
-                  <Link to={{pathname: '/home-matrix-print', state: { permissions: this.props.permissions, orgName: this.props.orgName}}}><i class="fas fa-print text-secondary ml-2"></i></Link>
+                  <Link to={{pathname: '/home-matrix-print', state: { permissions: this.props.permissions, orgName: this.props.orgName}}}><i className="fas fa-print text-secondary ml-2"></i></Link>
                   </h4>
                 </div>
                 <HomeMatrix

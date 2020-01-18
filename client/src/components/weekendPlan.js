@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import Axios from "axios";
 
@@ -13,7 +13,7 @@ class WeekendPlan extends Component {
   };
 
   componentDidMount() {
-    console.log("WEEKEND PLAN PROPS: ", this.props);
+    // console.log("WEEKEND PLAN PROPS: ", this.props);
     Promise.all([
       Axios.get(
         "/requests/annVid/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
@@ -32,7 +32,6 @@ class WeekendPlan extends Component {
         "/requests/other/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
       )
     ]).then(resultArray => {
-      console.log("PROMISE RESULT: ", resultArray);
       this.setState({
         ...this.state,
         annVideoRequests: resultArray[0].data,
@@ -55,7 +54,6 @@ class WeekendPlan extends Component {
         </div>
         <ul className="list-group list-group-flush">
           {this.state.annVideoRequests.map(request => {
-            console.log("REQUEST: ", request, request.eventName);
             if (request.forAnnVideo && request.approved) {
               return (
                 <Link to={`/edit-request/${request.id}`}>
@@ -64,7 +62,7 @@ class WeekendPlan extends Component {
                   </li>
                 </Link>
               );
-            }
+            } else return undefined
           })}
         </ul>
 
@@ -79,7 +77,7 @@ class WeekendPlan extends Component {
                       <li className="list-group-item">{request.eventName}</li>
                     </Link>
                   );
-                }
+                } else return null
               })
            }
         </ul>
