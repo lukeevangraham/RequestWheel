@@ -77,7 +77,8 @@ class SubmitRequest extends Component {
           this.setState({
             [key]: true
           });
-        }
+          return undefined
+        } else return null
       });
     });
   }
@@ -771,8 +772,6 @@ class SubmitRequest extends Component {
                           <Fragment>
                             {this.state.newsletterDates.map(
                               (date, index) => (
-                                console.log("DATE from map: ", date),
-                                console.log("INDEX from map: ", index),
                                 (
                                   <div
                                     className="input-group input-group-sm mb-1 flex-nowrap"
@@ -1050,7 +1049,7 @@ class SubmitRequest extends Component {
                   </div>
                 </div>
 
-                {this.props.permissions == "Administrator"
+                {this.props.permissions === "Administrator"
                   ?  (
                       <div className="form-group row">
                         <div className="col-sm-2">Approval</div>

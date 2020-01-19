@@ -70,7 +70,6 @@ class WeekendPlanPrint extends Component {
 
         <tbody>
           {this.state.annVideoRequests.map(request => {
-            {/* console.log("REQUEST: ", request, request.eventName); */}
             if (request.forAnnVideo && request.approved) {
               return (
                 <tr>
