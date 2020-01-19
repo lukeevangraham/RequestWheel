@@ -92,7 +92,7 @@ class WeekendPlanPrint extends Component {
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
-            }
+            } else return null
           })}
         </tbody>
 
@@ -108,7 +108,7 @@ class WeekendPlanPrint extends Component {
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
-            }
+            } else return null
           })}
         </tbody>
 
@@ -124,7 +124,7 @@ class WeekendPlanPrint extends Component {
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
-            }
+            } else return null
           })}
         </tbody>
 
@@ -152,7 +152,7 @@ class WeekendPlanPrint extends Component {
 </tr>
 
               );
-            }
+            } else return null
           })}
         </tbody>
       </>

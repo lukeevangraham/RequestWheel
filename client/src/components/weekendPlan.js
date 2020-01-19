@@ -16,20 +16,34 @@ class WeekendPlan extends Component {
     // console.log("WEEKEND PLAN PROPS: ", this.props);
     Promise.all([
       Axios.get(
-        "/requests/annVid/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
+        "/requests/annVid/" +
+          moment(this.props.date).format("YYYY-MM-DD") +
+          "&" +
+          this.props.orgName
       ),
       Axios.get(
         "/requests/connectionCard/" +
-          moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
+          moment(this.props.date).format("YYYY-MM-DD") +
+          "&" +
+          this.props.orgName
       ),
       Axios.get(
-        "/requests/tvScreens/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
+        "/requests/tvScreens/" +
+          moment(this.props.date).format("YYYY-MM-DD") +
+          "&" +
+          this.props.orgName
       ),
       Axios.get(
-        "/requests/newsletter/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
+        "/requests/newsletter/" +
+          moment(this.props.date).format("YYYY-MM-DD") +
+          "&" +
+          this.props.orgName
       ),
       Axios.get(
-        "/requests/other/" + moment(this.props.date).format("YYYY-MM-DD") + "&" + this.props.orgName
+        "/requests/other/" +
+          moment(this.props.date).format("YYYY-MM-DD") +
+          "&" +
+          this.props.orgName
       )
     ]).then(resultArray => {
       this.setState({
@@ -62,7 +76,7 @@ class WeekendPlan extends Component {
                   </li>
                 </Link>
               );
-            } else return undefined
+            } else return undefined;
           })}
         </ul>
 
@@ -71,31 +85,35 @@ class WeekendPlan extends Component {
         </div>
         <ul className="list-group list-group-flush">
           {this.state.connectionCardRequests.map(request => {
-                if (request.forConnectionCard && request.approved) {
-                  return (
-                    <Link to={`/edit-request/${request.id}`}>
-                      <li className="list-group-item">{request.eventName}</li>
-                    </Link>
-                  );
-                } else return null
-              })
-           }
+            if (request.forConnectionCard && request.approved) {
+              return (
+                <Link to={`/edit-request/${request.id}`}>
+                  <li className="list-group-item">{request.eventName}</li>
+                </Link>
+              );
+            } else return null;
+          })}
         </ul>
         <div className="card-header bg-gray-300 font-weight-bold">
-          <Link to={{ pathname: '/newsletter-content', state: { newsletterRequests: this.state.newsletterRequests }  }} >Newsletter</Link>
+          <Link
+            to={{
+              pathname: "/newsletter-content",
+              state: { newsletterRequests: this.state.newsletterRequests }
+            }}
+          >
+            Newsletter
+          </Link>
         </div>
         <ul className="list-group list-group-flush">
           {this.state.newsletterRequests.map(request => {
             if (request.forNewsletter && request.approved) {
-                return (
-                  <Link to={`/edit-request/${request.id}`}>
-                    <li className="list-group-item">{request.eventName}</li>
-                  </Link>
-                );
-              
-            }
-              })
-           }
+              return (
+                <Link to={`/edit-request/${request.id}`}>
+                  <li className="list-group-item">{request.eventName}</li>
+                </Link>
+              );
+            } else return null;
+          })}
         </ul>
         <div className="card-header bg-gray-300 font-weight-bold">
           TV Screens
@@ -103,26 +121,35 @@ class WeekendPlan extends Component {
         <ul className="list-group list-group-flush">
           {this.state.tvScreensRequests.map(request => {
             if (request.forTVScreens && request.approved) {
-                return (
-                  <Link to={`/edit-request/${request.id}`}>
-                    <li className="list-group-item">{request.eventName}</li>
-                  </Link>
-                );
-              
-            }
-              })
-         }
+              return (
+                <Link to={`/edit-request/${request.id}`}>
+                  <li className="list-group-item">{request.eventName}</li>
+                </Link>
+              );
+            } else return null;
+          })}
         </ul>
         <div className="card-header bg-gray-300 font-weight-bold">Other</div>
         <ul className="list-group list-group-flush">
           {this.state.otherRequests.map(request => {
-            if (request.letterFlyer || request.halfSheetFlyer || request.quarterSheetFlyer || request.tvGraphic || request.tabloidPoster || request.mediumPoster || request.largePoster || request.fourByEightBanner || request.otherDesignFormat && request.approved ) {
-            return (
-              <Link to={`/edit-request/${request.id}`}>
-                <li className="list-group-item">{request.eventName}</li>
-              </Link>
-            ); 
-            }
+            if (
+              (request.letterFlyer ||
+                request.halfSheetFlyer ||
+                request.quarterSheetFlyer ||
+                request.tvGraphic ||
+                request.tabloidPoster ||
+                request.mediumPoster ||
+                request.largePoster ||
+                request.fourByEightBanner ||
+                request.otherDesignFormat) &&
+              request.approved
+            ) {
+              return (
+                <Link to={`/edit-request/${request.id}`}>
+                  <li className="list-group-item">{request.eventName}</li>
+                </Link>
+              );
+            } else return null;
           })}
         </ul>
       </div>

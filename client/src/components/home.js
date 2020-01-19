@@ -19,7 +19,7 @@ class Home extends Component {
     this.getRequests(this.props.email);
     this.getRecentRequests(this.props.orgName);
   }
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     this.getRequests(props.email);
     this.getRecentRequests(props.orgName);
   }

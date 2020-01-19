@@ -14,7 +14,7 @@ function AwaitingApproval(props) {
 
         )
             
-        }
+        } else return null
     })}
 </div>;
 }
