@@ -87,7 +87,7 @@ class WeekendPlan extends Component {
           {this.state.connectionCardRequests.map(request => {
             if (request.forConnectionCard && request.approved) {
               return (
-                <Link to={`/edit-request/${request.id}`}>
+                <Link to={`/edit-request/${request.id}`} key={request.id.toString()}>
                   <li className="list-group-item">{request.eventName}</li>
                 </Link>
               );
