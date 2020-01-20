@@ -5,7 +5,7 @@ function ActiveCard(props) {
 
   return (
     <Link to={`/edit-request/${props.id}`} className="list-group-item p-0">
-      <li className="list-group-item text-left">
+      <li className="list-group-item text-left" key={props.id}>
         {props.eventName}
         <Link to={`/edit-request/${props.id}`}>
           <i className="ml-2 far fa-edit"></i>

@@ -9,7 +9,7 @@ function AwaitingApproval(props) {
         if (!request.approved) {
         return (
         <Link to={`/edit-request/${request.id}`} className="list-group-item p-0">
-        <li className="list-group-item text-left">
+        <li className="list-group-item text-left" key={request.id}>
             {request.eventName} by {request.email}</li></Link>
 
         )
