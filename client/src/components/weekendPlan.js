@@ -71,7 +71,7 @@ class WeekendPlan extends Component {
             if (request.forAnnVideo && request.approved) {
               return (
                 <Link to={`/edit-request/${request.id}`} key={request.id.toString()}>
-                  <li className="list-group-item text-left" key={request.id.toString()}>
+                  <li className="list-group-item text-left">
                     {request.eventName}
                   </li>
                 </Link>

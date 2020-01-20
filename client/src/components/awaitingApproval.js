@@ -8,8 +8,8 @@ function AwaitingApproval(props) {
     {props.tenRecent.map(request => {
         if (!request.approved) {
         return (
-        <Link to={`/edit-request/${request.id}`} className="list-group-item p-0">
-        <li className="list-group-item text-left" key={request.id}>
+        <Link to={`/edit-request/${request.id}`} className="list-group-item p-0" key={request.id.toString()}>
+        <li className="list-group-item text-left">
             {request.eventName} by {request.email}</li></Link>
 
         )

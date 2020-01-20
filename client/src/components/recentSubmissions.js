@@ -8,7 +8,7 @@ function RecentSubmissions(props) {
   return <div>
       {props.tenRecent.map(request => {
           return (
-          <Link to={`/edit-request/${request.id}`} className="list-group-item p-0">
+          <Link to={`/edit-request/${request.id}`} className="list-group-item p-0" key={request.id.toString()}>
           <li className="list-group-item text-left">
               {request.eventName} by {request.email}</li></Link>
 
