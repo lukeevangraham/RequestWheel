@@ -89,7 +89,17 @@ class Home extends Component {
                 <div className="card-header text-center py-3">
                   <h4 className="m-0 font-weight-bold text-primary text-center">
                     Current Communication Plans
-                  <Link to={{pathname: '/home-matrix-print', state: { permissions: this.props.permissions, orgName: this.props.orgName}}}><i className="fas fa-print text-secondary ml-2"></i></Link>
+                    <Link
+                      to={{
+                        pathname: "/home-matrix-print",
+                        state: {
+                          permissions: this.props.permissions,
+                          orgName: this.props.orgName
+                        }
+                      }}
+                    >
+                      <i className="fas fa-print text-secondary ml-2"></i>
+                    </Link>
                   </h4>
                 </div>
                 <HomeMatrix
@@ -111,6 +121,7 @@ class Home extends Component {
                   {this.state.requests.map(request => {
                     return (
                       <ActiveCard
+                        key={request.id.toString()}
                         eventName={request.eventName}
                         requests={this.state.requests}
                         onClick={this.handleDeleteClick}
@@ -279,7 +290,9 @@ class Home extends Component {
                     Approving a Request
                   </h2>
                   <p className="text-center text-white mb-1">
-                  After a user submits a Request Form it is placed in the 'Requests Awaiting Approval' box on the Home page for the church administrator to review.
+                    After a user submits a Request Form it is placed in the
+                    'Requests Awaiting Approval' box on the Home page for the
+                    church administrator to review.
                   </p>
                   <img
                     src="/images/approve1.png"
@@ -287,7 +300,10 @@ class Home extends Component {
                     className="img-fluid mx-auto d-block mb-4 rounded"
                   />
                   <p className="text-center text-white mb-1">
-                  Administrators can approve a submission by clicking on that submission then checking the 'Approve' box at the bottom of the form. (The 'Approve' box is only available to administrators.)
+                    Administrators can approve a submission by clicking on that
+                    submission then checking the 'Approve' box at the bottom of
+                    the form. (The 'Approve' box is only available to
+                    administrators.)
                   </p>
                   <img
                     src="/images/approve2.png"
@@ -299,11 +315,12 @@ class Home extends Component {
 
               <div className="row no-gutters justify-content-center bg-gradient-primary pt-5 pb-5">
                 <div className="col-sm-10">
-                  <h2 className="text-center text-white">
-                    The Home Page
-                  </h2>
+                  <h2 className="text-center text-white">The Home Page</h2>
                   <p className="text-center text-white mb-1">
-                  After a request is approved it appears in the 'Current Communication Plans Matrix' at the top of the Home page. The request can be edited or reviewed by clicking on it in the Matrix or elsewhere on the Home page.
+                    After a request is approved it appears in the 'Current
+                    Communication Plans Matrix' at the top of the Home page. The
+                    request can be edited or reviewed by clicking on it in the
+                    Matrix or elsewhere on the Home page.
                   </p>
                   <img
                     src="/images/home.png"
@@ -319,7 +336,9 @@ class Home extends Component {
                     Previewing Newsletter Content
                   </h2>
                   <p className="text-center text-white mb-1">
-                  Clicking on the word 'Newsletter' in the 'Current Communication Plans Matrix' displays a page containing the body of all that weekend's newsletter content.
+                    Clicking on the word 'Newsletter' in the 'Current
+                    Communication Plans Matrix' displays a page containing the
+                    body of all that weekend's newsletter content.
                   </p>
                   <img
                     src="/images/newsletter.png"
@@ -328,8 +347,6 @@ class Home extends Component {
                   />
                 </div>
               </div>
-
-
             </div>
           </div>
         )}

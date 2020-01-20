@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 function ActiveCard(props) {
 
   return (
-    <Link to={`/edit-request/${props.id}`} className="list-group-item p-0">
       <li className="list-group-item text-left" key={props.id}>
+    <Link to={`/edit-request/${props.id}`} className="p-0">
         {props.eventName}
-        <Link to={`/edit-request/${props.id}`}>
           <i className="ml-2 far fa-edit"></i>
         </Link>
         <Link>
@@ -21,7 +20,6 @@ function ActiveCard(props) {
         ></i>
         </Link>
       </li>
-    </Link>
   );
 }
 
