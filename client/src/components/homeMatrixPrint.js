@@ -14,13 +14,15 @@ class HomeMatrixPrint extends Component {
         <div className="col-sm-3">
           <table className="table">
             <thead className="thead-dark">
-              <th>
-                Last Weekend (
-                {moment()
-                  .day(0)
-                  .format("MM/DD")}
-                )
-              </th>
+              <tr>
+                <th>
+                  Last Weekend (
+                  {moment()
+                    .day(0)
+                    .format("MM/DD")}
+                  )
+                </th>
+              </tr>
             </thead>
             <WeekendPlanPrint
               date={moment()
@@ -35,13 +37,15 @@ class HomeMatrixPrint extends Component {
         <div className="col-sm-3">
           <table className="table">
             <thead className="thead-dark">
-              <th>
-                This Weekend (
-                {moment()
-                  .day(7)
-                  .format("MM/DD")}
-                )
-              </th>
+              <tr>
+                <th>
+                  This Weekend (
+                  {moment()
+                    .day(7)
+                    .format("MM/DD")}
+                  )
+                </th>
+              </tr>
             </thead>
 
             <WeekendPlanPrint
@@ -56,15 +60,17 @@ class HomeMatrixPrint extends Component {
 
         <div className="col-sm-3">
           <table className="table">
-<thead className="thead-dark">
-              <th>
-                Next Weekend (
-                {moment()
-                  .day(14)
-                  .format("MM/DD")}
-                )
+            <thead className="thead-dark">
+              <tr>
+                <th>
+                  Next Weekend (
+                  {moment()
+                    .day(14)
+                    .format("MM/DD")}
+                  )
                 </th>
-              </thead>
+              </tr>
+            </thead>
 
             <WeekendPlanPrint
               date={moment()
@@ -79,14 +85,16 @@ class HomeMatrixPrint extends Component {
         <div className="col-sm-3">
           <table className="table">
             <thead className="thead-dark">
+              <tr>
                 <th>
-                2 Weekends Out (
-                {moment()
-                  .day(21)
-                  .format("MM/DD")}
-                )
+                  2 Weekends Out (
+                  {moment()
+                    .day(21)
+                    .format("MM/DD")}
+                  )
                 </th>
-              </thead>
+              </tr>
+            </thead>
 
             <WeekendPlanPrint
               date={moment()

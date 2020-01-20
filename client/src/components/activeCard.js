@@ -9,7 +9,7 @@ function ActiveCard(props) {
         {props.eventName}
           <i className="ml-2 far fa-edit"></i>
         </Link>
-        <Link>
+        <Link to="/">
         <i
           style={{ cursor: "pointer" }}
           className=" ml-2 fas fa-trash"

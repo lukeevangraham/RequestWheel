@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import Axios from "axios";
-import "../components/styles/weekendPlanPrint.css"
+import "../components/styles/weekendPlanPrint.css";
 
 class WeekendPlanPrint extends Component {
   state = {
@@ -65,23 +65,27 @@ class WeekendPlanPrint extends Component {
     return (
       <>
         <thead className="thead-dark">
-          <th>Announcement Video</th>
+          <tr>
+            <th>Announcement Video</th>
+          </tr>
         </thead>
 
         <tbody>
           {this.state.annVideoRequests.map(request => {
             if (request.forAnnVideo && request.approved) {
               return (
-                <tr>
+                <tr key={request.id.toString()}>
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
-            } else return undefined
+            } else return undefined;
           })}
         </tbody>
 
         <thead className="thead-dark">
-          <th>Connection Card</th>
+          <tr>
+            <th>Connection Card</th>
+          </tr>
         </thead>
 
         <tbody>
@@ -92,12 +96,14 @@ class WeekendPlanPrint extends Component {
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
-            } else return null
+            } else return null;
           })}
         </tbody>
 
         <thead className="thead-dark">
-          <th>Newsletter</th>
+          <tr>
+            <th>Newsletter</th>
+          </tr>
         </thead>
 
         <tbody>
@@ -108,12 +114,14 @@ class WeekendPlanPrint extends Component {
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
-            } else return null
+            } else return null;
           })}
         </tbody>
 
         <thead className="thead-dark">
-          <th>TV Screens</th>
+          <tr>
+            <th>TV Screens</th>
+          </tr>
         </thead>
 
         <tbody>
@@ -124,12 +132,14 @@ class WeekendPlanPrint extends Component {
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
-            } else return null
+            } else return null;
           })}
         </tbody>
 
         <thead className="thead-dark">
-          <th>Other</th>
+          <tr>
+            <th>Other</th>
+          </tr>
         </thead>
 
         <tbody>
@@ -146,13 +156,11 @@ class WeekendPlanPrint extends Component {
               (request.otherDesignFormat && request.approved)
             ) {
               return (
-<tr>
+                <tr>
                   <th className="text-dark">{request.eventName}</th>
-
-</tr>
-
+                </tr>
               );
-            } else return null
+            } else return null;
           })}
         </tbody>
       </>

@@ -145,7 +145,7 @@ class WeekendPlan extends Component {
               request.approved
             ) {
               return (
-                <Link to={`/edit-request/${request.id}`}>
+                <Link to={`/edit-request/${request.id}`} key={request.id}>
                   <li className="list-group-item">{request.eventName}</li>
                 </Link>
               );

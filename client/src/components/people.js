@@ -52,7 +52,7 @@ class People extends Component {
             
         {this.state.usersInOrg.map(user => {
           return(
-            <tr>
+            <tr key={user.id}>
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td>{user.email}</td>

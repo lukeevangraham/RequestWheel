@@ -24,7 +24,6 @@ class SubmitRequest extends Component {
   getEventById(requestId) {
     axios.get("/requests/ind/" + requestId).then(res => {
       const request = res.data;
-      console.log(request);
       this.setState({
         eventName: request.eventName,
         requestDueDate: new Date(moment(request.requestDueDate).format()),
@@ -309,9 +308,7 @@ class SubmitRequest extends Component {
         approved: this.state.approved
       })
       .then(response => {
-        console.log(response);
         if (response.data) {
-          console.log("successful edited");
           alert("Form successfully edited!");
           this.setState({
             redirectTo: "/login"
@@ -330,7 +327,6 @@ class SubmitRequest extends Component {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.reDirectTo }} />;
     } else {
-      console.log("PROPS: ", this.props);
       const isWeekendDate = date => {
         const day = date.getDay();
         return day !== 1 && day !== 2 && day !== 3 && day !== 4 && day !== 5;
@@ -466,7 +462,6 @@ class SubmitRequest extends Component {
                       <input
                         type="checkbox"
                         className="form-check-input"
-                        defaultChecked={false}
                         checked={this.state.letterFlyer}
                         name="letterFlyer"
                         id="letterFlyer"

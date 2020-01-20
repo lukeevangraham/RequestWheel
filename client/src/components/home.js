@@ -48,10 +48,8 @@ class Home extends Component {
   }
 
   handleDeleteClick = id => {
-    console.log("It's delete time!", id);
 
     Axios.delete("/requests/" + id).then(response => {
-      console.log("response: ", response);
       this.getRequests(this.props.email);
     });
   };
