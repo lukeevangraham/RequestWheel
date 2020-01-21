@@ -108,7 +108,7 @@ class WeekendPlan extends Component {
           {this.state.newsletterRequests.map(request => {
             if (request.forNewsletter && request.approved) {
               return (
-                <Link to={`/edit-request/${request.id}`}>
+                <Link to={`/edit-request/${request.id}`} key={request.id}>
                   <li className="list-group-item">{request.eventName}</li>
                 </Link>
               );
