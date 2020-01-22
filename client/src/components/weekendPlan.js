@@ -122,7 +122,7 @@ class WeekendPlan extends Component {
           {this.state.tvScreensRequests.map(request => {
             if (request.forTVScreens && request.approved) {
               return (
-                <Link to={`/edit-request/${request.id}`}>
+                <Link to={`/edit-request/${request.id}`} key={request.id}>
                   <li className="list-group-item">{request.eventName}</li>
                 </Link>
               );
