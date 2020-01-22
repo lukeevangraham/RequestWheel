@@ -92,7 +92,7 @@ class WeekendPlanPrint extends Component {
           {this.state.connectionCardRequests.map(request => {
             if (request.forConnectionCard && request.approved) {
               return (
-                <tr>
+                <tr key={request.id}>
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
@@ -110,7 +110,7 @@ class WeekendPlanPrint extends Component {
           {this.state.newsletterRequests.map(request => {
             if (request.forNewsletter && request.approved) {
               return (
-                <tr>
+                <tr key={request.id}>
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
@@ -128,7 +128,7 @@ class WeekendPlanPrint extends Component {
           {this.state.tvScreensRequests.map(request => {
             if (request.forTVScreens && request.approved) {
               return (
-                <tr>
+                <tr key={request.id}>
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
@@ -156,7 +156,7 @@ class WeekendPlanPrint extends Component {
               (request.otherDesignFormat && request.approved)
             ) {
               return (
-                <tr>
+                <tr key={request.id}>
                   <th className="text-dark">{request.eventName}</th>
                 </tr>
               );
