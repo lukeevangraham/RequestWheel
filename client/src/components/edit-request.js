@@ -333,6 +333,7 @@ class SubmitRequest extends Component {
       };
 
       return (
+        console.log(this.state),
         <div className="container pt-4">
           <div className="row mb-5">
             <div className="col">
@@ -366,6 +367,7 @@ class SubmitRequest extends Component {
                   <div className="col-sm-2 d-flex align-items-center">
                     {moment(this.state.createdAt).format("MM/DD/YYYY")}
                   </div>
+                  <label htmlFor="requester" className="col-sm-3 col-form-label">by: {this.state.email}</label>
                 </div>
                 <div className="form-group row">
                   <label
