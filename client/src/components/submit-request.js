@@ -5,6 +5,7 @@ import moment from "moment";
 import DatePicker from "react-datepicker";
 // import { registerLocale, setDefaultLocale } from  "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./styles/form.css";
 
 const Checkbox = ({ checked }) => (
   <div>
@@ -15,6 +16,13 @@ const Checkbox = ({ checked }) => (
 Checkbox.defaultProps = {
   checked: false
 };
+
+const styles = {
+  dateCorners: {
+    borderRadius: ".35rem 0 0 .35rem",
+    backgroundColor: 'red'
+  }
+}
 
 class SubmitRequest extends Component {
   // setting the component's initial state
@@ -720,7 +728,7 @@ class SubmitRequest extends Component {
                                         index
                                       )}
                                       filterDate={isWeekendDate}
-                                      className="form-control border-right-0"
+                                      className="form-control border-right-0 dateCorners"
                                     />
                                     <div className="input-group-append">
                                       <span
@@ -784,7 +792,7 @@ class SubmitRequest extends Component {
                                   selected={date}
                                   onChange={this.handleAnnVideoDate(index)}
                                   filterDate={isWeekendDate}
-                                  className="form-control border-right-0"
+                                  className="form-control border-right-0 dateCorners"
                                 />
                                 <div className="input-group-append">
                                   <span
@@ -844,7 +852,7 @@ class SubmitRequest extends Component {
                                   selected={date}
                                   onChange={this.handletvScreensDate(index)}
                                   filterDate={isWeekendDate}
-                                  className="form-control border-right-0"
+                                  className="form-control border-right-0 dateCorners"
                                 />
                                 <div className="input-group-append">
                                   <span
@@ -909,7 +917,7 @@ class SubmitRequest extends Component {
                                       index
                                     )}
                                     filterDate={isWeekendDate}
-                                    className="form-control border-right-0"
+                                    className="form-control border-right-0 dateCorners"
                                   />
                                   <div className="input-group-append">
                                     <span

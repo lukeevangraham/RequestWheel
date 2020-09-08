@@ -1,3 +1,6 @@
 .smallAppend {
     cursor: pointer;
 }
+.dateCorners {
+    border-radius: .35rem 0 0 .35rem;
+}

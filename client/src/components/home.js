@@ -48,7 +48,6 @@ class Home extends Component {
   }
 
   handleDeleteClick = id => {
-
     Axios.delete("/requests/" + id).then(response => {
       this.getRequests(this.props.email);
     });
@@ -198,15 +197,17 @@ class Home extends Component {
 
             <div className="container-fluid px-0">
               <div className="row no-gutters justify-content-center bg-gradient-primary pt-5 pb-5">
-                <div className="col-sm-10">
+                <div className="col-sm-10 p-5">
                   <h2 className="text-center text-white">Overview</h2>
                   <div className="row d-flex align-items-center">
-                    <div className="col-sm-6 p-4 rounded">
-                      <img
-                        src="/images/fillForms.svg"
-                        alt="lady organizing content"
+                    <div className="col-sm-6 rounded">
+                      <iframe
                         className="img-fluid"
-                      />{" "}
+                        src="https://www.youtube.com/embed/5P1WKXyTbhA"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      ></iframe>
                     </div>
                     <div className="col-sm-6">
                       <p className="text-white">
