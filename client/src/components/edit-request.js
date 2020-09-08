@@ -788,7 +788,7 @@ class SubmitRequest extends Component {
                                         index
                                       )}
                                       filterDate={isWeekendDate}
-                                      className="form-control border-right-0"
+                                      className="form-control border-right-0 dateCorners"
                                     />
                                     <div className="input-group-append">
                                       <span
@@ -852,7 +852,7 @@ class SubmitRequest extends Component {
                                   selected={date}
                                   onChange={this.handleAnnVideoDate(index)}
                                   filterDate={isWeekendDate}
-                                  className="form-control border-right-0"
+                                  className="form-control border-right-0 dateCorners"
                                 />
                                 <div className="input-group-append">
                                   <span
@@ -912,7 +912,7 @@ class SubmitRequest extends Component {
                                   selected={date}
                                   onChange={this.handletvScreensDate(index)}
                                   filterDate={isWeekendDate}
-                                  className="form-control border-right-0"
+                                  className="form-control border-right-0 dateCorners"
                                 />
                                 <div className="input-group-append">
                                   <span
@@ -977,7 +977,7 @@ class SubmitRequest extends Component {
                                       index
                                     )}
                                     filterDate={isWeekendDate}
-                                    className="form-control border-right-0"
+                                    className="form-control border-right-0 dateCorners"
                                   />
                                   <div className="input-group-append">
                                     <span
