@@ -16,11 +16,11 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": "o9v4jzdxnjn635uj",
-    "password": "pcuc6jqr7e38pzw5",
+    "username": "root",
+    "password": "root",
+    "database": "com_wheel",
     "port": "3306",
-    "database": "m19ztfscuo0vx75j",
-    "use_env_variable":"JAWSDB_URL",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
 }
