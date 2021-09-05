@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const session = require('express-session')
+const session = require('cookie-session')
 const passport = require('./passport')
 const path = require("path");
 const PORT = process.env.PORT || 3001;
