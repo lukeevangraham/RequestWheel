@@ -14,15 +14,15 @@ const Checkbox = ({ checked }) => (
 );
 
 Checkbox.defaultProps = {
-  checked: false
+  checked: false,
 };
 
 const styles = {
   dateCorners: {
     borderRadius: ".35rem 0 0 .35rem",
-    backgroundColor: 'red'
-  }
-}
+    backgroundColor: "red",
+  },
+};
 
 class SubmitRequest extends Component {
   // setting the component's initial state
@@ -63,10 +63,10 @@ class SubmitRequest extends Component {
     annVideoDates: [new Date(moment().add(2, "w"))],
     tvScreensDates: [new Date(moment().add(2, "w"))],
     connectionCardDates: [new Date(moment().add(2, "w"))],
-    approved: false
+    approved: false,
   };
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const target = event.target;
     // Getting the value and name of the input which triggered the change
     let value = target.type === "checkbox" ? target.checked : target.value;
@@ -74,13 +74,13 @@ class SubmitRequest extends Component {
 
     // Updating the input's state
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleChange = date => {
+  handleChange = (date) => {
     this.setState({
-      requestDueDate: date
+      requestDueDate: date,
     });
   };
 
@@ -94,94 +94,94 @@ class SubmitRequest extends Component {
   //   });
   // };
 
-  handleNewsletterDate = i => date => {
+  handleNewsletterDate = (i) => (date) => {
     let newsletterDates = [...this.state.newsletterDates];
     newsletterDates[i] = date;
     this.setState({
-      newsletterDates: newsletterDates
+      newsletterDates: newsletterDates,
     });
   };
 
-  addNewsletterDate = e => {
+  addNewsletterDate = (e) => {
     e.preventDefault();
     let dates = this.state.newsletterDates.concat([""]);
     this.setState({
-      newsletterDates: dates
+      newsletterDates: dates,
     });
   };
 
-  deleteNewsletterDate = index => e => {
+  deleteNewsletterDate = (index) => (e) => {
     this.setState({
-      newsletterDates: this.state.newsletterDates.filter((_, i) => i !== index)
+      newsletterDates: this.state.newsletterDates.filter((_, i) => i !== index),
     });
   };
-  handleAnnVideoDate = i => date => {
+  handleAnnVideoDate = (i) => (date) => {
     let annVideoDates = [...this.state.annVideoDates];
     annVideoDates[i] = date;
     this.setState({
-      annVideoDates: annVideoDates
+      annVideoDates: annVideoDates,
     });
   };
 
-  addAnnVideoDate = e => {
+  addAnnVideoDate = (e) => {
     e.preventDefault();
     let dates = this.state.annVideoDates.concat([""]);
     this.setState({
-      annVideoDates: dates
+      annVideoDates: dates,
     });
   };
 
-  deleteAnnVideoDate = index => e => {
+  deleteAnnVideoDate = (index) => (e) => {
     this.setState({
-      annVideoDates: this.state.annVideoDates.filter((_, i) => i !== index)
+      annVideoDates: this.state.annVideoDates.filter((_, i) => i !== index),
     });
   };
-  handletvScreensDate = i => date => {
+  handletvScreensDate = (i) => (date) => {
     let tvScreensDates = [...this.state.tvScreensDates];
     tvScreensDates[i] = date;
     this.setState({
-      tvScreensDates: tvScreensDates
+      tvScreensDates: tvScreensDates,
     });
   };
 
-  addtvScreensDate = e => {
+  addtvScreensDate = (e) => {
     e.preventDefault();
     let dates = this.state.tvScreensDates.concat([""]);
     this.setState({
-      tvScreensDates: dates
+      tvScreensDates: dates,
     });
   };
 
-  deletetvScreensDate = index => e => {
+  deletetvScreensDate = (index) => (e) => {
     this.setState({
-      tvScreensDates: this.state.tvScreensDates.filter((_, i) => i !== index)
+      tvScreensDates: this.state.tvScreensDates.filter((_, i) => i !== index),
     });
   };
-  handleConnectionCardDate = i => date => {
+  handleConnectionCardDate = (i) => (date) => {
     let connectionCardDates = [...this.state.connectionCardDates];
     connectionCardDates[i] = date;
     this.setState({
-      connectionCardDates: connectionCardDates
+      connectionCardDates: connectionCardDates,
     });
   };
 
-  addConnectionCardDate = e => {
+  addConnectionCardDate = (e) => {
     e.preventDefault();
     let dates = this.state.connectionCardDates.concat([""]);
     this.setState({
-      connectionCardDates: dates
+      connectionCardDates: dates,
     });
   };
 
-  deleteConnectionCardDate = index => e => {
+  deleteConnectionCardDate = (index) => (e) => {
     this.setState({
       connectionCardDates: this.state.connectionCardDates.filter(
-        (_, i) => i !== index
-      )
+        (_, i) => i !== index,
+      ),
     });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
 
@@ -241,34 +241,34 @@ class SubmitRequest extends Component {
         forConnectionCard: this.state.forConnectionCard,
         body: this.state.body,
         quantity: this.state.quantity,
-        newsletterDates: this.state.newsletterDates.map(date => {
+        newsletterDates: this.state.newsletterDates.map((date) => {
           return moment(date).format("YYYY-MM-DD");
         }),
-        annVideoDates: this.state.annVideoDates.map(date => {
+        annVideoDates: this.state.annVideoDates.map((date) => {
           return moment(date).format("YYYY-MM-DD");
         }),
-        tvScreensDates: this.state.tvScreensDates.map(date => {
+        tvScreensDates: this.state.tvScreensDates.map((date) => {
           return moment(date).format("YYYY-MM-DD");
         }),
-        connectionCardDates: this.state.connectionCardDates.map(date => {
+        connectionCardDates: this.state.connectionCardDates.map((date) => {
           return moment(date).format("YYYY-MM-DD");
         }),
         orgName: this.props.orgName,
-        approved: this.state.approved
+        approved: this.state.approved,
       })
-      .then(response => {
+      .then((response) => {
         // console.log(response);
         if (response.data) {
           // console.log("successful post");
           alert("Form successfully submited!");
           this.setState({
-            redirectTo: "/login"
+            redirectTo: "/login",
           });
         } else {
           console.log("Requst-submit error");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("Requst-submit server error: ");
         console.log(error);
       });
@@ -280,7 +280,7 @@ class SubmitRequest extends Component {
     } else {
       // console.log("PROPS: ", this.props);
 
-      const isWeekendDate = date => {
+      const isWeekendDate = (date) => {
         const day = date.getDay();
         return day !== 1 && day !== 2 && day !== 3 && day !== 4 && day !== 5;
       };
@@ -295,7 +295,7 @@ class SubmitRequest extends Component {
               <h5>DEADLINES</h5>
               <p className="mb-1">
                 <span className="font-weight-bold">
-                  Newsletter, Announement Video, Connection Card:{" "}
+                  Newsletter, Connection Card:{" "}
                 </span>
                 <br /> Mondays @ 5:00 pm; Two weeks notice
               </p>
@@ -355,9 +355,8 @@ class SubmitRequest extends Component {
                       onChange={this.handleChange}
                     />
                     <small id="dueDateHelp" className="form-text text-muted">
-                      Two weeks notice for newsletter, announcement video or
-                      connection card. Three weeks notice for posters, banner,
-                      booklets, etc.
+                      Two weeks notice for newsletter or connection card. Three
+                      weeks notice for posters, banner, booklets, etc.
                     </small>
                   </div>
                 </div>
@@ -707,14 +706,12 @@ class SubmitRequest extends Component {
                         </div>
                         {this.state.forNewsletter ? (
                           <Fragment>
-                            {this.state.newsletterDates.map(
-                              (date, index) => (
-                                (
-                                  <div
-                                    className="input-group input-group-sm mb-1 flex-nowrap"
-                                    key={index}
-                                  >
-                                    {/* <input
+                            {this.state.newsletterDates.map((date, index) => (
+                              <div
+                                className="input-group input-group-sm mb-1 flex-nowrap"
+                                key={index}
+                              >
+                                {/* <input
                                   className="form-control"
                                   type="date"
                                   onChange={this.handleNewsletterDate(index)}
@@ -722,91 +719,25 @@ class SubmitRequest extends Component {
                                   placeholder="yyyy-mm-dd"
                                   name="newsletterDates"
                                 /> */}
-                                    <DatePicker
-                                      selected={date}
-                                      onChange={this.handleNewsletterDate(
-                                        index
-                                      )}
-                                      filterDate={isWeekendDate}
-                                      className="form-control border-right-0 dateCorners"
-                                    />
-                                    <div className="input-group-append">
-                                      <span
-                                        className="input-group-text bg-danger text-white smallAppend"
-                                        onClick={this.deleteNewsletterDate(
-                                          index
-                                        )}
-                                      >
-                                        X
-                                      </span>
-                                    </div>
-                                  </div>
-                                )
-                              )
-                            )}
-                            <button
-                              className="form-control mb-4"
-                              onClick={this.addNewsletterDate}
-                            >
-                              Add Another Date
-                            </button>
-                          </Fragment>
-                        ) : (
-                          ""
-                        )}
-                      </div>
-
-                      <div className="col-lg-3 col-md-6">
-                        <div className="form-check">
-                          <input
-                            className="form-check-input"
-                            checked={this.state.forAnnVideo}
-                            name="forAnnVideo"
-                            id="forAnnVideo"
-                            onChange={this.handleInputChange}
-                            type="checkbox"
-                          />
-                          <label
-                            className="form-check-label"
-                            htmlFor="forAnnVideo"
-                          >
-                            Announcement Video
-                          </label>
-                        </div>
-
-                        {this.state.forAnnVideo ? (
-                          <Fragment>
-                            {this.state.annVideoDates.map((date, index) => (
-                              <span
-                                className="input-group input-group-sm mb-1 flex-nowrap"
-                                key={index}
-                              >
-                                {/* <input
-                                  className="form-control"
-                                  type="date"
-                                  onChange={this.handleAnnVideoDate(index)}
-                                  value={date}
-                                  placeholder="yyyy-mm-dd"
-                                /> */}
                                 <DatePicker
                                   selected={date}
-                                  onChange={this.handleAnnVideoDate(index)}
+                                  onChange={this.handleNewsletterDate(index)}
                                   filterDate={isWeekendDate}
                                   className="form-control border-right-0 dateCorners"
                                 />
                                 <div className="input-group-append">
                                   <span
                                     className="input-group-text bg-danger text-white smallAppend"
-                                    onClick={this.deleteAnnVideoDate(index)}
+                                    onClick={this.deleteNewsletterDate(index)}
                                   >
                                     X
                                   </span>
                                 </div>
-                              </span>
+                              </div>
                             ))}
                             <button
                               className="form-control mb-4"
-                              onClick={this.addAnnVideoDate}
+                              onClick={this.addNewsletterDate}
                             >
                               Add Another Date
                             </button>
@@ -914,7 +845,7 @@ class SubmitRequest extends Component {
                                   <DatePicker
                                     selected={date}
                                     onChange={this.handleConnectionCardDate(
-                                      index
+                                      index,
                                     )}
                                     filterDate={isWeekendDate}
                                     className="form-control border-right-0 dateCorners"
@@ -923,14 +854,14 @@ class SubmitRequest extends Component {
                                     <span
                                       className="input-group-text bg-danger text-white smallAppend"
                                       onClick={this.deleteConnectionCardDate(
-                                        index
+                                        index,
                                       )}
                                     >
                                       X
                                     </span>
                                   </div>
                                 </span>
-                              )
+                              ),
                             )}
                             <button
                               className="form-control mb-4"
