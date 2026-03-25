@@ -1,42 +1,47 @@
 const express = require("express");
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const session = require('cookie-session')
-const passport = require('./passport')
+const bodyParser = require("body-parser");
+const morgan = require("morgan");
+const session = require("express-session");
+const FileStore = require("session-file-store")(session);
+const passport = require("./passport");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 // const user = require('./routes/api/users')
-const match = require('react-router')
+const match = require("react-router");
 
 // Define middleware here
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(
   bodyParser.urlencoded({
-    extended: false
-  })
-)
-app.use(bodyParser.json())
+    extended: false,
+  }),
+);
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // sessions
 app.use(
   session({
-    secret: 'the-natural',
+    store: new FileStore({
+      path: "./sessions", // Sessions go to the disk, not RAM
+      ttl: 86400 * 7, // Audo-delete sessions after 7 days
+    }),
+    secret: "the-natural",
     resave: false,
-    saveUninitialized: false
-  })
-)
+    saveUninitialized: false,
+  }),
+);
 // app.use( (req, res, next) => {
 //   console.log('req.session', req.session);
 //   return next();
 // });
 
 // Passport
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -69,9 +74,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-db.sequelize.sync().then(function() {
+db.sequelize.sync().then(function () {
   app.listen(PORT, () => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
-})
-
+});
